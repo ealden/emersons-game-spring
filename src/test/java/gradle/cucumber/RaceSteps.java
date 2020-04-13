@@ -47,7 +47,7 @@ public class RaceSteps {
         assertThat(game.getDamage(), is(equalTo(newDamage)));
     }
 
-    @Then("result of the race is {string}")
+    @Then("I must see the race result: {string}")
     public void assertResult(String result) {
         var over = "WIN".equals(result);
 
