@@ -2,7 +2,7 @@ package com.escanan.ealden.race;
 
 import static java.lang.Math.max;
 
-public class Race {
+public class Racer {
     public enum SpeedType {
         NORMAL, SUPER
     }

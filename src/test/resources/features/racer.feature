@@ -1,6 +1,6 @@
-Feature: Race
+Feature: Racer
 
-  Scenario Outline: Play Game
+  Scenario Outline: Race
     Given I am in a race
     And   I am at position <Position>
     And   I have damage of <Damage>
