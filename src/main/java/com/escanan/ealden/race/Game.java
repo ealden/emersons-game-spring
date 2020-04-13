@@ -5,6 +5,10 @@ import static java.lang.Math.max;
 public class Game {
     public static final int TOTAL_POSITIONS = 10;
 
+    private static final int ZERO_MOVE = 0;
+    private static final int ODD_NORMAL_MOVE = 1;
+    private static final int EVEN_NORMAL_MOVE = 2;
+
     public enum SpeedType {
         NORMAL, SUPER
     }
@@ -26,7 +30,7 @@ public class Game {
 
     private void normalMove(int roll) {
         var odd = ((roll % 2) == 1);
-        var normalRoll = ((odd) ? 1 : 2);
+        var normalRoll = ((odd) ? ODD_NORMAL_MOVE : EVEN_NORMAL_MOVE);
 
         move(normalRoll);
     }
@@ -38,7 +42,7 @@ public class Game {
     }
 
     private void move(int roll) {
-        position += max((roll - damage), 0);
+        position += max((roll - damage), ZERO_MOVE);
     }
 
     public int getDamage() {
