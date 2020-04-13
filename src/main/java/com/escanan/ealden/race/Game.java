@@ -6,6 +6,7 @@ public class Game {
     }
 
     private Integer position = 0;
+    private Integer damage = 0;
 
     public void move(Integer roll, SpeedType speedType) {
         if (SpeedType.NORMAL.equals(speedType)) {
@@ -14,7 +15,12 @@ public class Game {
             position += (odd) ? 1 : 2;
         } else if (SpeedType.SUPER.equals(speedType)) {
             position += roll;
+            damage++;
         }
+    }
+
+    public Integer getDamage() {
+        return damage;
     }
 
     public Integer getPosition() {

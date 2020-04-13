@@ -42,4 +42,9 @@ public class RaceSteps {
     public void assertNewPosition(Integer newPosition) {
         assertThat(game.getPosition(), is(equalTo(newPosition)));
     }
+
+    @Then("I must now have damage of {int}")
+    public void assertNewDamage(Integer newDamage) {
+        assertThat(game.getDamage(), is(equalTo(newDamage)));
+    }
 }

@@ -9,6 +9,7 @@ Feature: Race
     When  I set my speed to <Speed>
     And   I roll a <Roll>
     Then  I must be at position <New Position>
+    And   I must now have damage of <New Damage>
 
     Examples:
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
