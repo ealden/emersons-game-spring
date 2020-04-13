@@ -43,6 +43,10 @@ public class Game {
     private void superMove(int roll) {
         move(roll);
 
+        incrementDamage();
+    }
+
+    private void incrementDamage() {
         damage++;
     }
 
