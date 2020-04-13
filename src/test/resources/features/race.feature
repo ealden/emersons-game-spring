@@ -10,10 +10,16 @@ Feature: Race
     Then  I must be at position <New Position>
 
     Examples:
-      | Roll  | New Position  |
-      | 1     | 1             |
-      | 2     | 2             |
-      | 3     | 3             |
-      | 4     | 4             |
-      | 5     | 5             |
-      | 6     | 6             |
+      | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
+#      | 0         | 0       | NORMAL  | 1     | 1             | 0           |         |
+#      | 0         | 0       | NORMAL  | 2     | 2             | 0           |         |
+#      | 0         | 0       | NORMAL  | 3     | 1             | 0           |         |
+#      | 0         | 0       | NORMAL  | 4     | 2             | 0           |         |
+#      | 0         | 0       | NORMAL  | 5     | 1             | 0           |         |
+#      | 0         | 0       | NORMAL  | 6     | 2             | 0           |         |
+      | 0         | 0       | SUPER   | 1     | 1             | 1           |         |
+      | 0         | 0       | SUPER   | 2     | 2             | 1           |         |
+      | 0         | 0       | SUPER   | 3     | 3             | 1           |         |
+      | 0         | 0       | SUPER   | 4     | 4             | 1           |         |
+      | 0         | 0       | SUPER   | 5     | 5             | 1           |         |
+      | 0         | 0       | SUPER   | 6     | 6             | 1           |         |
