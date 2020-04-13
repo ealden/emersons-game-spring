@@ -29,10 +29,15 @@ public class Game {
     }
 
     private void normalMove(int roll) {
-        var odd = ((roll % 2) == 1);
-        var normalRoll = ((odd) ? ODD_NORMAL_MOVE : EVEN_NORMAL_MOVE);
+        move(normal(roll));
+    }
 
-        move(normalRoll);
+    private int normal(int roll) {
+        return (isOdd(roll) ? ODD_NORMAL_MOVE : EVEN_NORMAL_MOVE);
+    }
+
+    private boolean isOdd(int roll) {
+        return (roll % 2) == 1;
     }
 
     private void superMove(int roll) {
