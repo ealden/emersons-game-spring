@@ -24,19 +24,21 @@ public class Game {
 
     private void normalMove(Integer roll) {
         var odd = ((roll % 2) == 1);
+        var normalRoll = ((odd) ? 1 : 2);
 
-        var move = ((odd) ? 1 : 2);
-        move = move - damage;
-
-        position += ((move > 0) ? move : 0);
+        move(normalRoll);
     }
 
     private void superMove(Integer roll) {
-        var move = (roll - damage);
-
-        position += ((move > 0) ? move : 0);
+        move(roll);
 
         damage++;
+    }
+
+    private void move(Integer roll) {
+        var netRoll = (roll - damage);
+
+        position += ((netRoll > 0) ? netRoll : 0);
     }
 
     public Integer getDamage() {
