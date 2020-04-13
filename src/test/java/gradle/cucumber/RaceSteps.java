@@ -28,19 +28,14 @@ public class RaceSteps {
         game.setDamage(damage);
     }
 
+    @Given("I set my speed to {string}")
+    public void setSpeed(String speed) {
+        speedType = Game.SpeedType.valueOf(speed);
+    }
+
     @Then("I must have a game to play")
     public void assertGameNotNull() {
         assertThat(game, is(notNullValue()));
-    }
-
-    @When("I set my speed to NORMAL")
-    public void normalSpeed() {
-        speedType = Game.SpeedType.NORMAL;
-    }
-
-    @When("I set my speed to SUPER")
-    public void superSpeed() {
-        speedType = Game.SpeedType.SUPER;
     }
 
     @When("I roll a {int}")

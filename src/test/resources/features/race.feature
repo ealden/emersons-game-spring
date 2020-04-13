@@ -8,8 +8,8 @@ Feature: Race
     Given I am in a race
     And   I am at position <Position>
     And   I have damage of <Damage>
-    When  I set my speed to <Speed>
-    And   I roll a <Roll>
+    And   I set my speed to "<Speed>"
+    When  I roll a <Roll>
     Then  I must be at position <New Position>
     And   I must now have damage of <New Damage>
     And   result of the race is "<Result>"
