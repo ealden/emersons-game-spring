@@ -6,6 +6,7 @@ Feature: Race
 
   Scenario Outline: Play Game
     Given I am in a race
+    And   I have damage of <Damage>
     When  I set my speed to <Speed>
     And   I roll a <Roll>
     Then  I must be at position <New Position>
@@ -25,3 +26,9 @@ Feature: Race
       | 0         | 0       | SUPER   | 4     | 4             | 1           |         |
       | 0         | 0       | SUPER   | 5     | 5             | 1           |         |
       | 0         | 0       | SUPER   | 6     | 6             | 1           |         |
+      | 0         | 1       | SUPER   | 1     | 0             | 2           |         |
+      | 0         | 1       | SUPER   | 2     | 1             | 2           |         |
+      | 0         | 1       | SUPER   | 3     | 2             | 2           |         |
+      | 0         | 1       | SUPER   | 4     | 3             | 2           |         |
+      | 0         | 1       | SUPER   | 5     | 4             | 2           |         |
+      | 0         | 1       | SUPER   | 6     | 5             | 2           |         |

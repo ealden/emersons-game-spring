@@ -14,7 +14,7 @@ public class Game {
 
             position += (odd) ? 1 : 2;
         } else if (SpeedType.SUPER.equals(speedType)) {
-            position += roll;
+            position += (roll - damage);
             damage++;
         }
     }
@@ -25,5 +25,10 @@ public class Game {
 
     public Integer getPosition() {
         return position;
+    }
+
+    public void setDamage(Integer damage) {
+        // TODO: this method should not be public
+        this.damage = damage;
     }
 }

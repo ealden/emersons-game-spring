@@ -18,6 +18,11 @@ public class RaceSteps {
         game = new Game();
     }
 
+    @Given("I have damage of {int}")
+    public void setDamage(Integer damage) {
+        game.setDamage(damage);
+    }
+
     @Then("I must have a game to play")
     public void assertGameNotNull() {
         assertThat(game, is(notNullValue()));
