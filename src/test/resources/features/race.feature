@@ -6,17 +6,18 @@ Feature: Race
 
   Scenario Outline: Play Game
     Given I am in a race
-    When  I roll a <Roll>
+    When  I set my speed to <Speed>
+    And   I roll a <Roll>
     Then  I must be at position <New Position>
 
     Examples:
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
-#      | 0         | 0       | NORMAL  | 1     | 1             | 0           |         |
-#      | 0         | 0       | NORMAL  | 2     | 2             | 0           |         |
-#      | 0         | 0       | NORMAL  | 3     | 1             | 0           |         |
-#      | 0         | 0       | NORMAL  | 4     | 2             | 0           |         |
-#      | 0         | 0       | NORMAL  | 5     | 1             | 0           |         |
-#      | 0         | 0       | NORMAL  | 6     | 2             | 0           |         |
+      | 0         | 0       | NORMAL  | 1     | 1             | 0           |         |
+      | 0         | 0       | NORMAL  | 2     | 2             | 0           |         |
+      | 0         | 0       | NORMAL  | 3     | 1             | 0           |         |
+      | 0         | 0       | NORMAL  | 4     | 2             | 0           |         |
+      | 0         | 0       | NORMAL  | 5     | 1             | 0           |         |
+      | 0         | 0       | NORMAL  | 6     | 2             | 0           |         |
       | 0         | 0       | SUPER   | 1     | 1             | 1           |         |
       | 0         | 0       | SUPER   | 2     | 2             | 1           |         |
       | 0         | 0       | SUPER   | 3     | 3             | 1           |         |

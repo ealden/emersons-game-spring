@@ -10,6 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RaceSteps {
     private Game game = null;
+    private Game.SpeedType speedType = null;
 
     @Given("I am in a race")
     @When("I create a new game")
@@ -22,9 +23,19 @@ public class RaceSteps {
         assertThat(game, is(notNullValue()));
     }
 
+    @When("I set my speed to NORMAL")
+    public void normalSpeed() {
+        speedType = Game.SpeedType.NORMAL;
+    }
+
+    @When("I set my speed to SUPER")
+    public void superSpeed() {
+        speedType = Game.SpeedType.SUPER;
+    }
+
     @When("I roll a {int}")
     public void roll(Integer roll) {
-        game.move(roll);
+        game.move(roll, speedType);
     }
 
     @Then("I must be at position {int}")
