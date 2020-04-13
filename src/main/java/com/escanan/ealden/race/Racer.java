@@ -7,7 +7,7 @@ public class Racer {
         NORMAL, SUPER
     }
 
-    public static final int TOTAL_POSITIONS = 10;
+    public static final int FINISH_LINE = 10;
 
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
@@ -17,7 +17,7 @@ public class Racer {
     private int damage = 0;
 
     public boolean isOver() {
-        return position >= TOTAL_POSITIONS;
+        return position >= FINISH_LINE;
     }
 
     public void move(int roll, SpeedType speedType) {
@@ -34,7 +34,7 @@ public class Racer {
 
     public int getPosition() {
         if (isOver()) {
-            return TOTAL_POSITIONS;
+            return FINISH_LINE;
         } else {
             return position;
         }
