@@ -18,6 +18,11 @@ public class RaceSteps {
         game = new Game();
     }
 
+    @Given("I am at position {int}")
+    public void setPosition(Integer position) {
+        game.setPosition(position);
+    }
+
     @Given("I have damage of {int}")
     public void setDamage(Integer damage) {
         game.setDamage(damage);
@@ -51,5 +56,12 @@ public class RaceSteps {
     @Then("I must now have damage of {int}")
     public void assertNewDamage(Integer newDamage) {
         assertThat(game.getDamage(), is(equalTo(newDamage)));
+    }
+
+    @Then("result of the race is {string}")
+    public void assertResult(String result) {
+        var over = "WIN".equals(result);
+
+        assertThat(game.isOver(), is(over));
     }
 }

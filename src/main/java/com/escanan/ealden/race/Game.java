@@ -1,12 +1,18 @@
 package com.escanan.ealden.race;
 
 public class Game {
+    public static final Integer TOTAL_POSITIONS = 10;
+
     public enum SpeedType {
         NORMAL, SUPER
     }
 
     private Integer position = 0;
     private Integer damage = 0;
+
+    public boolean isOver() {
+        return position >= TOTAL_POSITIONS;
+    }
 
     public void move(Integer roll, SpeedType speedType) {
         if (SpeedType.NORMAL.equals(speedType)) {
@@ -33,11 +39,20 @@ public class Game {
     }
 
     public Integer getPosition() {
-        return position;
+        if (isOver()) {
+            return TOTAL_POSITIONS;
+        } else {
+            return position;
+        }
     }
 
     public void setDamage(Integer damage) {
         // TODO: this method should not be public
         this.damage = damage;
+    }
+
+    public void setPosition(Integer position) {
+        // TODO: this method should not be public
+        this.position = position;
     }
 }
