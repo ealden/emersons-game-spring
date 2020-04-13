@@ -1,5 +1,7 @@
 package com.escanan.ealden.race;
 
+import static java.lang.Math.max;
+
 public class Game {
     public static final Integer TOTAL_POSITIONS = 10;
 
@@ -36,9 +38,7 @@ public class Game {
     }
 
     private void move(Integer roll) {
-        var netRoll = (roll - damage);
-
-        position += ((netRoll > 0) ? netRoll : 0);
+        position += max((roll - damage), 0);
     }
 
     public Integer getDamage() {
