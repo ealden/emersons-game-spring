@@ -3,20 +3,20 @@ package com.escanan.ealden.race;
 import static java.lang.Math.max;
 
 public class Game {
-    public static final Integer TOTAL_POSITIONS = 10;
+    public static final int TOTAL_POSITIONS = 10;
 
     public enum SpeedType {
         NORMAL, SUPER
     }
 
-    private Integer position = 0;
-    private Integer damage = 0;
+    private int position = 0;
+    private int damage = 0;
 
     public boolean isOver() {
         return position >= TOTAL_POSITIONS;
     }
 
-    public void move(Integer roll, SpeedType speedType) {
+    public void move(int roll, SpeedType speedType) {
         if (SpeedType.NORMAL.equals(speedType)) {
             normalMove(roll);
         } else if (SpeedType.SUPER.equals(speedType)) {
@@ -24,28 +24,28 @@ public class Game {
         }
     }
 
-    private void normalMove(Integer roll) {
+    private void normalMove(int roll) {
         var odd = ((roll % 2) == 1);
         var normalRoll = ((odd) ? 1 : 2);
 
         move(normalRoll);
     }
 
-    private void superMove(Integer roll) {
+    private void superMove(int roll) {
         move(roll);
 
         damage++;
     }
 
-    private void move(Integer roll) {
+    private void move(int roll) {
         position += max((roll - damage), 0);
     }
 
-    public Integer getDamage() {
+    public int getDamage() {
         return damage;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         if (isOver()) {
             return TOTAL_POSITIONS;
         } else {
@@ -53,12 +53,12 @@ public class Game {
         }
     }
 
-    public void setDamage(Integer damage) {
+    public void setDamage(int damage) {
         // TODO: this method should not be public
         this.damage = damage;
     }
 
-    public void setPosition(Integer position) {
+    public void setPosition(int position) {
         // TODO: this method should not be public
         this.position = position;
     }

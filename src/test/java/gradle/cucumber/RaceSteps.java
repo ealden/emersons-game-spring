@@ -19,12 +19,12 @@ public class RaceSteps {
     }
 
     @Given("I am at position {int}")
-    public void setPosition(Integer position) {
+    public void setPosition(int position) {
         game.setPosition(position);
     }
 
     @Given("I have damage of {int}")
-    public void setDamage(Integer damage) {
+    public void setDamage(int damage) {
         game.setDamage(damage);
     }
 
@@ -39,17 +39,17 @@ public class RaceSteps {
     }
 
     @When("I roll a {int}")
-    public void roll(Integer roll) {
+    public void roll(int roll) {
         game.move(roll, speedType);
     }
 
     @Then("I must be at position {int}")
-    public void assertNewPosition(Integer newPosition) {
+    public void assertNewPosition(int newPosition) {
         assertThat(game.getPosition(), is(equalTo(newPosition)));
     }
 
     @Then("I must now have damage of {int}")
-    public void assertNewDamage(Integer newDamage) {
+    public void assertNewDamage(int newDamage) {
         assertThat(game.getDamage(), is(equalTo(newDamage)));
     }
 
