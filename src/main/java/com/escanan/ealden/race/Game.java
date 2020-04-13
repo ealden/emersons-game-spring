@@ -10,13 +10,22 @@ public class Game {
 
     public void move(Integer roll, SpeedType speedType) {
         if (SpeedType.NORMAL.equals(speedType)) {
-            var odd = ((roll % 2) == 1);
-
-            position += (odd) ? 1 : 2;
+            normalMove(roll);
         } else if (SpeedType.SUPER.equals(speedType)) {
-            position += (roll - damage);
-            damage++;
+            superMove(roll);
         }
+    }
+
+    private void normalMove(Integer roll) {
+        var odd = ((roll % 2) == 1);
+
+        position += (odd) ? 1 : 2;
+    }
+
+    private void superMove(Integer roll) {
+        position += (roll - damage);
+
+        damage++;
     }
 
     public Integer getDamage() {
