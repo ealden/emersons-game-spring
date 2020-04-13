@@ -27,8 +27,8 @@ public class RaceSteps {
         game.setDamage(damage);
     }
 
-    @Given("I set my speed to {string}")
-    public void setSpeed(String speed) {
+    @When("I choose {string} speed")
+    public void speed(String speed) {
         speedType = Game.SpeedType.valueOf(speed);
     }
 

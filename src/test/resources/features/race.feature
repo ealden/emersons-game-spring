@@ -4,8 +4,8 @@ Feature: Race
     Given I am in a race
     And   I am at position <Position>
     And   I have damage of <Damage>
-    And   I set my speed to "<Speed>"
-    When  I roll a <Roll>
+    When  I choose "<Speed>" speed
+    And   I roll a <Roll>
     Then  I must be at position <New Position>
     And   I must now have damage of <New Damage>
     And   result of the race is "<Result>"
@@ -29,7 +29,6 @@ Feature: Race
       | 0         | 0       | SUPER   | 4     | 4             | 1           |         |
       | 0         | 0       | SUPER   | 5     | 5             | 1           |         |
       | 0         | 0       | SUPER   | 6     | 6             | 1           |         |
-
 
     Examples: Damage is deducted from roll
 
