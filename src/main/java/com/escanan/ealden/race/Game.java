@@ -32,7 +32,9 @@ public class Game {
     }
 
     private void superMove(Integer roll) {
-        position += (roll - damage);
+        var move = (roll - damage);
+
+        position += ((move > 0) ? move : 0);
 
         damage++;
     }

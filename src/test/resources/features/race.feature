@@ -40,6 +40,12 @@ Feature: Race
       | 6         | 2       | NORMAL  | 4     | 6             | 2           |         |
       | 6         | 2       | NORMAL  | 5     | 6             | 2           |         |
       | 6         | 2       | NORMAL  | 6     | 6             | 2           |         |
+      | 6         | 6       | SUPER   | 1     | 6             | 7           |         |
+      | 6         | 6       | SUPER   | 2     | 6             | 7           |         |
+      | 6         | 6       | SUPER   | 3     | 6             | 7           |         |
+      | 6         | 6       | SUPER   | 4     | 6             | 7           |         |
+      | 6         | 6       | SUPER   | 5     | 6             | 7           |         |
+      | 6         | 6       | SUPER   | 6     | 6             | 7           |         |
       | 9         | 0       | NORMAL  | 1     | 10            | 0           | WIN     |
       | 9         | 0       | NORMAL  | 2     | 10            | 0           | WIN     |
       | 9         | 0       | NORMAL  | 3     | 10            | 0           | WIN     |
