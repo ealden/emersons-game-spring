@@ -10,12 +10,22 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RacerSteps {
-    private Racer racer = null;
+    private class TestableRacer extends Racer {
+        void setDamage(int damage) {
+            this.damage = damage;
+        }
+
+        void setPosition(int position) {
+            this.position = position;
+        }
+    }
+
+    private TestableRacer racer = null;
     private Racer.SpeedType speedType = null;
 
     @Given("I am in a race")
     public void newGame() {
-        racer = new Racer();
+        racer = new TestableRacer();
     }
 
     @Given("I am at position {int}")

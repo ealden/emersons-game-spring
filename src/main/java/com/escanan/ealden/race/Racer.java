@@ -13,8 +13,8 @@ public class Racer {
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
 
-    private int position = 0;
-    private int damage = 0;
+    protected int position = 0;
+    protected int damage = 0;
 
     public boolean isOver() {
         return position >= FINISH_LINE;
@@ -38,16 +38,6 @@ public class Racer {
         } else {
             return position;
         }
-    }
-
-    public void setDamage(int damage) {
-        // TODO: this method should not be public
-        this.damage = damage;
-    }
-
-    public void setPosition(int position) {
-        // TODO: this method should not be public
-        this.position = position;
     }
 
     private void normalMove(int roll) {
