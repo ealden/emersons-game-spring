@@ -13,7 +13,6 @@ public class RaceSteps {
     private Game.SpeedType speedType = null;
 
     @Given("I am in a race")
-    @When("I create a new game")
     public void newGame() {
         game = new Game();
     }
@@ -31,11 +30,6 @@ public class RaceSteps {
     @Given("I set my speed to {string}")
     public void setSpeed(String speed) {
         speedType = Game.SpeedType.valueOf(speed);
-    }
-
-    @Then("I must have a game to play")
-    public void assertGameNotNull() {
-        assertThat(game, is(notNullValue()));
     }
 
     @When("I roll a {int}")
