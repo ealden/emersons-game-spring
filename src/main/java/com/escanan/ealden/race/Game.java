@@ -3,15 +3,15 @@ package com.escanan.ealden.race;
 import static java.lang.Math.max;
 
 public class Game {
+    public enum SpeedType {
+        NORMAL, SUPER
+    }
+
     public static final int TOTAL_POSITIONS = 10;
 
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
-
-    public enum SpeedType {
-        NORMAL, SUPER
-    }
 
     private int position = 0;
     private int damage = 0;
@@ -26,32 +26,6 @@ public class Game {
         } else if (SpeedType.SUPER.equals(speedType)) {
             superMove(roll);
         }
-    }
-
-    private void normalMove(int roll) {
-        move(normal(roll));
-    }
-
-    private int normal(int roll) {
-        return (isOdd(roll) ? ODD_NORMAL_MOVE : EVEN_NORMAL_MOVE);
-    }
-
-    private boolean isOdd(int roll) {
-        return (roll % 2) == 1;
-    }
-
-    private void superMove(int roll) {
-        move(roll);
-
-        incrementDamage();
-    }
-
-    private void incrementDamage() {
-        damage++;
-    }
-
-    private void move(int roll) {
-        position += max((roll - damage), ZERO_MOVE);
     }
 
     public int getDamage() {
@@ -74,5 +48,31 @@ public class Game {
     public void setPosition(int position) {
         // TODO: this method should not be public
         this.position = position;
+    }
+
+    private void normalMove(int roll) {
+        move(normal(roll));
+    }
+
+    private void superMove(int roll) {
+        move(roll);
+
+        incrementDamage();
+    }
+
+    private void move(int roll) {
+        position += max((roll - damage), ZERO_MOVE);
+    }
+
+    private int normal(int roll) {
+        return (isOdd(roll) ? ODD_NORMAL_MOVE : EVEN_NORMAL_MOVE);
+    }
+
+    private boolean isOdd(int roll) {
+        return (roll % 2) == 1;
+    }
+
+    private void incrementDamage() {
+        damage++;
     }
 }
