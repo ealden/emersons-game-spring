@@ -25,7 +25,10 @@ public class Game {
     private void normalMove(Integer roll) {
         var odd = ((roll % 2) == 1);
 
-        position += (odd) ? 1 : 2;
+        var move = ((odd) ? 1 : 2);
+        move = move - damage;
+
+        position += ((move > 0) ? move : 0);
     }
 
     private void superMove(Integer roll) {
