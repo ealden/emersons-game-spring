@@ -48,7 +48,7 @@ public class RacerSteps {
         racer.move(roll, speedType);
     }
 
-    @Then("I must be at position {int}")
+    @Then("I must now be at position {int}")
     public void assertNewPosition(int newPosition) {
         assertThat(racer.getPosition(), is(equalTo(newPosition)));
     }

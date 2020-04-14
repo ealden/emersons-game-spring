@@ -6,7 +6,7 @@ Feature: Racer
     And   I have damage of <Damage>
     When  I choose "<Speed>" speed
     And   I roll a <Roll>
-    Then  I must be at position <New Position>
+    Then  I must now be at position <New Position>
     And   I must now have damage of <New Damage>
     And   I must see the race result: "<Result>"
 
