@@ -1,6 +1,22 @@
 plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id 'application'
+    id 'war'
+}
+
+group = 'com.escanan.ealden'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
 }
 
 repositories {
@@ -9,20 +25,21 @@ repositories {
 
 dependencies {
     implementation 'com.google.guava:guava:28.2-jre'
-
-    testImplementation 'junit:junit:4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.flywaydb:flyway-core'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
     testImplementation 'io.cucumber:cucumber-java:5.6.0'
     testImplementation 'io.cucumber:cucumber-junit:5.6.0'
 }
 
-application {
-    mainClassName = 'com.escanan.ealden.race.App'
-}
-
-configurations {
-    cucumberRuntime {
-        extendsFrom testImplementation
-    }
+test {
+    useJUnitPlatform()
 }
 
 task cucumber() {
