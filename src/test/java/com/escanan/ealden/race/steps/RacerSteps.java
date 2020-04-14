@@ -1,4 +1,4 @@
-package gradle.cucumber;
+package com.escanan.ealden.race.steps;
 
 import com.escanan.ealden.race.model.Racer;
 import io.cucumber.java.en.Given;

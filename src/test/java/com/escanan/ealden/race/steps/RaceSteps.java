@@ -1,4 +1,4 @@
-package gradle.cucumber;
+package com.escanan.ealden.race.steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
