@@ -1,3 +1,13 @@
 h1 {
   padding-top: 5rem;
 }
+
+button.normal-speed {
+  color: white;
+  background-color: green;
+}
+
+button.super-speed {
+  color: white;
+  background-color: red;
+}

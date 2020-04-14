@@ -34,6 +34,14 @@
           </tr>
         </tbody>
       </table>
+
+      <div>
+        <span>Now Racing: <strong>{{ currentRacer.name }} ({{ currentRacer.damage }} damage)</strong></span>
+        <br>
+        <br>
+        <button @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
+        <button @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>
+      </div>
     </div>
 
     <script>
@@ -46,11 +54,31 @@
             { name: 'Racer 2', position: 2, damage: 0 },
             { name: 'Racer 3', position: 4, damage: 0 },
             { name: 'Racer 4', position: 8, damage: 0 }
-          ]
+          ],
+          currentRacerIndex: 0
         },
         computed: {
           track: function () {
             return (this.finishLine - 1);
+          },
+          currentRacer: function() {
+            return this.racers[this.currentRacerIndex];
+          }
+        },
+        methods: {
+          rollNormalSpeed: function (event) {
+            this.currentRacer.position += 1;
+
+            this.nextRacer();
+          },
+          rollSuperSpeed: function (event) {
+            this.currentRacer.position += 2;
+            this.currentRacer.damage += 1;
+
+            this.nextRacer();
+          },
+          nextRacer: function (event) {
+            this.currentRacerIndex = ((this.currentRacerIndex + 1) % this.racers.length);
           }
         }
       })
