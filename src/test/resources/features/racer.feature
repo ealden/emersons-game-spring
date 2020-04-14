@@ -20,7 +20,7 @@ Feature: Racer
       | 0         | 0       | NORMAL  | 5     | 1             | 0           | --      |
       | 0         | 0       | NORMAL  | 6     | 2             | 0           | --      |
 
-    Examples: SUPER speed is move at roll but take 1 damage every use
+    Examples: SUPER speed is move based on roll but take 1 damage every time we roll
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
       | 0         | 0       | SUPER   | 1     | 1             | 1           | --      |
@@ -30,7 +30,7 @@ Feature: Racer
       | 0         | 0       | SUPER   | 5     | 5             | 1           | --      |
       | 0         | 0       | SUPER   | 6     | 6             | 1           | --      |
 
-    Examples: Damage is deducted from roll
+    Examples: Damage is deducted from each roll
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
       | 0         | 1       | NORMAL  | 1     | 0             | 1           | --      |
@@ -46,7 +46,7 @@ Feature: Racer
       | 0         | 1       | SUPER   | 5     | 4             | 2           | --      |
       | 0         | 1       | SUPER   | 6     | 5             | 2           | --      |
 
-    Examples: If enough damage, will no longer move
+    Examples: We will no longer be able to move given enough damage
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
       | 6         | 2       | NORMAL  | 1     | 6             | 2           | --      |
@@ -62,7 +62,7 @@ Feature: Racer
       | 6         | 6       | SUPER   | 5     | 6             | 7           | --      |
       | 6         | 6       | SUPER   | 6     | 6             | 7           | --      |
 
-    Examples: We win if we pass 10 positions!
+    Examples: We win if we reach the finish line, which is at 10 positions!
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
       | 9         | 0       | NORMAL  | 1     | 10            | 0           | WIN     |
