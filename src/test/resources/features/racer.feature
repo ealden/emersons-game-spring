@@ -4,6 +4,7 @@ Feature: Racer
     Given I am in a race
     And   I am at position <Position>
     And   I have damage of <Damage>
+    And   I see the finish line at position 10
     When  I choose "<Speed>" speed
     And   I roll a <Roll>
     Then  I must now be at position <New Position>

@@ -18,6 +18,10 @@ public class RacerSteps {
         void setPosition(int position) {
             this.position = position;
         }
+
+        void setFinishLine(int finishLine) {
+            this.finishLine = finishLine;
+        }
     }
 
     private TestableRacer racer = null;
@@ -36,6 +40,11 @@ public class RacerSteps {
     @Given("I have damage of {int}")
     public void setDamage(int damage) {
         racer.setDamage(damage);
+    }
+
+    @Given("I see the finish line at position {int}")
+    public void setFinishLine(int finishLine) {
+        racer.setFinishLine(finishLine);
     }
 
     @When("I choose {string} speed")
