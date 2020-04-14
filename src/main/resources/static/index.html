@@ -1,19 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>Emerson's Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="https://unpkg.com/vue"></script>
   </head>
   <body>
-    <div id="app">
-      {{ message }}
+    <div id="app" class="container">
+      <h1>Emerson's Game</h1>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th v-for="n in track">{{ n }}</th>
+            <th>FINISH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="racer in racers">
+            <td nowrap>{{ racer.name }}</td>
+            <td v-for="n in track">
+              <span v-if="racer.position == n">R</span>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <script>
       var app = new Vue({
         el: '#app',
         data: {
-          message: 'Hello Vue!'
+          finishLine: 20,
+          racers: [
+            { name: 'Racer 1', position: 0, damage: 0 },
+            { name: 'Racer 2', position: 2, damage: 0 },
+            { name: 'Racer 3', position: 4, damage: 0 },
+            { name: 'Racer 4', position: 8, damage: 0 }
+          ]
+        },
+        computed: {
+          track: function () {
+            return (this.finishLine - 1);
+          }
         }
       })
     </script>
