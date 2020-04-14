@@ -1,4 +1,4 @@
-package com.escanan.ealden.race;
+package com.escanan.ealden.race.model;
 
 import static java.lang.Math.max;
 

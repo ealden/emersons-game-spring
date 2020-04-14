@@ -1,6 +1,6 @@
 package gradle.cucumber;
 
-import com.escanan.ealden.race.Racer;
+import com.escanan.ealden.race.model.Racer;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
