@@ -1,7 +1,12 @@
 package com.escanan.ealden.race.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import static java.lang.Math.max;
 
+@Entity
 public class Racer {
     public enum SpeedType {
         NORMAL, SUPER
@@ -11,6 +16,10 @@ public class Racer {
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private int position = 0;
     private int damage = 0;
@@ -26,6 +35,10 @@ public class Racer {
         } else if (SpeedType.SUPER.equals(speedType)) {
             superMove(roll);
         }
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public int getDamage() {
