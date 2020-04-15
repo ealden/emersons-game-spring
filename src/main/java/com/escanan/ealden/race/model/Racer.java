@@ -12,9 +12,9 @@ public class Racer {
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
 
-    protected int position = 0;
-    protected int damage = 0;
-    protected int finishLine = DEFAULT_FINISH_LINE;
+    private int position = 0;
+    private int damage = 0;
+    private int finishLine = DEFAULT_FINISH_LINE;
 
     public boolean isOver() {
         return position >= finishLine;
@@ -38,6 +38,18 @@ public class Racer {
         } else {
             return position;
         }
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void setFinishLine(int finishLine) {
+        this.finishLine = finishLine;
     }
 
     private void normalMove(int roll) {
