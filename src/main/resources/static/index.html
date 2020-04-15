@@ -29,7 +29,7 @@
           <tr v-for="racer in racers">
             <td nowrap>{{ racer.name }}</td>
             <td v-for="n in track">
-              <span v-if="racer.position == n">R</span>
+              <span v-bind:id="trackId(racer, n)" v-if="racer.position == n">R</span>
             </td>
             <td>&nbsp;</td>
           </tr>
@@ -92,6 +92,9 @@
 
                 this.nextRacer()
               })
+          },
+          trackId: function (racer, i) {
+            return ['racer', racer.id, 'track', i].join('-')
           }
         },
         mounted () {
