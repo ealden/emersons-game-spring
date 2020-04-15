@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div id="app" class="container">
@@ -35,7 +36,7 @@
         </tbody>
       </table>
 
-      <div>
+      <div v-if="ready">
         <span>Now Racing: <strong>{{ currentRacer.name }} ({{ currentRacer.damage }} damage)</strong></span>
         <br>
         <br>
@@ -47,21 +48,21 @@
     <script>
       var app = new Vue({
         el: '#app',
-        data: {
-          finishLine: 20,
-          racers: [
-            { name: 'Racer 1', position: 0, damage: 0 },
-            { name: 'Racer 2', position: 2, damage: 0 },
-            { name: 'Racer 3', position: 4, damage: 0 },
-            { name: 'Racer 4', position: 8, damage: 0 }
-          ],
-          currentRacerIndex: 0
+        data () {
+          return {
+            finishLine: 20,
+            racers: [],
+            currentRacerIndex: 0
+          }
         },
         computed: {
           track: function () {
             return (this.finishLine - 1);
           },
-          currentRacer: function() {
+          ready: function () {
+            return this.racers.length > 0;
+          },
+          currentRacer: function () {
             return this.racers[this.currentRacerIndex];
           }
         },
@@ -80,6 +81,13 @@
           nextRacer: function (event) {
             this.currentRacerIndex = ((this.currentRacerIndex + 1) % this.racers.length);
           }
+        },
+        mounted () {
+          axios
+            .get('/api/racers')
+            .then(response => {
+              this.racers = response.data
+            });
         }
       })
     </script>
