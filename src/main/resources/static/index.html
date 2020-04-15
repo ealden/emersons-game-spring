@@ -39,6 +39,8 @@
       <div v-if="ready">
         <span>Now Racing: <strong>{{ currentRacer.name }} ({{ currentRacer.damage }} damage)</strong></span>
         <br>
+        <input id="roll" v-model="roll" placeholder="Enter roll...">
+        <br>
         <br>
         <button id="roll-normal-speed" @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
         <button id="roll-super-speed" @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>

@@ -24,6 +24,10 @@ public class RacePage {
         return driver.findElement(By.tagName("h1"));
     }
 
+    public WebElement getRollInput() {
+        return driver.findElement(By.id("roll"));
+    }
+
     public WebElement getNormalSpeedButton() {
         return driver.findElement(By.id("roll-normal-speed"));
     }
