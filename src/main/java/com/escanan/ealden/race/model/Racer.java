@@ -21,9 +21,18 @@ public class Racer {
     @GeneratedValue
     private Long id;
 
+    private String name;
     private int position = 0;
     private int damage = 0;
     private int finishLine = DEFAULT_FINISH_LINE;
+
+    public Racer() {
+
+    }
+
+    public Racer(String name) {
+        this.name = name;
+    }
 
     public boolean isOver() {
         return position >= finishLine;
@@ -41,6 +50,10 @@ public class Racer {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -51,6 +64,10 @@ public class Racer {
         } else {
             return position;
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setDamage(int damage) {
