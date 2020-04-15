@@ -4,7 +4,7 @@ Feature: Racer
     Given I am in a race
     And   I am at position <Position>
     And   I have damage of <Damage>
-    And   I see the finish line at position 10
+    And   I see the finish line at position 20
     When  I choose "<Speed>" speed
     And   I roll a <Roll>
     Then  I must now be at position <New Position>
@@ -63,18 +63,18 @@ Feature: Racer
       | 6         | 6       | SUPER   | 5     | 6             | 7           | --      |
       | 6         | 6       | SUPER   | 6     | 6             | 7           | --      |
 
-    Examples: We win if we reach the finish line, which is at 10 positions!
+    Examples: We win if we reach the finish line!
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
-      | 9         | 0       | NORMAL  | 1     | 10            | 0           | WIN     |
-      | 9         | 0       | NORMAL  | 2     | 10            | 0           | WIN     |
-      | 9         | 0       | NORMAL  | 3     | 10            | 0           | WIN     |
-      | 9         | 0       | NORMAL  | 4     | 10            | 0           | WIN     |
-      | 9         | 0       | NORMAL  | 5     | 10            | 0           | WIN     |
-      | 9         | 0       | NORMAL  | 6     | 10            | 0           | WIN     |
-      | 9         | 0       | SUPER   | 1     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 2     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 3     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 4     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 5     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 6     | 10            | 1           | WIN     |
+      | 19        | 0       | NORMAL  | 1     | 20            | 0           | WIN     |
+      | 19        | 0       | NORMAL  | 2     | 20            | 0           | WIN     |
+      | 19        | 0       | NORMAL  | 3     | 20            | 0           | WIN     |
+      | 19        | 0       | NORMAL  | 4     | 20            | 0           | WIN     |
+      | 19        | 0       | NORMAL  | 5     | 20            | 0           | WIN     |
+      | 19        | 0       | NORMAL  | 6     | 20            | 0           | WIN     |
+      | 19        | 0       | SUPER   | 1     | 20            | 1           | WIN     |
+      | 19        | 0       | SUPER   | 2     | 20            | 1           | WIN     |
+      | 19        | 0       | SUPER   | 3     | 20            | 1           | WIN     |
+      | 19        | 0       | SUPER   | 4     | 20            | 1           | WIN     |
+      | 19        | 0       | SUPER   | 5     | 20            | 1           | WIN     |
+      | 19        | 0       | SUPER   | 6     | 20            | 1           | WIN     |
