@@ -57,29 +57,29 @@
         },
         computed: {
           track: function () {
-            return (this.finishLine - 1);
+            return (this.finishLine - 1)
           },
           ready: function () {
-            return this.racers.length > 0;
+            return (this.racers.length > 0)
           },
           currentRacer: function () {
-            return this.racers[this.currentRacerIndex];
+            return this.racers[this.currentRacerIndex]
           }
         },
         methods: {
           rollNormalSpeed: function (event) {
-            this.currentRacer.position += 1;
+            this.currentRacer.position += 1
 
-            this.nextRacer();
+            this.nextRacer()
           },
           rollSuperSpeed: function (event) {
-            this.currentRacer.position += 2;
-            this.currentRacer.damage += 1;
+            this.currentRacer.position += 2
+            this.currentRacer.damage += 1
 
-            this.nextRacer();
+            this.nextRacer()
           },
           nextRacer: function (event) {
-            this.currentRacerIndex = ((this.currentRacerIndex + 1) % this.racers.length);
+            this.currentRacerIndex = ((this.currentRacerIndex + 1) % this.racers.length)
           }
         },
         mounted () {
@@ -87,7 +87,7 @@
             .get('/api/racers')
             .then(response => {
               this.racers = response.data
-            });
+            })
         }
       })
     </script>
