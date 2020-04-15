@@ -54,7 +54,8 @@
           return {
             finishLine: 20,
             racers: [],
-            currentRacerIndex: 0
+            currentRacerIndex: 0,
+            roll: null
           }
         },
         computed: {
@@ -70,18 +71,27 @@
         },
         methods: {
           rollNormalSpeed: function (event) {
-            this.currentRacer.position += 1
-
-            this.nextRacer()
+            this.doRoll('NORMAL')
           },
           rollSuperSpeed: function (event) {
-            this.currentRacer.position += 2
-            this.currentRacer.damage += 1
-
-            this.nextRacer()
+            this.doRoll('SUPER')
           },
           nextRacer: function (event) {
             this.currentRacerIndex = ((this.currentRacerIndex + 1) % this.racers.length)
+            this.roll = null
+          },
+          doRoll: function (speedType) {
+            axios
+              .post('/api/racers/roll', {
+                'id': this.currentRacer.id,
+                'speedType': speedType,
+                'roll': this.roll
+              })
+              .then(response => {
+                this.racers = response.data
+
+                this.nextRacer()
+              })
           }
         },
         mounted () {
