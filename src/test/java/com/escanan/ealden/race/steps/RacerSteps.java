@@ -21,7 +21,7 @@ public class RacerSteps {
     private Racer.SpeedType speedType = null;
 
     @Given("I am in a race")
-    public void newGame() {
+    public void newRace() {
         racer = new Racer("Racer 1");
     }
 
@@ -50,8 +50,6 @@ public class RacerSteps {
         racerRepository.save(racer);
 
         racePage = RacePage.open().roll(roll, speedType);
-
-        assertThat(racePage.getRollInput().getText(), is(equalTo("")));
 
         racer = racerRepository.findById(racer.getId()).get();
     }

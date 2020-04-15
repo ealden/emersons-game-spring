@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementValue;
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
@@ -16,8 +16,6 @@ public class RacePage {
 
     private RacePage() {
         driver.navigate().to(ROOT_URL);
-
-        wait.until(visibilityOf(getHeader()));
     }
 
     public static RacePage open() {
@@ -52,10 +50,6 @@ public class RacePage {
         waitUntilNextTurn();
 
         return this;
-    }
-
-    public WebElement getHeader() {
-        return driver.findElement(By.tagName("h1"));
     }
 
     public WebElement getRollInput() {
