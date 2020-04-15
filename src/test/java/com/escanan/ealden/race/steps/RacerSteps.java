@@ -1,21 +1,28 @@
 package com.escanan.ealden.race.steps;
 
+import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.page.RacePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RacerSteps {
+    @Autowired
+    private RacerRepository racerRepository;
+    private RacePage racePage;
+
     private Racer racer = null;
     private Racer.SpeedType speedType = null;
 
     @Given("I am in a race")
     public void newGame() {
-        racer = new Racer();
+        racer = new Racer("Racer 1");
     }
 
     @Given("I am at position {int}")
@@ -40,7 +47,13 @@ public class RacerSteps {
 
     @When("I roll a {int}")
     public void roll(int roll) {
-        racer.move(roll, speedType);
+        racerRepository.save(racer);
+
+        racePage = RacePage.open().roll(roll, speedType);
+
+        assertThat(racePage.getRollInput().getText(), is(equalTo("")));
+
+        racer = racerRepository.findById(racer.getId()).get();
     }
 
     @Then("I must now be at position {int}")
