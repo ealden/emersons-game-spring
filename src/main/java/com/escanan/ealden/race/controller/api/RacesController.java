@@ -4,6 +4,7 @@ import com.escanan.ealden.race.controller.api.model.Race;
 import com.escanan.ealden.race.controller.api.model.Roll;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ import java.util.Optional;
 public class RacesController {
     @Autowired
     private RacerRepository racerRepository;
+
+    @Autowired
+    private RaceService raceService;
 
     @Value("${race.enable.testMode:false}")
     private boolean testMode;
@@ -44,6 +48,13 @@ public class RacesController {
 
             racerRepository.save(racer);
         }
+
+        return index();
+    }
+
+    @PostMapping("/api/races/new")
+    public Race newRace() {
+        raceService.newRace();
 
         return index();
     }

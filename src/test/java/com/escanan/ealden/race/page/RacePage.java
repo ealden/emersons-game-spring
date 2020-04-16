@@ -60,6 +60,14 @@ public class RacePage {
         return this;
     }
 
+    public RacePage newRace() {
+        getNewRaceButton().click();
+
+        waitUntilNextTurn();
+
+        return this;
+    }
+
     public int getRacerPosition(Racer racer) {
         int position = 0;
 
@@ -108,6 +116,10 @@ public class RacePage {
         String id = Joiner.on("-").join(asList("racer", racer.getId(), "damage"));
 
         return driver.findElement(By.id(id));
+    }
+
+    public WebElement getNewRaceButton() {
+        return driver.findElement(By.id("new-race"));
     }
 
     private void waitUntilNextTurn() {

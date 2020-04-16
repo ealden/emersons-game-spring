@@ -79,3 +79,14 @@ Feature: Racer
       | 14        | 0       | SUPER   | 4     | 15            | 1           | WIN     |
       | 14        | 0       | SUPER   | 5     | 15            | 1           | WIN     |
       | 14        | 0       | SUPER   | 6     | 15            | 1           | WIN     |
+
+  Scenario: New Race
+    Given I am in a race
+    And   I am at position 2
+    And   I have damage of 1
+    And   I see the finish line at position 15
+    When  I choose to start over in a new race
+    And   I join in as a new racer
+    Then  I must now be at position 0
+    And   I must now have damage of 0
+    And   I must see the race result: "--"

@@ -57,6 +57,20 @@ public class RacerSteps {
         racePage.roll(roll, speedType);
     }
 
+    @When("I choose to start over in a new race")
+    public void createNewRace() {
+        racerRepository.save(racer);
+
+        racePage = RacePage.load();
+
+        racePage.newRace();
+    }
+
+    @When("I join in as a new racer")
+    public void joinRace() {
+        racer = racerRepository.findAll().iterator().next();
+    }
+
     @Then("I must now be at position {int}")
     public void assertNewPosition(int newPosition) {
         assertThat(racePage.getRacerPosition(racer), is(equalTo(newPosition)));

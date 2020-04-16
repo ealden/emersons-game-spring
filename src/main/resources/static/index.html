@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="two columns">
-          <button id="new-race">New Race</button>
+          <button id="new-race" @click="newRace">New Race</button>
         </div>
       </div>
 
@@ -122,10 +122,21 @@
           },
           currentRacerStyle: function (i) {
             return (i == this.currentRacerIndex)
+          },
+          newRace: function () {
+            axios
+              .post('/api/races/new', {})
+              .then(response => {
+                this.resetRace()
+              })
+          },
+          resetRace: function () {
+            this.fetchRace()
+            this.currentRacerIndex = 0
           }
         },
         mounted () {
-          this.fetchRace()
+          this.resetRace()
         }
       })
     </script>
