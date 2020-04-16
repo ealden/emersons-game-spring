@@ -64,7 +64,7 @@
         el: '#app',
         data () {
           return {
-            finishLine: 20,
+            finishLine: 0,
             racers: [],
             randomRoll: true,
             currentRacerIndex: 0,
@@ -102,6 +102,7 @@
               })
               .then(response => {
                 this.racers = response.data.racers
+                this.finishLine = response.data.finishLine
                 this.randomRoll = response.data.randomRoll
 
                 this.nextRacer()
@@ -122,6 +123,7 @@
             .get('/api/races')
             .then(response => {
               this.racers = response.data.racers
+              this.finishLine = response.data.finishLine
               this.randomRoll = response.data.randomRoll
             })
         }

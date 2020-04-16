@@ -17,6 +17,10 @@ public class Race {
         return racers;
     }
 
+    public int getFinishLine() {
+        return Racer.DEFAULT_FINISH_LINE;
+    }
+
     public boolean isRandomRoll() {
         return randomRoll;
     }

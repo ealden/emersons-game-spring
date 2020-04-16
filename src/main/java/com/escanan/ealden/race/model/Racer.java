@@ -14,7 +14,8 @@ public class Racer {
         NORMAL, SUPER
     }
 
-    private static final int DEFAULT_FINISH_LINE = 20;
+    public static final int DEFAULT_FINISH_LINE = 20;
+
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
