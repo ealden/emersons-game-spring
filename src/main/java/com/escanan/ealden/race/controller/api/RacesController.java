@@ -4,6 +4,7 @@ import com.escanan.ealden.race.controller.api.model.Roll;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class RacesController {
     @Autowired
     private RacerRepository racerRepository;
+
+    @Value("${race.rolls.random:true}")
+    private boolean randomRolls;
 
     @GetMapping("/api/racers")
     public Iterable<Racer> index() {
@@ -25,7 +29,12 @@ public class RacesController {
 
         if (result.isPresent()) {
             var racer = result.get();
-            racer.move(roll.getRoll(), roll.getSpeedType());
+
+            if (randomRolls) {
+                racer.move(roll.getSpeedType());
+            } else {
+                racer.move(roll.getRoll(), roll.getSpeedType());
+            }
 
             racerRepository.save(racer);
         }
