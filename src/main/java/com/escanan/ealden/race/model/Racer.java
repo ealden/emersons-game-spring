@@ -66,6 +66,10 @@ public class Racer {
         }
     }
 
+    public int getFinishLine() {
+        return finishLine;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
