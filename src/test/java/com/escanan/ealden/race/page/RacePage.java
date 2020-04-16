@@ -60,7 +60,7 @@ public class RacePage {
         int position = 0;
 
         for (int i = 1; i <= racer.getFinishLine(); i++) {
-            var trackValue = getRacerPositionField(racer, i).getText().trim();
+            var trackValue = getRacerPositionFieldValue(racer, i);
 
             if (RACER.equals(trackValue) || FINISH_LINE.equals(trackValue)) {
                 position = i;
@@ -74,6 +74,12 @@ public class RacePage {
 
     public int getRacerDamage(Racer racer) {
         return Integer.parseInt(getRacerDamageField(racer).getText().trim());
+    }
+
+    public boolean isRacerAtFinishLine(Racer racer) {
+        var trackValue = getRacerPositionFieldValue(racer, racer.getFinishLine());
+
+        return FINISH_LINE.equals(trackValue);
     }
 
     public WebElement getRollInput() {
@@ -102,5 +108,9 @@ public class RacePage {
 
     private void waitUntilNextTurn() {
         wait.until(textToBePresentInElementValue(getRollInput(), ""));
+    }
+
+    private String getRacerPositionFieldValue(Racer racer, int position) {
+        return getRacerPositionField(racer, position).getText().trim();
     }
 }

@@ -49,9 +49,8 @@ public class RacerSteps {
     public void roll(int roll) {
         racerRepository.save(racer);
 
-        racePage = RacePage.open().roll(roll, speedType);
-
-        racer = racerRepository.findById(racer.getId()).get();
+        racePage = RacePage.open();
+        racePage.roll(roll, speedType);
     }
 
     @Then("I must now be at position {int}")
@@ -68,6 +67,6 @@ public class RacerSteps {
     public void assertResult(String result) {
         var over = "WIN".equals(result);
 
-        assertThat(racer.isOver(), is(over));
+        assertThat(racePage.isRacerAtFinishLine(racer), is(over));
     }
 }
