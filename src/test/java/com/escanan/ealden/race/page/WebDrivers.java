@@ -18,4 +18,9 @@ public class WebDrivers {
 
         return driver;
     }
+
+    public static void close() {
+        driver.close();
+        driver = null;
+    }
 }
