@@ -22,7 +22,7 @@ public class RacePage {
         driver.navigate().to(ROOT_URL);
     }
 
-    public static RacePage open() {
+    public static RacePage load() {
         return new RacePage();
     }
 

@@ -49,7 +49,7 @@ public class RacerSteps {
     public void roll(int roll) {
         racerRepository.save(racer);
 
-        racePage = RacePage.open();
+        racePage = RacePage.load();
         racePage.roll(roll, speedType);
     }
 
