@@ -44,9 +44,15 @@
       </table>
 
       <div class="row" v-if="ready">
-        <div class="column centered">
-          <button id="roll-normal-speed" @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
-          <button id="roll-super-speed" @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>
+        <div class="two columns">&nbsp;</div>
+        <div class="eight columns centered">
+          <div>
+            <button id="roll-normal-speed" @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
+            <button id="roll-super-speed" @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>
+          </div>
+        </div>
+        <div class="two columns">
+          <button id="new-race">New Race</button>
         </div>
       </div>
 

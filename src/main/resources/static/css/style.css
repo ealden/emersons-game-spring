@@ -19,3 +19,7 @@ button.super-speed {
 .centered {
   text-align: center;
 }
+
+.right-aligned {
+  text-align: right;
+}
