@@ -2,16 +2,18 @@ package com.escanan.ealden.race.controller.api.model;
 
 import com.escanan.ealden.race.model.Racer;
 
+import java.util.List;
+
 public class Race {
-    private Iterable<Racer> racers;
+    private List<Racer> racers;
     private boolean randomRoll;
 
-    public Race(Iterable<Racer> racers, boolean randomRoll) {
+    public Race(List<Racer> racers, boolean randomRoll) {
         this.racers = racers;
         this.randomRoll = randomRoll;
     }
 
-    public Iterable<Racer> getRacers() {
+    public List<Racer> getRacers() {
         return racers;
     }
 
