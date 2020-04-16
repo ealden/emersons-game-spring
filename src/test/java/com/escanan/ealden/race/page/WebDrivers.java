@@ -9,7 +9,7 @@ public class WebDrivers {
 
     public static WebDriver instance() {
         if (driver == null) {
-            var options = new ChromeOptions();
+            ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--silent");
 

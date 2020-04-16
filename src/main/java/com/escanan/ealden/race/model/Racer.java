@@ -42,7 +42,7 @@ public class Racer {
     }
 
     public void move(SpeedType speedType) {
-        var roll = new Random().nextInt(MAX_ROLL) + 1;
+        int roll = new Random().nextInt(MAX_ROLL) + 1;
 
         move(roll, speedType);
     }

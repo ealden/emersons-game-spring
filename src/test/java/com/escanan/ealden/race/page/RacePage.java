@@ -60,7 +60,7 @@ public class RacePage {
         int position = 0;
 
         for (int i = 1; i <= racer.getFinishLine(); i++) {
-            var trackValue = getRacerPositionFieldValue(racer, i);
+            String trackValue = getRacerPositionFieldValue(racer, i);
 
             if (RACER.equals(trackValue) || FINISH_LINE.equals(trackValue)) {
                 position = i;
@@ -77,7 +77,7 @@ public class RacePage {
     }
 
     public boolean isRacerAtFinishLine(Racer racer) {
-        var trackValue = getRacerPositionFieldValue(racer, racer.getFinishLine());
+        String trackValue = getRacerPositionFieldValue(racer, racer.getFinishLine());
 
         return FINISH_LINE.equals(trackValue);
     }
@@ -95,13 +95,13 @@ public class RacePage {
     }
 
     public WebElement getRacerPositionField(Racer racer, int position) {
-        var id = Joiner.on("-").join(asList("racer", racer.getId(), "track", position));
+        String id = Joiner.on("-").join(asList("racer", racer.getId(), "track", position));
 
         return driver.findElement(By.id(id));
     }
 
     public WebElement getRacerDamageField(Racer racer) {
-        var id = Joiner.on("-").join(asList("racer", racer.getId(), "damage"));
+        String id = Joiner.on("-").join(asList("racer", racer.getId(), "damage"));
 
         return driver.findElement(By.id(id));
     }

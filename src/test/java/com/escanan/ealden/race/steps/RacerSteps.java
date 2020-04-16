@@ -65,7 +65,7 @@ public class RacerSteps {
 
     @Then("I must see the race result: {string}")
     public void assertResult(String result) {
-        var over = "WIN".equals(result);
+        boolean over = "WIN".equals(result);
 
         assertThat(racePage.isRacerAtFinishLine(racer), is(over));
     }
