@@ -41,12 +41,12 @@
       <div v-if="ready">
         <span>Now Racing: <strong>{{ currentRacer.name }} ({{ currentRacer.damage }} damage)</strong></span>
         <br>
-        <input id="roll" v-model="roll" placeholder="Enter roll...">
-        <br>
         <br>
         <button id="roll-normal-speed" @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
         <button id="roll-super-speed" @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>
       </div>
+
+      <input id="roll" v-model="roll" v-if="!randomRoll">
     </div>
 
     <script>
@@ -56,6 +56,7 @@
           return {
             finishLine: 20,
             racers: [],
+            randomRoll: true,
             currentRacerIndex: 0,
             roll: null
           }
@@ -90,7 +91,8 @@
                 'roll': this.roll
               })
               .then(response => {
-                this.racers = response.data
+                this.racers = response.data.racers
+                this.randomRoll = response.data.randomRoll
 
                 this.nextRacer()
               })
@@ -106,7 +108,8 @@
           axios
             .get('/api/racers')
             .then(response => {
-              this.racers = response.data
+              this.racers = response.data.racers
+              this.randomRoll = response.data.randomRoll
             })
         }
       })

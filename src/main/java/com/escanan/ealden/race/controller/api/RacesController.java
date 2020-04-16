@@ -1,5 +1,6 @@
 package com.escanan.ealden.race.controller.api;
 
+import com.escanan.ealden.race.controller.api.model.Race;
 import com.escanan.ealden.race.controller.api.model.Roll;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
@@ -19,12 +20,14 @@ public class RacesController {
     private boolean randomRolls;
 
     @GetMapping("/api/racers")
-    public Iterable<Racer> index() {
-        return racerRepository.findAll();
+    public Race index() {
+        var racers = racerRepository.findAll();
+
+        return new Race(racers, randomRolls);
     }
 
     @PostMapping("/api/racers/roll")
-    public Iterable<Racer> roll(@RequestBody Roll roll) {
+    public Race roll(@RequestBody Roll roll) {
         var result = racerRepository.findById(roll.getId());
 
         if (result.isPresent()) {
