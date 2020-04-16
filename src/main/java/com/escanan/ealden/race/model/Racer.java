@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import java.util.Random;
+
 import static java.lang.Math.max;
 
 @Entity
@@ -16,6 +18,7 @@ public class Racer {
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
+    private static final int MAX_ROLL = 6;
 
     @Id
     @GeneratedValue
@@ -36,6 +39,12 @@ public class Racer {
 
     public boolean isOver() {
         return position >= finishLine;
+    }
+
+    public void move(SpeedType speedType) {
+        var roll = new Random().nextInt(MAX_ROLL) + 1;
+
+        move(roll, speedType);
     }
 
     public void move(int roll, SpeedType speedType) {
