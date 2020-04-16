@@ -15,6 +15,11 @@ public class CommonSteps {
         racerRepository.deleteAll();
     }
 
+    @Before
+    public void openBrowser() {
+        WebDrivers.instance();
+    }
+
     @After
     public void closeBrowser() {
         WebDrivers.quit();
