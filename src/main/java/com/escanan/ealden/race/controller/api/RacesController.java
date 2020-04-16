@@ -19,14 +19,14 @@ public class RacesController {
     @Autowired
     private RacerRepository racerRepository;
 
-    @Value("${race.rolls.random:true}")
-    private boolean randomRolls;
+    @Value("${race.enable.testMode:false}")
+    private boolean testMode;
 
     @GetMapping("/api/races")
     public Race index() {
         List<Racer> racers = racerRepository.findAllByOrderByIdAsc();
 
-        return new Race(racers, randomRolls);
+        return new Race(racers, testMode);
     }
 
     @PostMapping("/api/races/roll")
@@ -36,7 +36,7 @@ public class RacesController {
         if (result.isPresent()) {
             Racer racer = result.get();
 
-            if (randomRolls) {
+            if (!testMode) {
                 racer.move(roll.getSpeedType());
             } else {
                 racer.move(roll.getRoll(), roll.getSpeedType());

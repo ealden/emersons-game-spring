@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <input id="roll" v-model="roll" v-if="!randomRoll">
+      <input id="roll" v-model="roll" v-if="testMode">
     </div>
 
     <script>
@@ -66,7 +66,7 @@
           return {
             finishLine: 0,
             racers: [],
-            randomRoll: true,
+            testMode: false,
             currentRacerIndex: 0,
             roll: null
           }
@@ -89,7 +89,7 @@
               .then(response => {
                 this.racers = response.data.racers
                 this.finishLine = response.data.finishLine
-                this.randomRoll = response.data.randomRoll
+                this.testMode = response.data.testMode
               })
           },
           rollNormalSpeed: function (event) {

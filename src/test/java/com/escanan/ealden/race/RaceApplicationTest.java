@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
         properties = {
                 "logging.pattern.console=",
-                "race.rolls.random=false"
+                "race.enable.testMode=true"
         }
 )
 class RaceApplicationTest {

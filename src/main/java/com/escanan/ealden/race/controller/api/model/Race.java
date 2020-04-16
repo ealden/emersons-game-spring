@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Race {
     private List<Racer> racers;
-    private boolean randomRoll;
+    private boolean testMode;
 
-    public Race(List<Racer> racers, boolean randomRoll) {
+    public Race(List<Racer> racers, boolean testMode) {
         this.racers = racers;
-        this.randomRoll = randomRoll;
+        this.testMode = testMode;
     }
 
     public List<Racer> getRacers() {
@@ -21,7 +21,7 @@ public class Race {
         return Racer.DEFAULT_FINISH_LINE;
     }
 
-    public boolean isRandomRoll() {
-        return randomRoll;
+    public boolean isTestMode() {
+        return testMode;
     }
 }
