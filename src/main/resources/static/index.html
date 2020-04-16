@@ -33,7 +33,7 @@
             <td nowrap v-else>
               {{ racer.name }} (<span v-bind:id="racerDamageId(racer)">{{ racer.damage }}</span> damage)
             </td>
-            <td v-for="n in finishLine" v-bind:id="trackId(racer, n)">
+            <td v-for="n in finishLine" v-bind:id="racerPositionId(racer, n)">
               <template v-if="racer.position == n">
                 <template v-if="racer.position == finishLine">WIN</template>
                 <template v-else>R</template>
@@ -108,8 +108,8 @@
                 this.nextRacer()
               })
           },
-          trackId: function (racer, i) {
-            return ['racer', racer.id, 'track', i].join('-')
+          racerPositionId: function (racer, i) {
+            return ['racer', racer.id, 'position', i].join('-')
           },
           racerDamageId: function (racer) {
             return ['racer', racer.id, 'damage'].join('-')

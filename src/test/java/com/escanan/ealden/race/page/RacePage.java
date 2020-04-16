@@ -95,7 +95,7 @@ public class RacePage {
     }
 
     public WebElement getRacerPositionField(Racer racer, int position) {
-        String id = Joiner.on("-").join(asList("racer", racer.getId(), "track", position));
+        String id = Joiner.on("-").join(asList("racer", racer.getId(), "position", position));
 
         return driver.findElement(By.id(id));
     }
