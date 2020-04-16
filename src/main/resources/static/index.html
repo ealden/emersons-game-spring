@@ -89,7 +89,7 @@
           },
           doRoll: function (speedType) {
             axios
-              .post('/api/racers/roll', {
+              .post('/api/races/roll', {
                 'id': this.currentRacer.id,
                 'speedType': speedType,
                 'roll': this.roll
@@ -113,7 +113,7 @@
         },
         mounted () {
           axios
-            .get('/api/racers')
+            .get('/api/races')
             .then(response => {
               this.racers = response.data.racers
               this.randomRoll = response.data.randomRoll

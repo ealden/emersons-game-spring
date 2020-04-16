@@ -3,7 +3,6 @@ package com.escanan.ealden.race.controller.api;
 import com.escanan.ealden.race.controller.api.model.Race;
 import com.escanan.ealden.race.controller.api.model.Roll;
 import com.escanan.ealden.race.data.RacerRepository;
-import com.escanan.ealden.race.model.Racer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +18,14 @@ public class RacesController {
     @Value("${race.rolls.random:true}")
     private boolean randomRolls;
 
-    @GetMapping("/api/racers")
+    @GetMapping("/api/races")
     public Race index() {
         var racers = racerRepository.findAll();
 
         return new Race(racers, randomRolls);
     }
 
-    @PostMapping("/api/racers/roll")
+    @PostMapping("/api/races/roll")
     public Race roll(@RequestBody Roll roll) {
         var result = racerRepository.findById(roll.getId());
 
