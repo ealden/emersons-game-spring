@@ -23,7 +23,7 @@ public class RacesController {
 
     @GetMapping("/api/races")
     public Race index() {
-        Iterable<Racer> racers = racerRepository.findAll();
+        Iterable<Racer> racers = racerRepository.findAllByOrderByIdAsc();
 
         return new Race(racers, randomRolls);
     }
