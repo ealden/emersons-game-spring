@@ -11,3 +11,7 @@ button.super-speed {
   color: white;
   background-color: red;
 }
+
+.current-racer {
+  font-weight: bold;
+}

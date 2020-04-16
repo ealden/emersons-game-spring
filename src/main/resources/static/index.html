@@ -26,8 +26,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="racer in racers">
-            <td nowrap>{{ racer.name }} (<span v-bind:id="racerDamageId(racer)">{{ racer.damage }}</span> damage)</td>
+          <tr v-for="(racer, i) in racers">
+            <td nowrap class="current-racer" v-if="i == currentRacerIndex">
+              {{ racer.name }} (<span v-bind:id="racerDamageId(racer)">{{ racer.damage }}</span> damage)
+            </td>
+            <td nowrap v-else>
+              {{ racer.name }} (<span v-bind:id="racerDamageId(racer)">{{ racer.damage }}</span> damage)
+            </td>
             <td v-for="n in finishLine" v-bind:id="trackId(racer, n)">
               <template v-if="racer.position == n">
                 <template v-if="racer.position == finishLine">WIN</template>
@@ -39,9 +44,6 @@
       </table>
 
       <div v-if="ready">
-        <span>Now Racing: <strong>{{ currentRacer.name }} ({{ currentRacer.damage }} damage)</strong></span>
-        <br>
-        <br>
         <button id="roll-normal-speed" @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
         <button id="roll-super-speed" @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>
       </div>
@@ -102,6 +104,9 @@
           },
           racerDamageId: function (racer) {
             return ['racer', racer.id, 'damage'].join('-')
+          },
+          currentRacerStyle: function (i) {
+            return (i == this.currentRacerIndex)
           }
         },
         mounted () {
