@@ -15,3 +15,7 @@ button.super-speed {
 .current-racer {
   font-weight: bold;
 }
+
+.centered {
+  text-align: center;
+}
