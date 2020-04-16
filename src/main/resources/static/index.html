@@ -83,6 +83,15 @@
           }
         },
         methods: {
+          fetchRace: function () {
+            axios
+              .get('/api/races')
+              .then(response => {
+                this.racers = response.data.racers
+                this.finishLine = response.data.finishLine
+                this.randomRoll = response.data.randomRoll
+              })
+          },
           rollNormalSpeed: function (event) {
             this.doRoll('NORMAL')
           },
@@ -101,10 +110,7 @@
                 'roll': this.roll
               })
               .then(response => {
-                this.racers = response.data.racers
-                this.finishLine = response.data.finishLine
-                this.randomRoll = response.data.randomRoll
-
+                this.fetchRace()
                 this.nextRacer()
               })
           },
@@ -119,13 +125,7 @@
           }
         },
         mounted () {
-          axios
-            .get('/api/races')
-            .then(response => {
-              this.racers = response.data.racers
-              this.finishLine = response.data.finishLine
-              this.randomRoll = response.data.randomRoll
-            })
+          this.fetchRace()
         }
       })
     </script>
