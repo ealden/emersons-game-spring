@@ -19,8 +19,8 @@ public class WebDrivers {
         return driver;
     }
 
-    public static void close() {
-        driver.close();
+    public static void quit() {
+        driver.quit();
         driver = null;
     }
 }

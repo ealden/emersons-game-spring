@@ -26,6 +26,10 @@ public class RacePage {
         return new RacePage();
     }
 
+    public void close() {
+        WebDrivers.quit();
+    }
+
     public RacePage roll(int roll, Racer.SpeedType speedType) {
         if (Racer.SpeedType.NORMAL == speedType) {
             rollNormalSpeed(roll);
