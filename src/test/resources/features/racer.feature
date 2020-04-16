@@ -5,7 +5,8 @@ Feature: Racer
     And   I am at position <Position>
     And   I have damage of <Damage>
     And   I see the finish line at position 15
-    When  I choose "<Speed>" speed
+    When  it is my turn to roll
+    And   I choose "<Speed>" speed
     And   I roll a <Roll>
     Then  I must now be at position <New Position>
     And   I must now have damage of <New Damage>

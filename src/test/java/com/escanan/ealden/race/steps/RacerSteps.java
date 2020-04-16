@@ -40,6 +40,13 @@ public class RacerSteps {
         racer.setFinishLine(finishLine);
     }
 
+    @When("it is my turn to roll")
+    public void nextRacer() {
+        racerRepository.save(racer);
+
+        racePage = RacePage.load();
+    }
+
     @When("I choose {string} speed")
     public void speed(String speed) {
         speedType = Racer.SpeedType.valueOf(speed);
@@ -47,9 +54,6 @@ public class RacerSteps {
 
     @When("I roll a {int}")
     public void roll(int roll) {
-        racerRepository.save(racer);
-
-        racePage = RacePage.load();
         racePage.roll(roll, speedType);
     }
 
