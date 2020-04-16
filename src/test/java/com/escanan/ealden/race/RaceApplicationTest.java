@@ -8,7 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(
         classes = RaceApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
-        properties = {"logging.pattern.console="}
+        properties = {
+                "logging.pattern.console=",
+                "race.rolls.random=false"
+        }
 )
 class RaceApplicationTest {
     @Test
