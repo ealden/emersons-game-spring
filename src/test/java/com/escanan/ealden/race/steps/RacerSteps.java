@@ -61,7 +61,7 @@ public class RacerSteps {
 
     @Then("I must now have damage of {int}")
     public void assertNewDamage(int newDamage) {
-        assertThat(racer.getDamage(), is(equalTo(newDamage)));
+        assertThat(racePage.getRacerDamage(racer), is(equalTo(newDamage)));
     }
 
     @Then("I must see the race result: {string}")

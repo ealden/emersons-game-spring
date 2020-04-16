@@ -72,6 +72,10 @@ public class RacePage {
         return position;
     }
 
+    public int getRacerDamage(Racer racer) {
+        return Integer.parseInt(getRacerDamageField(racer).getText().trim());
+    }
+
     public WebElement getRollInput() {
         return driver.findElement(By.id("roll"));
     }
@@ -86,6 +90,12 @@ public class RacePage {
 
     public WebElement getRacerPositionField(Racer racer, int position) {
         var id = Joiner.on("-").join(asList("racer", racer.getId(), "track", position));
+
+        return driver.findElement(By.id(id));
+    }
+
+    public WebElement getRacerDamageField(Racer racer) {
+        var id = Joiner.on("-").join(asList("racer", racer.getId(), "damage"));
 
         return driver.findElement(By.id(id));
     }
