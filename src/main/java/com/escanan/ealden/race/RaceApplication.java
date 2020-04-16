@@ -1,7 +1,6 @@
 package com.escanan.ealden.race;
 
-import com.escanan.ealden.race.data.RacerRepository;
-import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.service.RaceService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,12 +13,9 @@ public class RaceApplication {
     }
 
     @Bean
-    public CommandLineRunner seedData(RacerRepository racerRepository) {
+    public CommandLineRunner seedData(RaceService raceService) {
         return (args -> {
-            racerRepository.save(new Racer("Racer 1"));
-            racerRepository.save(new Racer("Racer 2"));
-            racerRepository.save(new Racer("Racer 3"));
-            racerRepository.save(new Racer("Racer 4"));
+            raceService.newRace();
         });
     }
 }
