@@ -28,10 +28,9 @@
         <tbody>
           <tr v-for="racer in racers">
             <td nowrap>{{ racer.name }}</td>
-            <td v-for="n in track">
-              <span v-bind:id="trackId(racer, n)" v-if="racer.position == n">R</span>
+            <td v-for="n in finishLine" v-bind:id="trackId(racer, n)">
+              <template v-if="racer.position == n">R</template>
             </td>
-            <td>&nbsp;</td>
           </tr>
         </tbody>
       </table>
