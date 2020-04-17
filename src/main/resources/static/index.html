@@ -34,8 +34,8 @@
             </td>
             <td v-for="n in finishLine">
               <template v-if="racer.position == n">
-                <template v-if="racer.position == finishLine">WIN</template>
-                <template v-else>R</template>
+                <template v-if="racer.position == finishLine">🏆</template>
+                <template v-else>🚘</template>
               </template>
             </td>
           </tr>
