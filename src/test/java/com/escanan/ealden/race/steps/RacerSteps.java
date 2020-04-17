@@ -3,7 +3,6 @@ package com.escanan.ealden.race.steps;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.page.RacePage;
-import com.escanan.ealden.race.page.WebDrivers;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -97,6 +96,6 @@ public class RacerSteps {
 
     @Then("it's over, it's over")
     public void close() {
-        WebDrivers.quit();
+        RacePage.close();
     }
 }

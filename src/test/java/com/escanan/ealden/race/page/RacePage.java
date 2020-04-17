@@ -5,6 +5,8 @@ import com.google.common.base.Joiner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.util.Arrays.asList;
@@ -16,21 +18,35 @@ public class RacePage {
     private static final String FINISH_LINE = "WIN";
     private static final String RACER = "R";
 
-    private WebDriver driver = WebDrivers.instance();
-    private WebDriverWait wait = new WebDriverWait(driver, 20);
+    private static WebDriver driver;
+    private WebDriverWait wait;
 
     private RacePage() {
+        wait = new WebDriverWait(driver, 20);
+
         driver.navigate().to(ROOT_URL);
 
         waitUntilPageLoad();
     }
 
     public static RacePage load() {
+        if (driver == null) {
+            driver = createDriver();
+        }
+
         return new RacePage();
     }
 
-    public void close() {
-        WebDrivers.quit();
+    private static WebDriver createDriver() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--silent");
+
+        return new ChromeDriver(options);
+    }
+
+    public static void close() {
+        driver.quit();
     }
 
     public RacePage roll(int roll, Racer.SpeedType speedType) {
