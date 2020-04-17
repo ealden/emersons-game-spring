@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.util.Arrays.asList;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementValue;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
@@ -20,6 +21,8 @@ public class RacePage {
 
     private RacePage() {
         driver.navigate().to(ROOT_URL);
+
+        waitUntilPageLoad();
     }
 
     public static RacePage load() {
@@ -105,6 +108,10 @@ public class RacePage {
 
     public WebElement getNewRaceButton() {
         return driver.findElement(By.id("new-race"));
+    }
+
+    private void waitUntilPageLoad() {
+        wait.until(visibilityOf(getRollInput()));
     }
 
     private void waitUntilNextTurn() {
