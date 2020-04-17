@@ -50,7 +50,7 @@ public class RacePage {
     }
 
     public RacePage roll(int roll, Racer.SpeedType speedType) {
-        getRollInput().sendKeys("" + roll);
+        getRollField().sendKeys("" + roll);
 
         if (Racer.SpeedType.NORMAL == speedType) {
             getNormalSpeedButton().click();
@@ -72,22 +72,22 @@ public class RacePage {
     }
 
     public int getRacerPosition(Racer racer) {
-        return parseInt(getRacerPositionInput(racer).getText());
+        return parseInt(getRacerPositionField(racer).getText());
     }
 
     public int getRacerDamage(Racer racer) {
-        return parseInt(getRacerDamageInput(racer).getText());
+        return parseInt(getRacerDamageField(racer).getText());
     }
 
     public boolean isRacerAtFinishLine(Racer racer) {
         return (racer.getFinishLine() == getRacerPosition(racer));
     }
 
-    public WebElement getRollInput() {
+    public WebElement getRollField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
     }
 
-    public WebElement getReadyInput() {
+    public WebElement getReadyField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-ready")));
     }
 
@@ -99,13 +99,13 @@ public class RacePage {
         return driver.findElement(By.id("roll-super-speed"));
     }
 
-    public WebElement getRacerPositionInput(Racer racer) {
+    public WebElement getRacerPositionField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "position"));
 
         return driver.findElement(By.id(id));
     }
 
-    public WebElement getRacerDamageInput(Racer racer) {
+    public WebElement getRacerDamageField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "damage"));
 
         return driver.findElement(By.id(id));
@@ -116,7 +116,7 @@ public class RacePage {
     }
 
     private void waitUntilReady() {
-        doWait().until(textToBePresentInElementValue(getReadyInput(), "true"));
+        doWait().until(textToBePresentInElementValue(getReadyField(), "true"));
     }
 
     private WebDriverWait doWait() {
