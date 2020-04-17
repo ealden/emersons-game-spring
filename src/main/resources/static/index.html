@@ -84,7 +84,7 @@
         },
         methods: {
           fetchRace: function () {
-            axios
+            return axios
               .get('/api/races')
               .then(response => {
                 this.racers = response.data.racers
@@ -111,7 +111,9 @@
               })
               .then(response => {
                 this.fetchRace()
-                this.nextRacer()
+                  .then(function () {
+                    this.nextRacer()
+                  })
               })
           },
           racerPositionId: function (racer, i) {
