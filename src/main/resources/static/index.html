@@ -27,13 +27,12 @@
         </thead>
         <tbody>
           <tr v-for="(racer, i) in racers">
-            <td nowrap class="current-racer" v-if="i == currentRacerIndex">
-              {{ racer.name }} (<span v-bind:id="racerDamageId(racer)">{{ racer.damage }}</span> damage)
+            <td nowrap>
+              <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
+              <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
+              <span>{{ racer.name }} ({{ racer.damage }} damage)</span>
             </td>
-            <td nowrap v-else>
-              {{ racer.name }} (<span v-bind:id="racerDamageId(racer)">{{ racer.damage }}</span> damage)
-            </td>
-            <td v-for="n in finishLine" v-bind:id="racerPositionId(racer, n)">
+            <td v-for="n in finishLine">
               <template v-if="racer.position == n">
                 <template v-if="racer.position == finishLine">WIN</template>
                 <template v-else>R</template>
@@ -56,7 +55,8 @@
         </div>
       </div>
 
-      <input id="roll" v-model="roll" v-if="testMode">
+      <input v-if="testMode" id="test-roll" v-model="roll">
+      <input v-if="testMode" id="test-ready" v-model="ready">
     </div>
 
     <script>
@@ -68,7 +68,8 @@
             racers: [],
             testMode: false,
             currentRacerIndex: 0,
-            roll: null
+            roll: null,
+            ready: true
           }
         },
         computed: {
@@ -103,6 +104,8 @@
             this.roll = null
           },
           doRoll: function (speedType) {
+            this.ready = false
+
             axios
               .post('/api/races/roll', {
                 'id': this.currentRacer.id,
@@ -118,23 +121,20 @@
                     this.testMode = response.data.testMode
 
                     this.nextRacer()
+
+                    this.ready = true
                   })
               })
           },
-          racerPositionId: function (racer, i) {
-            return ['racer', racer.id, 'position', i].join('-')
-          },
-          racerDamageId: function (racer) {
-            return ['racer', racer.id, 'damage'].join('-')
-          },
-          currentRacerStyle: function (i) {
-            return (i == this.currentRacerIndex)
-          },
           newRace: function () {
+            this.ready = false
+
             axios
               .post('/api/races/new', {})
               .then(response => {
                 this.resetRace()
+
+                this.ready = true
               })
           },
           resetRace: function () {

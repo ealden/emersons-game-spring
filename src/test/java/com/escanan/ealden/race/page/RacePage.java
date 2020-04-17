@@ -9,24 +9,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementValue;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
-    private static final String FINISH_LINE = "WIN";
-    private static final String RACER = "R";
+    private static final boolean HEADLESS = true;
 
     private static WebDriver driver;
-    private WebDriverWait wait;
 
     private RacePage() {
-        wait = new WebDriverWait(driver, 20);
-
         driver.navigate().to(ROOT_URL);
-
-        waitUntilPageLoad();
     }
 
     public static RacePage load() {
@@ -39,14 +34,19 @@ public class RacePage {
 
     private static WebDriver createDriver() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
         options.addArguments("--silent");
+
+        if (HEADLESS) {
+            options.addArguments("--headless");
+        }
 
         return new ChromeDriver(options);
     }
 
     public static void close() {
-        driver.quit();
+        if (HEADLESS) {
+            driver.quit();
+        }
     }
 
     public RacePage roll(int roll, Racer.SpeedType speedType) {
@@ -58,8 +58,7 @@ public class RacePage {
             getSuperSpeedButton().click();
         }
 
-        waitUntilNextTurn();
-        waitUntilNextTurn();
+        waitUntilReady();
 
         return this;
     }
@@ -67,39 +66,29 @@ public class RacePage {
     public RacePage newRace() {
         getNewRaceButton().click();
 
-        waitUntilNextTurn();
+        waitUntilReady();
 
         return this;
     }
 
     public int getRacerPosition(Racer racer) {
-        int position = 0;
-
-        for (int i = 1; i <= racer.getFinishLine(); i++) {
-            String trackValue = getRacerPositionFieldValue(racer, i);
-
-            if (RACER.equals(trackValue) || FINISH_LINE.equals(trackValue)) {
-                position = i;
-
-                break;
-            }
-        }
-
-        return position;
+        return parseInt(getRacerPositionInput(racer).getText());
     }
 
     public int getRacerDamage(Racer racer) {
-        return Integer.parseInt(getRacerDamageField(racer).getText().trim());
+        return parseInt(getRacerDamageInput(racer).getText());
     }
 
     public boolean isRacerAtFinishLine(Racer racer) {
-        String trackValue = getRacerPositionFieldValue(racer, racer.getFinishLine());
-
-        return FINISH_LINE.equals(trackValue);
+        return (racer.getFinishLine() == getRacerPosition(racer));
     }
 
     public WebElement getRollInput() {
-        return driver.findElement(By.id("roll"));
+        return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
+    }
+
+    public WebElement getReadyInput() {
+        return doWait().until(visibilityOfElementLocated(By.id("test-ready")));
     }
 
     public WebElement getNormalSpeedButton() {
@@ -110,14 +99,14 @@ public class RacePage {
         return driver.findElement(By.id("roll-super-speed"));
     }
 
-    public WebElement getRacerPositionField(Racer racer, int position) {
-        String id = Joiner.on("-").join(asList("racer", racer.getId(), "position", position));
+    public WebElement getRacerPositionInput(Racer racer) {
+        String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "position"));
 
         return driver.findElement(By.id(id));
     }
 
-    public WebElement getRacerDamageField(Racer racer) {
-        String id = Joiner.on("-").join(asList("racer", racer.getId(), "damage"));
+    public WebElement getRacerDamageInput(Racer racer) {
+        String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "damage"));
 
         return driver.findElement(By.id(id));
     }
@@ -126,16 +115,11 @@ public class RacePage {
         return driver.findElement(By.id("new-race"));
     }
 
-    private void waitUntilPageLoad() {
-        wait.until(visibilityOf(getRollInput()));
+    private void waitUntilReady() {
+        doWait().until(textToBePresentInElementValue(getReadyInput(), "true"));
     }
 
-    private void waitUntilNextTurn() {
-        getRollInput().sendKeys("");
-        wait.until(textToBePresentInElementValue(getRollInput(), ""));
-    }
-
-    private String getRacerPositionFieldValue(Racer racer, int position) {
-        return getRacerPositionField(racer, position).getText().trim();
+    private WebDriverWait doWait() {
+        return new WebDriverWait(driver, 20);
     }
 }
