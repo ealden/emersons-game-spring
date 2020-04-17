@@ -31,30 +31,15 @@ public class RacePage {
     }
 
     public RacePage roll(int roll, Racer.SpeedType speedType) {
+        getRollInput().sendKeys("" + roll);
+
         if (Racer.SpeedType.NORMAL == speedType) {
-            rollNormalSpeed(roll);
+            getNormalSpeedButton().click();
         } else if (Racer.SpeedType.SUPER == speedType) {
-            rollSuperSpeed(roll);
+            getSuperSpeedButton().click();
         }
 
-        return this;
-    }
-
-    public RacePage rollNormalSpeed(int roll) {
-        getRollInput().sendKeys("" + roll);
-
-        getNormalSpeedButton().click();
-
         waitUntilNextTurn();
-
-        return this;
-    }
-
-    public RacePage rollSuperSpeed(int roll) {
-        getRollInput().sendKeys("" + roll);
-
-        getSuperSpeedButton().click();
-
         waitUntilNextTurn();
 
         return this;
@@ -123,6 +108,7 @@ public class RacePage {
     }
 
     private void waitUntilNextTurn() {
+        getRollInput().sendKeys("");
         wait.until(textToBePresentInElementValue(getRollInput(), ""));
     }
 
