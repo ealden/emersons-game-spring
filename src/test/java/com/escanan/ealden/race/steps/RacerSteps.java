@@ -3,6 +3,8 @@ package com.escanan.ealden.race.steps;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.page.RacePage;
+import com.escanan.ealden.race.page.WebDrivers;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,6 +21,11 @@ public class RacerSteps {
 
     private Racer racer = null;
     private Racer.SpeedType speedType = null;
+
+    @Before
+    public void clearData() {
+        racerRepository.deleteAll();
+    }
 
     @Given("I am in a race")
     public void newRace() {
@@ -86,5 +93,10 @@ public class RacerSteps {
         boolean over = "WIN".equals(result);
 
         assertThat(racePage.isRacerAtFinishLine(racer), is(over));
+    }
+
+    @Then("it's over, it's over")
+    public void close() {
+        WebDrivers.quit();
     }
 }

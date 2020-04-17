@@ -90,3 +90,6 @@ Feature: Racer
     Then  I must now be at position 0
     And   I must now have damage of 0
     And   I must see the race result: "--"
+
+  Scenario: End
+    When  it's over, it's over
