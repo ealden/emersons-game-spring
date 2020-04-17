@@ -83,35 +83,35 @@ public class RacePage {
         return (racer.getFinishLine() == getRacerPosition(racer));
     }
 
-    public WebElement getRollField() {
+    private WebElement getRollField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
     }
 
-    public WebElement getReadyField() {
+    private WebElement getReadyField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-ready")));
     }
 
-    public WebElement getNormalSpeedButton() {
+    private WebElement getNormalSpeedButton() {
         return driver.findElement(By.id("roll-normal-speed"));
     }
 
-    public WebElement getSuperSpeedButton() {
+    private WebElement getSuperSpeedButton() {
         return driver.findElement(By.id("roll-super-speed"));
     }
 
-    public WebElement getRacerPositionField(Racer racer) {
+    private WebElement getRacerPositionField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "position"));
 
         return driver.findElement(By.id(id));
     }
 
-    public WebElement getRacerDamageField(Racer racer) {
+    private WebElement getRacerDamageField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "damage"));
 
         return driver.findElement(By.id(id));
     }
 
-    public WebElement getNewRaceButton() {
+    private WebElement getNewRaceButton() {
         return driver.findElement(By.id("new-race"));
     }
 
