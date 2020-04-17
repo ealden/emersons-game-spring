@@ -110,8 +110,15 @@
                 'roll': this.roll
               })
               .then(response => {
-                this.fetchRace()
-                this.nextRacer()
+                axios
+                  .get('/api/races')
+                  .then(response => {
+                    this.racers = response.data.racers
+                    this.finishLine = response.data.finishLine
+                    this.testMode = response.data.testMode
+
+                    this.nextRacer()
+                  })
               })
           },
           racerPositionId: function (racer, i) {
