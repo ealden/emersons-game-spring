@@ -58,7 +58,7 @@ public class RacePage {
             getSuperSpeedButton().click();
         }
 
-        waitUntilReady();
+        waitUntilProcessingComplete();
 
         return this;
     }
@@ -66,7 +66,7 @@ public class RacePage {
     public RacePage newRace() {
         getNewRaceButton().click();
 
-        waitUntilReady();
+        waitUntilProcessingComplete();
 
         return this;
     }
@@ -87,8 +87,8 @@ public class RacePage {
         return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
     }
 
-    private WebElement getReadyField() {
-        return doWait().until(visibilityOfElementLocated(By.id("test-ready")));
+    private WebElement getProcessingField() {
+        return doWait().until(visibilityOfElementLocated(By.id("test-processing")));
     }
 
     private WebElement getNormalSpeedButton() {
@@ -115,8 +115,8 @@ public class RacePage {
         return driver.findElement(By.id("new-race"));
     }
 
-    private void waitUntilReady() {
-        doWait().until(textToBePresentInElementValue(getReadyField(), "true"));
+    private void waitUntilProcessingComplete() {
+        doWait().until(textToBePresentInElementValue(getProcessingField(), "false"));
     }
 
     private WebDriverWait doWait() {
