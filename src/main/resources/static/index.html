@@ -137,19 +137,19 @@
             axios
               .post('/api/races/new', {})
               .then(response => {
-                this.resetRace()
+                this.loadRace()
 
                 this.processing = false
               })
           },
-          resetRace: function () {
+          loadRace: function () {
             this.fetchSettings()
             this.fetchRace()
             this.currentRacerIndex = 0
           }
         },
         mounted () {
-          this.resetRace()
+          this.loadRace()
         }
       })
     </script>
