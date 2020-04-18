@@ -80,11 +80,18 @@ public class RacerSteps {
         assertThat(racePage.getRacerDamage(racer), is(equalTo(newDamage)));
     }
 
-    @Then("I must see the race result: {string}")
-    public void assertResult(String result) {
-        boolean over = "WIN".equals(result);
+    @Then("I must see the race result: WIN")
+    public void assertRacerWins() {
+        assertThat(racePage.isRacerAtFinishLine(racer, race.getFinishLine()), is(true));
+    }
 
-        assertThat(racePage.isRacerAtFinishLine(racer, race.getFinishLine()), is(over));
+    @Then("I must see the race result: CRASHED")
+    public void assertRacerCrashed() {
+        assertThat(racePage.isRacerCrashed(racer), is(true));
+    }
+
+    @Then("I must see the race result: --")
+    public void assertNoRaceResult() {
     }
 
     @Then("it's over, it's over")

@@ -9,7 +9,7 @@ Feature: Racer
     And   I roll a <Roll>
     Then  I must now be at position <New Position>
     And   I must now have damage of <New Damage>
-    And   I must see the race result: "<Result>"
+    And   I must see the race result: <Result>
 
     Examples: NORMAL speed is move 1 for odd roll, 2 for even roll
 
@@ -56,12 +56,12 @@ Feature: Racer
       | 6         | 2       | NORMAL  | 4     | 6             | 2           | --      |
       | 6         | 2       | NORMAL  | 5     | 6             | 2           | --      |
       | 6         | 2       | NORMAL  | 6     | 6             | 2           | --      |
-      | 6         | 6       | SUPER   | 1     | 6             | 7           | --      |
-      | 6         | 6       | SUPER   | 2     | 6             | 7           | --      |
-      | 6         | 6       | SUPER   | 3     | 6             | 7           | --      |
-      | 6         | 6       | SUPER   | 4     | 6             | 7           | --      |
-      | 6         | 6       | SUPER   | 5     | 6             | 7           | --      |
-      | 6         | 6       | SUPER   | 6     | 6             | 7           | --      |
+      | 6         | 6       | SUPER   | 1     | 6             | 7           | CRASHED |
+      | 6         | 6       | SUPER   | 2     | 6             | 7           | CRASHED |
+      | 6         | 6       | SUPER   | 3     | 6             | 7           | CRASHED |
+      | 6         | 6       | SUPER   | 4     | 6             | 7           | CRASHED |
+      | 6         | 6       | SUPER   | 5     | 6             | 7           | CRASHED |
+      | 6         | 6       | SUPER   | 6     | 6             | 7           | CRASHED |
 
     Examples: We win if we reach the finish line!
 
@@ -87,7 +87,7 @@ Feature: Racer
     When  I choose to start over in a new race
     Then  I must now be at position 0
     And   I must now have damage of 0
-    And   I must see the race result: "--"
+    And   I must see the race result: --
 
   Scenario: End
     When  it's over, it's over

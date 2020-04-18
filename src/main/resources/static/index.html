@@ -28,18 +28,21 @@
           <div class="one column">
             <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
             <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
+            <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-crashed'">{{ racer.crashed }}</span>
             <span class="nowrap">
               <span v-if="currentRacer.id == racer.id">🎲 </span>
               <span v-else class="hidden">🎲 </span>
-              <strong>{{ racer.name }}</strong> <template v-for="x in racer.damage">❌</template>
+              <strong>{{ racer.name }}</strong>
             </span>
           </div>
           <div class="one column centered">
             <template v-if="racer.position == 0">🚘</template>
+            <template v-for="x in racer.damage">❌</template>
           </div>
           <div class="one column centered" v-for="n in finishLine">
             <template v-if="racer.position == n">
               <template v-if="racer.position == finishLine">🏆</template>
+              <template v-else-if="racer.crashed">🔥</template>
               <template v-else>🚘</template>
             </template>
             <template v-else>&nbsp;</template>

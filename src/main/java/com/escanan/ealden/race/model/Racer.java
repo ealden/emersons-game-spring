@@ -14,6 +14,8 @@ public class Racer {
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
 
+    static final int MAX_DAMAGE = 6;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -68,6 +70,10 @@ public class Racer {
 
     public int getRank() {
         return rank;
+    }
+
+    public boolean isCrashed() {
+        return (MAX_DAMAGE <= damage);
     }
 
     public void setRace(Race race) {

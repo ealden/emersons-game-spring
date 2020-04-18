@@ -17,6 +17,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
     private static final boolean HEADLESS = true;
+    private static final String CRASHED = "true";
 
     private static WebDriver driver;
 
@@ -83,6 +84,10 @@ public class RacePage {
         return (getRacerPosition(racer) == finishLine);
     }
 
+    public boolean isRacerCrashed(Racer racer) {
+        return CRASHED.equals(getRacerCrashedField(racer).getText());
+    }
+
     private WebElement getRollField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
     }
@@ -107,6 +112,12 @@ public class RacePage {
 
     private WebElement getRacerDamageField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "damage"));
+
+        return driver.findElement(By.id(id));
+    }
+
+    private WebElement getRacerCrashedField(Racer racer) {
+        String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "crashed"));
 
         return driver.findElement(By.id(id));
     }

@@ -3,6 +3,7 @@ package com.escanan.ealden.race.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.Racer.SpeedType.SUPER;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -98,5 +99,26 @@ public class RacerTest {
         racer.setPosition(position);
 
         assertThat(racer.getPosition(), is(race.getFinishLine()));
+    }
+
+    @Test
+    public void isCrashedMustBeFalseIfDamageLessThanMaxDamage() {
+        racer.setDamage(MAX_DAMAGE - 1);
+
+        assertThat(racer.isCrashed(), is(false));
+    }
+
+    @Test
+    public void isCrashedMustBeTrueIfDamageEqualToMaxDamage() {
+        racer.setDamage(MAX_DAMAGE);
+
+        assertThat(racer.isCrashed(), is(true));
+    }
+
+    @Test
+    public void isCrashedMustBeTrueIfDamageMoreThanMaxDamage() {
+        racer.setDamage(MAX_DAMAGE + 1);
+
+        assertThat(racer.isCrashed(), is(true));
     }
 }
