@@ -26,24 +26,12 @@ public class RacesController {
 
     @PostMapping("/api/races/roll")
     public Race roll(@RequestBody Roll roll) {
-        Race race = raceService.getCurrentRace();
-
-        if (!testMode) {
-            race.roll(roll.getSpeedType());
-        } else {
-            race.roll(roll.getRoll(), roll.getSpeedType());
-        }
-
-        raceService.save(race);
-
-        return index();
+        return raceService.roll(roll.getRoll(), roll.getSpeedType());
     }
 
     @PostMapping("/api/races/new")
     public Race newRace() {
-        raceService.newRace();
-
-        return index();
+        return raceService.newRace();
     }
 
     @GetMapping("/api/races/settings")

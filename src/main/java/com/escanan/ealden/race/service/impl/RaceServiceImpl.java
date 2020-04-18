@@ -38,4 +38,17 @@ public class RaceServiceImpl implements RaceService {
     public Race save(Race race) {
         return raceRepository.save(race);
     }
+
+    @Override
+    public Race roll(int roll, Racer.SpeedType speedType) {
+        Race race = getCurrentRace();
+
+        if (!testMode) {
+            race.roll(speedType);
+        } else {
+            race.roll(roll, speedType);
+        }
+
+        return save(race);
+    }
 }
