@@ -1,6 +1,6 @@
 package com.escanan.ealden.race.controller.api;
 
-import com.escanan.ealden.race.controller.api.model.Race;
+import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.controller.api.model.Roll;
 import com.escanan.ealden.race.controller.api.model.Settings;
 import com.escanan.ealden.race.data.RacerRepository;

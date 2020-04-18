@@ -1,4 +1,4 @@
-package com.escanan.ealden.race.controller.api.model;
+package com.escanan.ealden.race.model;
 
 import com.escanan.ealden.race.model.Racer;
 
