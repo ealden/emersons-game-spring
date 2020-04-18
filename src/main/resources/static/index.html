@@ -50,17 +50,27 @@
         </div>
       </div>
 
-      <div class="row" v-if="ready">
-        <div class="two columns">&nbsp;</div>
-        <div class="eight columns centered">
-          <div>
-            <button id="roll-normal-speed" @click="rollNormalSpeed">Normal Speed</button>
-            <button id="roll-super-speed" @click="rollSuperSpeed">SUPER SPEED</button>
+      <div id="race-controls" v-if="ready">
+        <div class="row">
+          <div class="two columns">&nbsp;</div>
+          <div class="eight columns centered">
+            <div>
+              <button id="roll-normal-speed" @click="rollNormalSpeed">Normal Speed</button>
+              <button id="roll-super-speed" @click="rollSuperSpeed">SUPER SPEED</button>
+            </div>
+          </div>
+          <div class="two columns right-aligned">
+            <button id="new-race" @click="newRace">New Race</button>
           </div>
         </div>
-        <div class="two columns">
-          <button id="new-race" @click="newRace">New Race</button>
+      </div>
+
+      <div id="race-over" v-if="over">
+        <div class="five columns">&nbsp;</div>
+        <div class="two columns centered">
+          <button id="play-again" @click="newRace">Play Again</button>
         </div>
+        <div class="five columns">&nbsp;</div>
       </div>
 
       <input v-if="testMode" id="test-roll" v-model="roll">
@@ -75,6 +85,7 @@
             finishLine: 0,
             racers: [],
             currentRacer: null,
+            over: false,
             testMode: false,
             roll: 0,
             processing: false
@@ -96,6 +107,7 @@
                 this.racers = response.data.racers
                 this.finishLine = response.data.finishLine
                 this.currentRacer = response.data.currentRacer
+                this.over = response.data.over
               })
           },
           fetchSettings: function () {
@@ -126,6 +138,7 @@
                     this.racers = response.data.racers
                     this.finishLine = response.data.finishLine
                     this.currentRacer = response.data.currentRacer
+                    this.over = response.data.over
 
                     this.processing = false
                   })

@@ -88,6 +88,10 @@ public class RacePage {
         return CRASHED.equals(getRacerCrashedField(racer).getText());
     }
 
+    public boolean isOver() {
+        return !driver.findElements(By.id("race-over")).isEmpty();
+    }
+
     private WebElement getRollField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
     }

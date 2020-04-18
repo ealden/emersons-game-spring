@@ -83,15 +83,18 @@ public class RacerSteps {
     @Then("I must see the race result: WIN")
     public void assertRacerWins() {
         assertThat(racePage.isRacerAtFinishLine(racer, race.getFinishLine()), is(true));
+        assertThat(racePage.isOver(), is(true));
     }
 
     @Then("I must see the race result: CRASHED")
     public void assertRacerCrashed() {
         assertThat(racePage.isRacerCrashed(racer), is(true));
+        assertThat(racePage.isOver(), is(false));
     }
 
     @Then("I must see the race result: --")
     public void assertNoRaceResult() {
+        assertThat(racePage.isOver(), is(false));
     }
 
     @Then("it's over, it's over")
