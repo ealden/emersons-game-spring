@@ -10,12 +10,9 @@ public class Racer {
         NORMAL, SUPER
     }
 
-    public static final int DEFAULT_FINISH_LINE = 15;
-
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
-
 
     @Id
     @GeneratedValue
@@ -28,7 +25,6 @@ public class Racer {
     private int position = 0;
     private int damage = 0;
     private int rank = 0;
-    private int finishLine = DEFAULT_FINISH_LINE;
 
     public Racer() {
 
@@ -36,10 +32,6 @@ public class Racer {
 
     public Racer(String name) {
         this.name = name;
-    }
-
-    public boolean isOver() {
-        return position >= finishLine;
     }
 
     public void roll(int roll, SpeedType speedType) {
@@ -67,19 +59,15 @@ public class Racer {
     }
 
     public int getPosition() {
-        if (isOver()) {
-            return finishLine;
-        } else {
+        if (position < race.getFinishLine()) {
             return position;
+        } else {
+            return race.getFinishLine();
         }
     }
 
     public int getRank() {
         return rank;
-    }
-
-    public int getFinishLine() {
-        return finishLine;
     }
 
     public void setRace(Race race) {
@@ -100,10 +88,6 @@ public class Racer {
 
     public void setRank(int rank) {
         this.rank = rank;
-    }
-
-    public void setFinishLine(int finishLine) {
-        this.finishLine = finishLine;
     }
 
     private void normalRoll(int roll) {

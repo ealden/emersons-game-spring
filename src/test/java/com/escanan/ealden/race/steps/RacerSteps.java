@@ -41,7 +41,7 @@ public class RacerSteps {
 
     @Given("I see the finish line at position {int}")
     public void setFinishLine(int finishLine) {
-        racer.setFinishLine(finishLine);
+        race.setFinishLine(finishLine);
     }
 
     @When("I choose {string} speed")
@@ -84,7 +84,7 @@ public class RacerSteps {
     public void assertResult(String result) {
         boolean over = "WIN".equals(result);
 
-        assertThat(racePage.isRacerAtFinishLine(racer), is(over));
+        assertThat(racePage.isRacerAtFinishLine(racer, race.getFinishLine()), is(over));
     }
 
     @Then("it's over, it's over")

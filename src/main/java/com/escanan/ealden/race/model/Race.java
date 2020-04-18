@@ -13,6 +13,7 @@ import static javax.persistence.FetchType.EAGER;
 @Entity
 public class Race {
     private static final int MAX_ROLL = 6;
+    private static final int DEFAULT_FINISH_LINE = 15;
 
     @Id
     @GeneratedValue
@@ -23,6 +24,8 @@ public class Race {
 
     @ManyToOne
     private Racer currentRacer;
+
+    private int finishLine = DEFAULT_FINISH_LINE;
 
     public Race() {
 
@@ -84,6 +87,10 @@ public class Race {
     }
 
     public int getFinishLine() {
-        return Racer.DEFAULT_FINISH_LINE;
+        return finishLine;
+    }
+
+    public void setFinishLine(int finishLine) {
+        this.finishLine = finishLine;
     }
 }

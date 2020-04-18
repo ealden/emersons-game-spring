@@ -10,10 +10,14 @@ import static org.hamcrest.Matchers.is;
 
 public class RacerTest {
     private Racer racer;
+    private Race race;
 
     @Before
     public void setUp() {
         racer = new Racer();
+
+        race = new Race();
+        racer.setRace(race);
     }
 
     @Test
@@ -24,12 +28,14 @@ public class RacerTest {
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
+        racer.setRace(race);
         racer.roll(3, NORMAL);
 
         assertThat(racer.getPosition(), is(1));
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
+        racer.setRace(race);
         racer.roll(5, NORMAL);
 
         assertThat(racer.getPosition(), is(1));
@@ -44,12 +50,14 @@ public class RacerTest {
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
+        racer.setRace(race);
         racer.roll(4, NORMAL);
 
         assertThat(racer.getPosition(), is(2));
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
+        racer.setRace(race);
         racer.roll(6, NORMAL);
 
         assertThat(racer.getPosition(), is(2));
@@ -59,6 +67,7 @@ public class RacerTest {
     @Test
     public void rollMustSetPositionToRollWithDamageIfSpeedTypeSuper() {
         racer.roll(6, SUPER);
+
         assertThat(racer.getPosition(), is(6));
         assertThat(racer.getDamage(), is(1));
     }
@@ -71,5 +80,23 @@ public class RacerTest {
 
         assertThat(racer.getPosition(), is(5));
         assertThat(racer.getDamage(), is(2));
+    }
+
+    @Test
+    public void getPositionMustReturnCurrentPositionIfNotYetOnFinishLine() {
+        int position = 5;
+
+        racer.setPosition(position);
+
+        assertThat(racer.getPosition(), is(position));
+    }
+
+    @Test
+    public void getPositionMustReturnFinishLineIfCrossedFinishLine() {
+        int position = race.getFinishLine() + 10;
+
+        racer.setPosition(position);
+
+        assertThat(racer.getPosition(), is(race.getFinishLine()));
     }
 }

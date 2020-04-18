@@ -79,8 +79,8 @@ public class RacePage {
         return parseInt(getRacerDamageField(racer).getText());
     }
 
-    public boolean isRacerAtFinishLine(Racer racer) {
-        return (racer.getFinishLine() == getRacerPosition(racer));
+    public boolean isRacerAtFinishLine(Racer racer, int finishLine) {
+        return (getRacerPosition(racer) == finishLine);
     }
 
     private WebElement getRollField() {
