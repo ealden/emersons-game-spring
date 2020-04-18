@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.sameInstance;
+import static org.hamcrest.Matchers.*;
 
 public class RaceTest {
     private Race race;
@@ -13,6 +12,15 @@ public class RaceTest {
     @Before
     public void setUp() {
         race = new Race();
+    }
+
+    @Test
+    public void addRacerMustAddRacerToRacers() {
+        Racer racer = new Racer();
+
+        race.addRacer(racer);
+
+        assertThat(race.getRacers(), contains(racer));
     }
 
     @Test
