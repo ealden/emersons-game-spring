@@ -98,4 +98,32 @@ public class RaceTest {
 
         assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
     }
+
+    @Test
+    public void isOverMustBeFalseIfNoRacersHaveWon() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
+        assertThat(race.isOver(), is(false));
+    }
+
+    @Test
+    public void isOverMustBeTrueIfARacerHasWon() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
+
+        racer3.setPosition(race.getFinishLine());
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
+        assertThat(race.isOver(), is(true));
+    }
 }

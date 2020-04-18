@@ -91,6 +91,16 @@ public class Race {
         return finishLine;
     }
 
+    public boolean isOver() {
+        for (Racer racer : racers) {
+            if (racer.isWinner()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void setFinishLine(int finishLine) {
         this.finishLine = finishLine;
     }
