@@ -1,7 +1,6 @@
 package com.escanan.ealden.race.model;
 
 import javax.persistence.*;
-
 import java.util.Random;
 
 import static java.lang.Math.max;
@@ -61,7 +60,7 @@ public class Racer {
         return id;
     }
 
-    public Race getRace() {
+    Race getRace() {
         return race;
     }
 
@@ -83,6 +82,10 @@ public class Racer {
 
     public int getFinishLine() {
         return finishLine;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
     }
 
     public void setName(String name) {

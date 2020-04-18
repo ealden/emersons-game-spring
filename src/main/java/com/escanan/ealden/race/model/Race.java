@@ -1,6 +1,10 @@
 package com.escanan.ealden.race.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -11,8 +15,8 @@ public class Race {
     @GeneratedValue
     private Long id;
 
-    @OneToMany
-    private List<Racer> racers;
+    @OneToMany(mappedBy="race", cascade = ALL)
+    private List<Racer> racers = new ArrayList<>();
 
     public Race() {
 
@@ -20,6 +24,14 @@ public class Race {
 
     public Race(List<Racer> racers) {
         this.racers = racers;
+    }
+
+    public Race addRacer(Racer racer) {
+        racer.setRace(this);
+
+        racers.add(racer);
+
+        return this;
     }
 
     public Long getId() {
