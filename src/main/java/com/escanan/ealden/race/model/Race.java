@@ -92,13 +92,17 @@ public class Race {
     }
 
     public boolean isOver() {
+        boolean allCrashed = true;
+
         for (Racer racer : racers) {
             if (racer.isWinner()) {
                 return true;
+            } else {
+                allCrashed = (allCrashed && racer.isCrashed());
             }
         }
 
-        return false;
+        return allCrashed;
     }
 
     public void setFinishLine(int finishLine) {

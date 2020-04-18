@@ -89,7 +89,10 @@ public class RacePage {
     }
 
     public boolean isOver() {
-        return !driver.findElements(By.id("race-over")).isEmpty();
+        boolean raceControlsHidden = driver.findElements(By.id("race-controls")).isEmpty();
+        boolean raceOverHidden = driver.findElements(By.id("race-over")).isEmpty();
+
+        return (raceControlsHidden && !raceOverHidden);
     }
 
     private WebElement getRollField() {

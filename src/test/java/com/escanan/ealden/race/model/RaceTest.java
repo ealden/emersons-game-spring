@@ -3,6 +3,7 @@ package com.escanan.ealden.race.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -118,12 +119,45 @@ public class RaceTest {
         Racer racer2 = new Racer();
         Racer racer3 = new Racer();
 
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
         racer3.setPosition(race.getFinishLine());
+
+        assertThat(race.isOver(), is(true));
+    }
+
+    @Test
+    public void isOverMustBeTrueIfAllRacersCrashed() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
 
         race.addRacer(racer);
         race.addRacer(racer2);
         race.addRacer(racer3);
 
+        racer.setDamage(MAX_DAMAGE);
+        racer2.setDamage(MAX_DAMAGE);
+        racer3.setDamage(MAX_DAMAGE);
+
         assertThat(race.isOver(), is(true));
+    }
+
+    @Test
+    public void isOverMustBeFalseIfNotAllRacersCrashed() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
+        racer.setDamage(MAX_DAMAGE);
+        racer2.setDamage(MAX_DAMAGE);
+
+        assertThat(race.isOver(), is(false));
     }
 }

@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -70,6 +71,17 @@ public class RacerSteps {
         racer = race.getRacers().get(0);
     }
 
+    @When("all racers have crashed \\(!)")
+    public void racersCrashed() {
+        for (Racer racer : race.getRacers()) {
+            racer.setDamage(MAX_DAMAGE);
+        }
+
+        raceService.save(race);
+
+        racePage = RacePage.load();
+    }
+
     @Then("I must now be at position {int}")
     public void assertNewPosition(int newPosition) {
         assertThat(racePage.getRacerPosition(racer), is(equalTo(newPosition)));
@@ -90,6 +102,11 @@ public class RacerSteps {
     public void assertRacerCrashed() {
         assertThat(racePage.isRacerCrashed(racer), is(true));
         assertThat(racePage.isOver(), is(false));
+    }
+
+    @Then("our race must be over!")
+    public void assertRacersCrashedAndBurned() {
+        assertThat(racePage.isOver(), is(true));
     }
 
     @Then("I must see the race result: --")

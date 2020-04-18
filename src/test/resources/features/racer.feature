@@ -56,12 +56,16 @@ Feature: Racer
       | 6         | 2       | NORMAL  | 4     | 6             | 2           | --      |
       | 6         | 2       | NORMAL  | 5     | 6             | 2           | --      |
       | 6         | 2       | NORMAL  | 6     | 6             | 2           | --      |
-      | 6         | 6       | SUPER   | 1     | 6             | 7           | CRASHED |
-      | 6         | 6       | SUPER   | 2     | 6             | 7           | CRASHED |
-      | 6         | 6       | SUPER   | 3     | 6             | 7           | CRASHED |
-      | 6         | 6       | SUPER   | 4     | 6             | 7           | CRASHED |
-      | 6         | 6       | SUPER   | 5     | 6             | 7           | CRASHED |
-      | 6         | 6       | SUPER   | 6     | 6             | 7           | CRASHED |
+
+    Examples: We will crash given max damage
+
+      | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
+      | 5         | 5       | SUPER   | 1     | 5             | 6           | CRASHED |
+      | 5         | 5       | SUPER   | 2     | 5             | 6           | CRASHED |
+      | 5         | 5       | SUPER   | 3     | 5             | 6           | CRASHED |
+      | 5         | 5       | SUPER   | 4     | 5             | 6           | CRASHED |
+      | 5         | 5       | SUPER   | 5     | 5             | 6           | CRASHED |
+      | 5         | 5       | SUPER   | 6     | 6             | 6           | CRASHED |
 
     Examples: We win if we reach the finish line!
 
@@ -88,6 +92,11 @@ Feature: Racer
     Then  I must now be at position 0
     And   I must now have damage of 0
     And   I must see the race result: --
+
+  Scenario: Crash and Burn
+    Given I am in a race
+    When  all racers have crashed (!)
+    Then  our race must be over!
 
   Scenario: End
     When  it's over, it's over

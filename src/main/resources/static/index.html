@@ -96,7 +96,7 @@
             return (this.finishLine - 1)
           },
           ready: function () {
-            return (this.racers.length > 0)
+            return ((this.racers.length > 0) && !this.over)
           }
         },
         methods: {
