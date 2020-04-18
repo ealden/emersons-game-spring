@@ -42,4 +42,19 @@ public class RaceTest {
 
         assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
     }
+
+    @Test
+    public void addRacersMustRankRacers() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
+        assertThat(racer.getRank(), is(1));
+        assertThat(racer2.getRank(), is(2));
+        assertThat(racer3.getRank(), is(3));
+    }
 }

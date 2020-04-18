@@ -28,6 +28,7 @@ public class Racer {
     private String name;
     private int position = 0;
     private int damage = 0;
+    private int rank = 0;
     private int finishLine = DEFAULT_FINISH_LINE;
 
     public Racer() {
@@ -80,6 +81,10 @@ public class Racer {
         }
     }
 
+    public int getRank() {
+        return rank;
+    }
+
     public int getFinishLine() {
         return finishLine;
     }
@@ -98,6 +103,10 @@ public class Racer {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public void setFinishLine(int finishLine) {

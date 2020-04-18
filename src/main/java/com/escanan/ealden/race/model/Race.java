@@ -28,9 +28,10 @@ public class Race {
     }
 
     public Race addRacer(Racer racer) {
-        racer.setRace(this);
-
         racers.add(racer);
+
+        racer.setRace(this);
+        racer.setRank(racers.size());
 
         if (currentRacer == null) {
             currentRacer = racer;
