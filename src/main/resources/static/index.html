@@ -17,37 +17,40 @@
     <div id="app" class="container">
       <h1>Emerson's Game</h1>
 
-      <table class="u-full-width">
-        <thead>
-          <tr>
-            <th>&nbsp;</th>
-            <th v-for="n in track">{{ n }}</th>
-            <th>FINISH</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(racer, i) in racers">
-            <td nowrap>
-              <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
-              <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
-              <span>{{ racer.name }} <template v-for="x in racer.damage">❌</template></span>
-            </td>
-            <td v-for="n in finishLine">
-              <template v-if="racer.position == n">
-                <template v-if="racer.position == finishLine">🏆</template>
-                <template v-else>🚘</template>
-              </template>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="race-track">
+        <div class="row">
+          <div class="one column header">&nbsp;</div>
+          <div class="one column header">&nbsp;</div>
+          <div class="one column header centered" v-for="n in track">{{ n }}</div>
+          <div class="one column header centered">🏁</div>
+        </div>
+        <div class="row border-top" v-for="(racer, i) in racers">
+          <div class="one column">
+            <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
+            <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
+            <span class="nowrap">
+              <strong>{{ racer.name }}</strong> <template v-for="x in racer.damage">❌</template>
+            </span>
+          </div>
+          <div class="one column centered">
+            <template v-if="racer.position == 0">🚘</template>
+          </div>
+          <div class="one column centered" v-for="n in finishLine">
+            <template v-if="racer.position == n">
+              <template v-if="racer.position == finishLine">🏆</template>
+              <template v-else>🚘</template>
+            </template>
+            <template v-else>&nbsp;</template>
+          </div>
+        </div>
+      </div>
 
       <div class="row" v-if="ready">
         <div class="two columns">&nbsp;</div>
         <div class="eight columns centered">
           <div>
-            <button id="roll-normal-speed" @click="rollNormalSpeed" class="normal-speed">Normal Speed</button>
-            <button id="roll-super-speed" @click="rollSuperSpeed" class="super-speed">SUPER SPEED</button>
+            <button id="roll-normal-speed" @click="rollNormalSpeed">Normal Speed</button>
+            <button id="roll-super-speed" @click="rollSuperSpeed">SUPER SPEED</button>
           </div>
         </div>
         <div class="two columns">

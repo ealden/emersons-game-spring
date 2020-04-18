@@ -2,12 +2,16 @@ h1 {
   padding-top: 5rem;
 }
 
-button.normal-speed {
+#race-track .column {
+  padding: 1rem;
+}
+
+#roll-normal-speed {
   color: white;
   background-color: green;
 }
 
-button.super-speed {
+#roll-super-speed {
   color: white;
   background-color: red;
 }
@@ -22,4 +26,16 @@ button.super-speed {
 
 .right-aligned {
   text-align: right;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.border-top {
+  border-top: solid thin gray;
 }
