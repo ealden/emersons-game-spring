@@ -26,10 +26,10 @@ public class RaceServiceImpl implements RaceService {
         raceRepository.deleteAll();
 
         Race race = new Race();
-        race.addRacer(new Racer("Racer 1"));
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
-        race.addRacer(new Racer("Racer 4"));
+        race.addRacer(new Racer("Alice"));
+        race.addRacer(new Racer("Bob"));
+        race.addRacer(new Racer("Charlie"));
+        race.addRacer(new Racer("Dave"));
 
         return raceRepository.save(race);
     }
