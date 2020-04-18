@@ -23,4 +23,15 @@ public class RaceTest {
 
         assertThat(racer.getRace(), is(sameInstance(race)));
     }
+
+    @Test
+    public void addRacerMustSetFirstRacerAsCurrentRacer() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+
+        assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
+    }
 }

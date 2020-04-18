@@ -16,6 +16,9 @@ public class Race {
     @OneToMany(mappedBy="race", cascade = ALL, fetch = EAGER)
     private List<Racer> racers = new ArrayList<>();
 
+    @ManyToOne
+    private Racer currentRacer;
+
     public Race() {
 
     }
@@ -29,6 +32,10 @@ public class Race {
 
         racers.add(racer);
 
+        if (currentRacer == null) {
+            currentRacer = racer;
+        }
+
         return this;
     }
 
@@ -38,6 +45,10 @@ public class Race {
 
     public List<Racer> getRacers() {
         return racers;
+    }
+
+    public Racer getCurrentRacer() {
+        return currentRacer;
     }
 
     public int getFinishLine() {
