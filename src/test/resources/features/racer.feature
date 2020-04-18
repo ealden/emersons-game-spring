@@ -95,7 +95,7 @@ Feature: Racer
 
   Scenario: Crash and Burn
     Given I am in a race
-    When  all racers have crashed (!)
+    When  all racers have crashed!
     Then  our race must be over!
 
   Scenario: End

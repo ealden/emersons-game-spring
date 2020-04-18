@@ -71,7 +71,7 @@ public class RacerSteps {
         racer = race.getRacers().get(0);
     }
 
-    @When("all racers have crashed \\(!)")
+    @When("all racers have crashed!")
     public void racersCrashed() {
         for (Racer racer : race.getRacers()) {
             racer.setDamage(MAX_DAMAGE);
