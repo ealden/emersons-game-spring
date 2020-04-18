@@ -1,9 +1,10 @@
 package com.escanan.ealden.race.steps;
 
 import com.escanan.ealden.race.data.RacerRepository;
+import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.page.RacePage;
-import io.cucumber.java.Before;
+import com.escanan.ealden.race.service.RaceService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,19 +17,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class RacerSteps {
     @Autowired
     private RacerRepository racerRepository;
+
+    @Autowired
+    private RaceService raceService;
+
     private RacePage racePage;
 
+    private Race race = null;
     private Racer racer = null;
     private Racer.SpeedType speedType = null;
 
-    @Before
-    public void clearData() {
-        racerRepository.deleteAll();
-    }
-
     @Given("I am in a race")
     public void newRace() {
-        racer = new Racer("Racer 1");
+        race = raceService.newRace();
+        racer = race.getRacers().get(0);
     }
 
     @Given("I am at position {int}")
@@ -48,7 +50,7 @@ public class RacerSteps {
 
     @When("it is my turn to roll")
     public void nextRacer() {
-        racerRepository.save(racer);
+        raceService.save(race);
 
         racePage = RacePage.load();
     }
@@ -65,7 +67,7 @@ public class RacerSteps {
 
     @When("I choose to start over in a new race")
     public void createNewRace() {
-        racerRepository.save(racer);
+        raceService.save(race);
 
         racePage = RacePage.load();
 
