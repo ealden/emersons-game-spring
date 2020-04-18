@@ -4,7 +4,7 @@ Feature: Racer
     Given I am in a race
     And   I am at position <Position>
     And   I have damage of <Damage>
-    And   I see the finish line at position 15
+    And   I see the finish line at position 10
     When  I choose "<Speed>" speed
     And   I roll a <Roll>
     Then  I must now be at position <New Position>
@@ -66,24 +66,24 @@ Feature: Racer
     Examples: We win if we reach the finish line!
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
-      | 14        | 0       | NORMAL  | 1     | 15            | 0           | WIN     |
-      | 14        | 0       | NORMAL  | 2     | 15            | 0           | WIN     |
-      | 14        | 0       | NORMAL  | 3     | 15            | 0           | WIN     |
-      | 14        | 0       | NORMAL  | 4     | 15            | 0           | WIN     |
-      | 14        | 0       | NORMAL  | 5     | 15            | 0           | WIN     |
-      | 14        | 0       | NORMAL  | 6     | 15            | 0           | WIN     |
-      | 14        | 0       | SUPER   | 1     | 15            | 1           | WIN     |
-      | 14        | 0       | SUPER   | 2     | 15            | 1           | WIN     |
-      | 14        | 0       | SUPER   | 3     | 15            | 1           | WIN     |
-      | 14        | 0       | SUPER   | 4     | 15            | 1           | WIN     |
-      | 14        | 0       | SUPER   | 5     | 15            | 1           | WIN     |
-      | 14        | 0       | SUPER   | 6     | 15            | 1           | WIN     |
+      | 9         | 0       | NORMAL  | 1     | 10            | 0           | WIN     |
+      | 9         | 0       | NORMAL  | 2     | 10            | 0           | WIN     |
+      | 9         | 0       | NORMAL  | 3     | 10            | 0           | WIN     |
+      | 9         | 0       | NORMAL  | 4     | 10            | 0           | WIN     |
+      | 9         | 0       | NORMAL  | 5     | 10            | 0           | WIN     |
+      | 9         | 0       | NORMAL  | 6     | 10            | 0           | WIN     |
+      | 9         | 0       | SUPER   | 1     | 10            | 1           | WIN     |
+      | 9         | 0       | SUPER   | 2     | 10            | 1           | WIN     |
+      | 9         | 0       | SUPER   | 3     | 10            | 1           | WIN     |
+      | 9         | 0       | SUPER   | 4     | 10            | 1           | WIN     |
+      | 9         | 0       | SUPER   | 5     | 10            | 1           | WIN     |
+      | 9         | 0       | SUPER   | 6     | 10            | 1           | WIN     |
 
   Scenario: New Race
     Given I am in a race
     And   I am at position 2
     And   I have damage of 1
-    And   I see the finish line at position 15
+    And   I see the finish line at position 10
     When  I choose to start over in a new race
     Then  I must now be at position 0
     And   I must now have damage of 0

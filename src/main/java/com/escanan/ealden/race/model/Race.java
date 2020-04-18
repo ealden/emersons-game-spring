@@ -13,7 +13,7 @@ import static javax.persistence.FetchType.EAGER;
 @Entity
 public class Race {
     private static final int MAX_ROLL = 6;
-    private static final int DEFAULT_FINISH_LINE = 15;
+    private static final int DEFAULT_FINISH_LINE = 10;
 
     @Id
     @GeneratedValue
