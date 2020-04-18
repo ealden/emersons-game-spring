@@ -1,8 +1,6 @@
 package com.escanan.ealden.race.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.util.Random;
 
@@ -24,6 +22,9 @@ public class Racer {
     @Id
     @GeneratedValue
     private Long id;
+
+    @ManyToOne
+    private Race race;
 
     private String name;
     private int position = 0;
@@ -58,6 +59,10 @@ public class Racer {
 
     public Long getId() {
         return id;
+    }
+
+    public Race getRace() {
+        return race;
     }
 
     public String getName() {
