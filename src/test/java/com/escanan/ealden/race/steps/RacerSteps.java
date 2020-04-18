@@ -1,6 +1,5 @@
 package com.escanan.ealden.race.steps;
 
-import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.page.RacePage;
@@ -15,9 +14,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RacerSteps {
-    @Autowired
-    private RacerRepository racerRepository;
-
     @Autowired
     private RaceService raceService;
 
