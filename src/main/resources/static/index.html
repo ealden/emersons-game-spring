@@ -29,6 +29,8 @@
             <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
             <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
             <span class="nowrap">
+              <span v-if="currentRacer.id == racer.id">🎲 </span>
+              <span v-else class="hidden">🎲 </span>
               <strong>{{ racer.name }}</strong> <template v-for="x in racer.damage">❌</template>
             </span>
           </div>
@@ -69,6 +71,7 @@
           return {
             finishLine: 0,
             racers: [],
+            currentRacer: null,
             testMode: false,
             roll: 0,
             processing: false
@@ -89,6 +92,7 @@
               .then(response => {
                 this.racers = response.data.racers
                 this.finishLine = response.data.finishLine
+                this.currentRacer = response.data.currentRacer
               })
           },
           fetchSettings: function () {
@@ -118,6 +122,7 @@
                   .then(response => {
                     this.racers = response.data.racers
                     this.finishLine = response.data.finishLine
+                    this.currentRacer = response.data.currentRacer
 
                     this.processing = false
                   })

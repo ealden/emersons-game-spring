@@ -39,3 +39,7 @@ h1 {
 .border-top {
   border-top: solid thin gray;
 }
+
+.hidden {
+  visibility: hidden;
+}
