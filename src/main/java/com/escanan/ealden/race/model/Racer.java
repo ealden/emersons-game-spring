@@ -43,13 +43,13 @@ public class Racer {
         return position >= finishLine;
     }
 
-    public void move(SpeedType speedType) {
+    public void roll(SpeedType speedType) {
         int roll = new Random().nextInt(MAX_ROLL) + 1;
 
-        move(roll, speedType);
+        roll(roll, speedType);
     }
 
-    public void move(int roll, SpeedType speedType) {
+    public void roll(int roll, SpeedType speedType) {
         if (SpeedType.NORMAL.equals(speedType)) {
             normalMove(roll);
         } else if (SpeedType.SUPER.equals(speedType)) {
@@ -114,16 +114,16 @@ public class Racer {
     }
 
     private void normalMove(int roll) {
-        move(normal(roll));
+        roll(normal(roll));
     }
 
     private void superMove(int roll) {
-        move(roll);
+        roll(roll);
 
         incrementDamage();
     }
 
-    private void move(int roll) {
+    private void roll(int roll) {
         position += max((roll - damage), ZERO_MOVE);
     }
 

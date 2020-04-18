@@ -39,9 +39,9 @@ public class RacesController {
             Racer racer = result.get();
 
             if (!testMode) {
-                racer.move(roll.getSpeedType());
+                racer.roll(roll.getSpeedType());
             } else {
-                racer.move(roll.getRoll(), roll.getSpeedType());
+                racer.roll(roll.getRoll(), roll.getSpeedType());
             }
 
             racerRepository.save(racer);
