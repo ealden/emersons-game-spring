@@ -60,7 +60,7 @@ public class Race {
     }
 
     private void nextRacer() {
-        int nextRank = ((currentRacer.getRank() + 1) % racers.size());
+        int nextRank = ((currentRacer.getRank() % racers.size()) + 1);
 
         for (Racer racer : racers) {
             if (nextRank == racer.getRank()) {

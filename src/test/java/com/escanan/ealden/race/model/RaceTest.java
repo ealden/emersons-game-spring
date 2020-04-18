@@ -81,4 +81,21 @@ public class RaceTest {
 
         assertThat(race.getCurrentRacer(), is(sameInstance(racer2)));
     }
+
+    @Test
+    public void rollMustSetCurrentRacerToFirstRacerAfterRound() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
+        race.roll(1, NORMAL);
+        race.roll(1, NORMAL);
+        race.roll(1, NORMAL);
+
+        assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
+    }
 }
