@@ -1,5 +1,6 @@
 package com.escanan.ealden.race.service.impl;
 
+import com.escanan.ealden.race.data.RaceRepository;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
@@ -12,6 +13,9 @@ import java.util.List;
 
 @Service
 public class RaceServiceImpl implements RaceService {
+    @Autowired
+    private RaceRepository raceRepository;
+
     @Autowired
     private RacerRepository racerRepository;
 
@@ -27,14 +31,18 @@ public class RaceServiceImpl implements RaceService {
 
     @Override
     public void newRace() {
+        raceRepository.deleteAll();
         racerRepository.deleteAll();
 
-        racerRepository.save(new Racer("Racer 1"));
+        Race race = new Race();
+        race.addRacer(new Racer("Racer 1"));
 
         if (!testMode) {
-            racerRepository.save(new Racer("Racer 2"));
-            racerRepository.save(new Racer("Racer 3"));
-            racerRepository.save(new Racer("Racer 4"));
+            race.addRacer(new Racer("Racer 2"));
+            race.addRacer(new Racer("Racer 3"));
+            race.addRacer(new Racer("Racer 4"));
         }
+
+        raceRepository.save(race);
     }
 }
