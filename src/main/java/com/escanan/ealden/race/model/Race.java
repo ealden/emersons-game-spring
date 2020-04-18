@@ -1,13 +1,11 @@
 package com.escanan.ealden.race.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
 public class Race {
@@ -15,7 +13,7 @@ public class Race {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy="race", cascade = ALL)
+    @OneToMany(mappedBy="race", cascade = ALL, fetch = EAGER)
     private List<Racer> racers = new ArrayList<>();
 
     public Race() {
