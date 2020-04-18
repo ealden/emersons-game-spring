@@ -1,23 +1,17 @@
 package com.escanan.ealden.race.controller.api.model;
 
-import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.model.Racer.SpeedType;
 
 public class Roll {
-    private Long id;
-    private Racer.SpeedType speedType;
+    private SpeedType speedType;
     private Integer roll;
 
-    public Roll(Long id, String speedType, Integer roll) {
-        this.id = id;
-        this.speedType = Racer.SpeedType.valueOf(speedType);
+    public Roll(String speedType, Integer roll) {
+        this.speedType = SpeedType.valueOf(speedType);
         this.roll = roll;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Racer.SpeedType getSpeedType() {
+    public SpeedType getSpeedType() {
         return speedType;
     }
 

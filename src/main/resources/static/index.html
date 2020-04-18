@@ -67,8 +67,7 @@
             finishLine: 0,
             racers: [],
             testMode: false,
-            currentRacerIndex: 0,
-            roll: null,
+            roll: 0,
             processing: false
           }
         },
@@ -78,9 +77,6 @@
           },
           ready: function () {
             return (this.racers.length > 0)
-          },
-          currentRacer: function () {
-            return this.racers[this.currentRacerIndex]
           }
         },
         methods: {
@@ -105,16 +101,11 @@
           rollSuperSpeed: function (event) {
             this.doRoll('SUPER')
           },
-          nextRacer: function (event) {
-            this.currentRacerIndex = ((this.currentRacerIndex + 1) % this.racers.length)
-            this.roll = null
-          },
           doRoll: function (speedType) {
             this.processing = true
 
             axios
               .post('/api/races/roll', {
-                'id': this.currentRacer.id,
                 'speedType': speedType,
                 'roll': this.roll
               })
@@ -124,8 +115,6 @@
                   .then(response => {
                     this.racers = response.data.racers
                     this.finishLine = response.data.finishLine
-
-                    this.nextRacer()
 
                     this.processing = false
                   })
@@ -145,7 +134,7 @@
           loadRace: function () {
             this.fetchSettings()
             this.fetchRace()
-            this.currentRacerIndex = 0
+            this.roll = 0
           }
         },
         mounted () {
