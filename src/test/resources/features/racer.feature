@@ -5,8 +5,7 @@ Feature: Racer
     And   I am at position <Position>
     And   I have damage of <Damage>
     And   I see the finish line at position 15
-    When  it is my turn to roll
-    And   I choose "<Speed>" speed
+    When  I choose "<Speed>" speed
     And   I roll a <Roll>
     Then  I must now be at position <New Position>
     And   I must now have damage of <New Damage>
@@ -86,7 +85,6 @@ Feature: Racer
     And   I have damage of 1
     And   I see the finish line at position 15
     When  I choose to start over in a new race
-    And   I join in as a new racer
     Then  I must now be at position 0
     And   I must now have damage of 0
     And   I must see the race result: "--"

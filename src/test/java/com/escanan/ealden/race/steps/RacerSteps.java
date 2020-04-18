@@ -48,13 +48,6 @@ public class RacerSteps {
         racer.setFinishLine(finishLine);
     }
 
-    @When("it is my turn to roll")
-    public void nextRacer() {
-        raceService.save(race);
-
-        racePage = RacePage.load();
-    }
-
     @When("I choose {string} speed")
     public void speed(String speed) {
         speedType = Racer.SpeedType.valueOf(speed);
@@ -62,6 +55,10 @@ public class RacerSteps {
 
     @When("I roll a {int}")
     public void roll(int roll) {
+        raceService.save(race);
+
+        racePage = RacePage.load();
+
         racePage.roll(roll, speedType);
     }
 
@@ -72,11 +69,9 @@ public class RacerSteps {
         racePage = RacePage.load();
 
         racePage.newRace();
-    }
 
-    @When("I join in as a new racer")
-    public void joinRace() {
-        racer = racerRepository.findAll().iterator().next();
+        race = raceService.getCurrentRace();
+        racer = race.getRacers().get(0);
     }
 
     @Then("I must now be at position {int}")
