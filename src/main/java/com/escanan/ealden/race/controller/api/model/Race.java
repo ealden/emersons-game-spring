@@ -6,11 +6,9 @@ import java.util.List;
 
 public class Race {
     private List<Racer> racers;
-    private boolean testMode;
 
-    public Race(List<Racer> racers, boolean testMode) {
+    public Race(List<Racer> racers) {
         this.racers = racers;
-        this.testMode = testMode;
     }
 
     public List<Racer> getRacers() {
@@ -19,9 +17,5 @@ public class Race {
 
     public int getFinishLine() {
         return Racer.DEFAULT_FINISH_LINE;
-    }
-
-    public boolean isTestMode() {
-        return testMode;
     }
 }

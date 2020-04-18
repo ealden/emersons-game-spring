@@ -90,6 +90,12 @@
               .then(response => {
                 this.racers = response.data.racers
                 this.finishLine = response.data.finishLine
+              })
+          },
+          fetchSettings: function () {
+            axios
+              .get('/api/races/settings')
+              .then(response => {
                 this.testMode = response.data.testMode
               })
           },
@@ -118,7 +124,6 @@
                   .then(response => {
                     this.racers = response.data.racers
                     this.finishLine = response.data.finishLine
-                    this.testMode = response.data.testMode
 
                     this.nextRacer()
 
@@ -138,6 +143,7 @@
               })
           },
           resetRace: function () {
+            this.fetchSettings()
             this.fetchRace()
             this.currentRacerIndex = 0
           }

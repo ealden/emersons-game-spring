@@ -2,6 +2,7 @@ package com.escanan.ealden.race.controller.api;
 
 import com.escanan.ealden.race.controller.api.model.Race;
 import com.escanan.ealden.race.controller.api.model.Roll;
+import com.escanan.ealden.race.controller.api.model.Settings;
 import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.service.RaceService;
@@ -30,7 +31,7 @@ public class RacesController {
     public Race index() {
         List<Racer> racers = racerRepository.findAllByOrderByIdAsc();
 
-        return new Race(racers, testMode);
+        return new Race(racers);
     }
 
     @PostMapping("/api/races/roll")
@@ -57,5 +58,13 @@ public class RacesController {
         raceService.newRace();
 
         return index();
+    }
+
+    @GetMapping("/api/races/settings")
+    public Settings settings() {
+        Settings settings = new Settings();
+        settings.setTestMode(testMode);
+
+        return settings;
     }
 }
