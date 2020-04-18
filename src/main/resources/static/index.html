@@ -30,7 +30,7 @@
             <td nowrap>
               <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
               <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
-              <span>{{ racer.name }} ({{ racer.damage }} damage)</span>
+              <span>{{ racer.name }} <template v-for="x in racer.damage">❌</template></span>
             </td>
             <td v-for="n in finishLine">
               <template v-if="racer.position == n">
