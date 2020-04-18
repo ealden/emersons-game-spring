@@ -27,12 +27,9 @@ public class RaceServiceImpl implements RaceService {
 
         Race race = new Race();
         race.addRacer(new Racer("Racer 1"));
-
-        if (!testMode) {
-            race.addRacer(new Racer("Racer 2"));
-            race.addRacer(new Racer("Racer 3"));
-            race.addRacer(new Racer("Racer 4"));
-        }
+        race.addRacer(new Racer("Racer 2"));
+        race.addRacer(new Racer("Racer 3"));
+        race.addRacer(new Racer("Racer 4"));
 
         return raceRepository.save(race);
     }
