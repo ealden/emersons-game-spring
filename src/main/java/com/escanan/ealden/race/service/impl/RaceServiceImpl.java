@@ -36,4 +36,9 @@ public class RaceServiceImpl implements RaceService {
 
         raceRepository.save(race);
     }
+
+    @Override
+    public Race save(Race race) {
+        return raceRepository.save(race);
+    }
 }
