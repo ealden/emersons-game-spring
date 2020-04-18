@@ -61,10 +61,10 @@ public class Racer {
     }
 
     public int getPosition() {
-        if (position < race.getFinishLine()) {
-            return position;
-        } else {
+        if (isWinner()) {
             return race.getFinishLine();
+        } else {
+            return position;
         }
     }
 
@@ -74,6 +74,10 @@ public class Racer {
 
     public boolean isCrashed() {
         return (MAX_DAMAGE <= damage);
+    }
+
+    public boolean isWinner() {
+        return (position >= race.getFinishLine());
     }
 
     public void setRace(Race race) {

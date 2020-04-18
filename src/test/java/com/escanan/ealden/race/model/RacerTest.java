@@ -85,7 +85,7 @@ public class RacerTest {
 
     @Test
     public void getPositionMustReturnCurrentPositionIfNotYetOnFinishLine() {
-        int position = 5;
+        int position = race.getFinishLine() - 1;
 
         racer.setPosition(position);
 
@@ -120,5 +120,24 @@ public class RacerTest {
         racer.setDamage(MAX_DAMAGE + 1);
 
         assertThat(racer.isCrashed(), is(true));
+    }
+
+
+    @Test
+    public void isWinnerMustBeTrueIfCrossedFinishLine() {
+        int position = race.getFinishLine() + 1;
+
+        racer.setPosition(position);
+
+        assertThat(racer.isWinner(), is(true));
+    }
+
+    @Test
+    public void isWinnerMustBeFalseIfNotYetOnFinishLine() {
+        int position = race.getFinishLine() - 1;
+
+        racer.setPosition(position);
+
+        assertThat(racer.isWinner(), is(false));
     }
 }
