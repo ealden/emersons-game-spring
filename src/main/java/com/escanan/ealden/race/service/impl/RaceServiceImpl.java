@@ -22,7 +22,7 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public void newRace() {
+    public Race newRace() {
         raceRepository.deleteAll();
 
         Race race = new Race();
@@ -34,7 +34,7 @@ public class RaceServiceImpl implements RaceService {
             race.addRacer(new Racer("Racer 4"));
         }
 
-        raceRepository.save(race);
+        return raceRepository.save(race);
     }
 
     @Override
