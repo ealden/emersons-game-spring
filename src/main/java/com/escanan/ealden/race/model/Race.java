@@ -54,6 +54,20 @@ public class Race {
     public void roll(int roll, SpeedType speedType) {
         if (currentRacer != null) {
             currentRacer.roll(roll, speedType);
+
+            nextRacer();
+        }
+    }
+
+    private void nextRacer() {
+        int nextRank = ((currentRacer.getRank() + 1) % racers.size());
+
+        for (Racer racer : racers) {
+            if (nextRank == racer.getRank()) {
+                currentRacer = racer;
+
+                break;
+            }
         }
     }
 

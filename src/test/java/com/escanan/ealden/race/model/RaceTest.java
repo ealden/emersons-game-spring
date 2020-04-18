@@ -66,4 +66,19 @@ public class RaceTest {
             race.roll(1, NORMAL);
         });
     }
+
+    @Test
+    public void rollMustSetCurrentRacerToNextRacerInRank() {
+        Racer racer = new Racer();
+        Racer racer2 = new Racer();
+        Racer racer3 = new Racer();
+
+        race.addRacer(racer);
+        race.addRacer(racer2);
+        race.addRacer(racer3);
+
+        race.roll(1, NORMAL);
+
+        assertThat(race.getCurrentRacer(), is(sameInstance(racer2)));
+    }
 }
