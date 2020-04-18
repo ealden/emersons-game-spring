@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <div id="race-controls" v-if="ready">
+      <div id="race-controls" v-if="ready && !over">
         <div class="row">
           <div class="two columns">&nbsp;</div>
           <div class="eight columns centered">
@@ -96,7 +96,7 @@
             return (this.finishLine - 1)
           },
           ready: function () {
-            return ((this.racers.length > 0) && !this.over)
+            return (this.racers.length > 0)
           }
         },
         methods: {
