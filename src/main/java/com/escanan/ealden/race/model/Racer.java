@@ -1,7 +1,6 @@
 package com.escanan.ealden.race.model;
 
 import javax.persistence.*;
-import java.util.Random;
 
 import static java.lang.Math.max;
 
@@ -16,7 +15,7 @@ public class Racer {
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;
-    private static final int MAX_ROLL = 6;
+
 
     @Id
     @GeneratedValue
@@ -43,17 +42,11 @@ public class Racer {
         return position >= finishLine;
     }
 
-    public void roll(SpeedType speedType) {
-        int roll = new Random().nextInt(MAX_ROLL) + 1;
-
-        roll(roll, speedType);
-    }
-
     public void roll(int roll, SpeedType speedType) {
         if (SpeedType.NORMAL.equals(speedType)) {
-            normalMove(roll);
+            normalRoll(roll);
         } else if (SpeedType.SUPER.equals(speedType)) {
-            superMove(roll);
+            superRoll(roll);
         }
     }
 
@@ -113,11 +106,11 @@ public class Racer {
         this.finishLine = finishLine;
     }
 
-    private void normalMove(int roll) {
+    private void normalRoll(int roll) {
         roll(normal(roll));
     }
 
-    private void superMove(int roll) {
+    private void superRoll(int roll) {
         roll(roll);
 
         incrementDamage();

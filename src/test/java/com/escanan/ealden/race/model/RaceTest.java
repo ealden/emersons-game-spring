@@ -3,8 +3,10 @@ package com.escanan.ealden.race.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class RaceTest {
     private Race race;
@@ -56,5 +58,12 @@ public class RaceTest {
         assertThat(racer.getRank(), is(1));
         assertThat(racer2.getRank(), is(2));
         assertThat(racer3.getRank(), is(3));
+    }
+
+    @Test
+    public void rollMustNotRollIfNoRacers() {
+        assertDoesNotThrow(() -> {
+            race.roll(1, NORMAL);
+        });
     }
 }

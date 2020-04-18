@@ -2,9 +2,7 @@ package com.escanan.ealden.race.controller.api;
 
 import com.escanan.ealden.race.controller.api.model.Roll;
 import com.escanan.ealden.race.controller.api.model.Settings;
-import com.escanan.ealden.race.data.RacerRepository;
 import com.escanan.ealden.race.model.Race;
-import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,13 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-
 @RestController
 public class RacesController {
-    @Autowired
-    private RacerRepository racerRepository;
-
     @Autowired
     private RaceService raceService;
 
@@ -33,19 +26,15 @@ public class RacesController {
 
     @PostMapping("/api/races/roll")
     public Race roll(@RequestBody Roll roll) {
-        Optional<Racer> result = racerRepository.findById(roll.getId());
+        Race race = raceService.getCurrentRace();
 
-        if (result.isPresent()) {
-            Racer racer = result.get();
-
-            if (!testMode) {
-                racer.roll(roll.getSpeedType());
-            } else {
-                racer.roll(roll.getRoll(), roll.getSpeedType());
-            }
-
-            racerRepository.save(racer);
+        if (!testMode) {
+            race.roll(roll.getSpeedType());
+        } else {
+            race.roll(roll.getRoll(), roll.getSpeedType());
         }
+
+        raceService.save(race);
 
         return index();
     }

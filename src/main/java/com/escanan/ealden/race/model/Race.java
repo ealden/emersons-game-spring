@@ -1,14 +1,19 @@
 package com.escanan.ealden.race.model;
 
+import com.escanan.ealden.race.model.Racer.SpeedType;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
 public class Race {
+    private static final int MAX_ROLL = 6;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -38,6 +43,18 @@ public class Race {
         }
 
         return this;
+    }
+
+    public void roll(SpeedType speedType) {
+        int roll = new Random().nextInt(MAX_ROLL) + 1;
+
+        roll(roll, speedType);
+    }
+
+    public void roll(int roll, SpeedType speedType) {
+        if (currentRacer != null) {
+            currentRacer.roll(roll, speedType);
+        }
     }
 
     public Long getId() {
