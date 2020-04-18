@@ -1,11 +1,14 @@
 package com.escanan.ealden.race.service.impl;
 
 import com.escanan.ealden.race.data.RacerRepository;
+import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RaceServiceImpl implements RaceService {
@@ -14,6 +17,13 @@ public class RaceServiceImpl implements RaceService {
 
     @Value("${race.enable.testMode:false}")
     private boolean testMode;
+
+    @Override
+    public Race getCurrentRace() {
+        List<Racer> racers = racerRepository.findAllByOrderByIdAsc();
+
+        return new Race(racers);
+    }
 
     @Override
     public void newRace() {
