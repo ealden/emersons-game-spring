@@ -20,6 +20,7 @@ public class Race {
     private Long id;
 
     @OneToMany(mappedBy="race", cascade = ALL, fetch = EAGER)
+    @OrderBy("id")
     private List<Racer> racers = new ArrayList<>();
 
     @ManyToOne
