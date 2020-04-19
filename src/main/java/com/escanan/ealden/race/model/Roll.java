@@ -19,6 +19,8 @@ public class Roll {
     @ManyToOne
     private Racer racer;
 
+    private int position;
+
     public Long getId() {
         return id;
     }
@@ -32,6 +34,10 @@ public class Roll {
         return racer;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -42,5 +48,9 @@ public class Roll {
 
     public void setRacer(Racer racer) {
         this.racer = racer;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

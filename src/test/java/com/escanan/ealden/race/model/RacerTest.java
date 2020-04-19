@@ -145,6 +145,8 @@ public class RacerTest {
     public void rollMustLogRollEntry() {
         assertThat(racer.getLastRoll(), is(nullValue()));
 
+        racer.setPosition(1);
+
         racer.roll(1, NORMAL);
 
         Roll roll = racer.getLastRoll();
@@ -152,5 +154,6 @@ public class RacerTest {
         assertThat(roll, is(not(nullValue())));
         assertThat(roll.getRacer(), is(sameInstance(racer)));
         assertThat(roll.getRace(), is(sameInstance(race)));
+        assertThat(roll.getPosition(), is(equalTo(1)));
     }
 }

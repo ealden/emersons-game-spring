@@ -115,6 +115,11 @@ public class RacerSteps {
         assertThat(race.getLastRoll().getRacer(), is(sameInstance(previousRacer)));
     }
 
+    @Then("Position: {int}")
+    public void assertRollWithPositionLogged(int position) {
+        assertThat(race.getLastRoll().getPosition(), is(equalTo(position)));
+    }
+
     @Then("our race must be over!")
     public void assertRacersCrashedAndBurned() {
         assertThat(racePage.isOver(), is(true));
