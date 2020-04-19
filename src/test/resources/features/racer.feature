@@ -93,6 +93,78 @@ Feature: Racer
     And   I must now have damage of 0
     And   I must see the race result: --
 
+  @wip
+  Scenario Outline: Log Roll Entry
+    Given I am in a race
+    And   I am at position <Position>
+    And   I have damage of <Damage>
+    And   I see the finish line at position 10
+    When  I choose "<Speed>" speed
+    And   I roll a <Roll>
+    Then  I must now have a log entry with the following:
+          * Position: <Position>
+          * Damage: <Damage>
+          * Speed: "<Speed>"
+          * Roll: <Roll>
+          * Move: <Move>
+          * New Position: <New Position>
+          * New Damage: <New Damage>
+          * Crashed: "<Crashed>"
+          * Win: "<Win>"
+
+    Examples:
+
+      | Position  | Damage  | Speed   | Roll  | Move  | New Position  | New Damage  | Crashed | Win |
+      | 0         | 0       | NORMAL  | 1     | 1     | 1             | 0           | NO      | NO  |
+      | 0         | 0       | NORMAL  | 2     | 2     | 2             | 0           | NO      | NO  |
+      | 0         | 0       | NORMAL  | 3     | 1     | 1             | 0           | NO      | NO  |
+      | 0         | 0       | NORMAL  | 4     | 2     | 2             | 0           | NO      | NO  |
+      | 0         | 0       | NORMAL  | 5     | 1     | 1             | 0           | NO      | NO  |
+      | 0         | 0       | NORMAL  | 6     | 2     | 2             | 0           | NO      | NO  |
+      | 0         | 0       | SUPER   | 1     | 1     | 1             | 1           | NO      | NO  |
+      | 0         | 0       | SUPER   | 2     | 2     | 2             | 1           | NO      | NO  |
+      | 0         | 0       | SUPER   | 3     | 3     | 3             | 1           | NO      | NO  |
+      | 0         | 0       | SUPER   | 4     | 4     | 4             | 1           | NO      | NO  |
+      | 0         | 0       | SUPER   | 5     | 5     | 5             | 1           | NO      | NO  |
+      | 0         | 0       | SUPER   | 6     | 6     | 6             | 1           | NO      | NO  |
+      | 9         | 0       | NORMAL  | 1     | 1     | 10            | 0           | NO      | YES |
+      | 9         | 0       | NORMAL  | 2     | 2     | 10            | 0           | NO      | YES |
+      | 9         | 0       | NORMAL  | 3     | 1     | 10            | 0           | NO      | YES |
+      | 9         | 0       | NORMAL  | 4     | 2     | 10            | 0           | NO      | YES |
+      | 9         | 0       | NORMAL  | 5     | 1     | 10            | 0           | NO      | YES |
+      | 9         | 0       | NORMAL  | 6     | 2     | 10            | 0           | NO      | YES |
+      | 9         | 0       | SUPER   | 1     | 1     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 2     | 2     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 3     | 3     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 4     | 4     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 5     | 5     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 5     | 5     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 6     | 6     | 10            | 1           | NO      | YES |
+      | 1         | 1       | NORMAL  | 1     | 0     | 1             | 1           | NO      | NO  |
+      | 1         | 1       | NORMAL  | 2     | 1     | 2             | 1           | NO      | NO  |
+      | 1         | 1       | NORMAL  | 3     | 0     | 1             | 1           | NO      | NO  |
+      | 1         | 1       | NORMAL  | 4     | 1     | 2             | 1           | NO      | NO  |
+      | 1         | 1       | NORMAL  | 5     | 0     | 1             | 1           | NO      | NO  |
+      | 1         | 1       | NORMAL  | 6     | 1     | 2             | 1           | NO      | NO  |
+      | 1         | 1       | SUPER   | 1     | 0     | 1             | 2           | NO      | NO  |
+      | 1         | 1       | SUPER   | 2     | 1     | 2             | 2           | NO      | NO  |
+      | 1         | 1       | SUPER   | 3     | 2     | 3             | 2           | NO      | NO  |
+      | 1         | 1       | SUPER   | 4     | 3     | 4             | 2           | NO      | NO  |
+      | 1         | 1       | SUPER   | 5     | 4     | 5             | 2           | NO      | NO  |
+      | 1         | 1       | SUPER   | 6     | 5     | 6             | 2           | NO      | NO  |
+      | 2         | 5       | NORMAL  | 1     | 0     | 2             | 5           | NO      | NO  |
+      | 2         | 5       | NORMAL  | 2     | 0     | 2             | 5           | NO      | NO  |
+      | 2         | 5       | NORMAL  | 3     | 0     | 2             | 5           | NO      | NO  |
+      | 2         | 5       | NORMAL  | 4     | 0     | 2             | 5           | NO      | NO  |
+      | 2         | 5       | NORMAL  | 5     | 0     | 2             | 5           | NO      | NO  |
+      | 2         | 5       | NORMAL  | 6     | 0     | 2             | 5           | NO      | NO  |
+      | 2         | 5       | SUPER   | 1     | 0     | 2             | 6           | YES     | NO  |
+      | 2         | 5       | SUPER   | 2     | 0     | 2             | 6           | YES     | NO  |
+      | 2         | 5       | SUPER   | 3     | 0     | 2             | 6           | YES     | NO  |
+      | 2         | 5       | SUPER   | 4     | 0     | 2             | 6           | YES     | NO  |
+      | 2         | 5       | SUPER   | 5     | 0     | 2             | 6           | YES     | NO  |
+      | 2         | 5       | SUPER   | 6     | 1     | 3             | 6           | YES     | NO  |
+
   Scenario: Crash and Burn
     Given I am in a race
     When  all racers have crashed!
