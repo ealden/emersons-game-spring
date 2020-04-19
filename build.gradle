@@ -54,3 +54,15 @@ task cucumber() {
         }
     }
 }
+
+task wip() {
+    dependsOn assemble, compileTestJava
+
+    doLast {
+        javaexec {
+            main = 'io.cucumber.core.cli.Main'
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--tags', '@wip', '--plugin', 'pretty', '--glue', 'com.escanan.ealden.race', 'src/test/resources']
+        }
+    }
+}
