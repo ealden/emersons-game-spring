@@ -25,4 +25,8 @@ public enum SpeedType {
     public int move(int roll, int damage) {
         return max((calculate(roll) - damage), 0);
     }
+
+    public int getDamage() {
+        return damage;
+    }
 }
