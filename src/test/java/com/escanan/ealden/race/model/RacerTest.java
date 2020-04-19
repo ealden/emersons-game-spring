@@ -157,5 +157,6 @@ public class RacerTest {
         assertThat(roll.getRace(), is(sameInstance(race)));
         assertThat(roll.getPosition(), is(equalTo(1)));
         assertThat(roll.getDamage(), is(equalTo(1)));
+        assertThat(roll.getSpeedType(), is(equalTo(NORMAL)));
     }
 }

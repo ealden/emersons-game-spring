@@ -1,5 +1,6 @@
 package com.escanan.ealden.race.model;
 
+import com.escanan.ealden.race.model.Racer.SpeedType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ public class Roll {
 
     private int position;
     private int damage;
+    private SpeedType speedType;
 
     public Long getId() {
         return id;
@@ -43,6 +45,10 @@ public class Roll {
         return damage;
     }
 
+    public SpeedType getSpeedType() {
+        return speedType;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -61,5 +67,9 @@ public class Roll {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public void setSpeedType(SpeedType speedType) {
+        this.speedType = speedType;
     }
 }
