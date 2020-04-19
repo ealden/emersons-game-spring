@@ -94,6 +94,7 @@
             racers: [],
             currentRacer: null,
             lastRoll: null,
+            allCrashed: false,
             over: false,
             testMode: false,
             roll: 0,
@@ -110,6 +111,8 @@
           message: function () {
             if (this.lastRoll == null) {
               return 'Time to RACE! ' + this.currentRacer.name + ' rolls first!'
+            } else if (this.allCrashed) {
+              return 'All racers CRASHED!!!  This race is over!'
             } else if (this.over) {
               return this.lastRoll.racer.name + ' wins the race! Congratulations!!!'
             } else if (this.lastRoll.crashed) {
@@ -143,6 +146,7 @@
                 this.finishLine = response.data.finishLine
                 this.currentRacer = response.data.currentRacer
                 this.lastRoll = response.data.lastRoll
+                this.allCrashed = response.data.allCrashed
                 this.over = response.data.over
               })
           },
@@ -175,6 +179,7 @@
                     this.finishLine = response.data.finishLine
                     this.currentRacer = response.data.currentRacer
                     this.lastRoll = response.data.lastRoll
+                    this.allCrashed = response.data.allCrashed
                     this.over = response.data.over
 
                     this.processing = false
