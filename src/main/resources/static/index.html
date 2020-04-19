@@ -34,9 +34,9 @@
         </div>
         <div class="row border-top" v-for="(racer, i) in racers">
           <div class="one column">
-            <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
-            <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
-            <span v-if="testMode" v-bind:id="'test-racer-' + racer.id + '-crashed'">{{ racer.crashed }}</span>
+            <span v-if="testMode" :id="'test-racer-' + racer.id + '-position'">{{ racer.position }}</span>
+            <span v-if="testMode" :id="'test-racer-' + racer.id + '-damage'">{{ racer.damage }}</span>
+            <span v-if="testMode" :id="'test-racer-' + racer.id + '-crashed'">{{ racer.crashed }}</span>
             <span class="nowrap">
               <span v-if="currentRacer.id == racer.id">🎲 </span>
               <span v-else class="hidden">🎲 </span>
@@ -63,12 +63,12 @@
           <div class="two columns">&nbsp;</div>
           <div class="eight columns centered">
             <div>
-              <button v-bind:disabled="processing" id="roll-normal-speed" @click="rollNormalSpeed">Normal Speed</button>
-              <button v-bind:disabled="processing" id="roll-super-speed" @click="rollSuperSpeed">SUPER SPEED</button>
+              <button :disabled="processing" id="roll-normal-speed" @click="rollNormalSpeed">Normal Speed</button>
+              <button :disabled="processing" id="roll-super-speed" @click="rollSuperSpeed">SUPER SPEED</button>
             </div>
           </div>
           <div class="two columns right-aligned">
-            <button id="new-race" @click="newRace">New Race</button>
+            <button id="new-race" v-disabled="processing" @click="newRace">New Race</button>
           </div>
         </div>
       </div>
