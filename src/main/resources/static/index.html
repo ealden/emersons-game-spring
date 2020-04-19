@@ -17,6 +17,14 @@
     <div id="app" class="container">
       <h1>Emerson's Game</h1>
 
+      <div id="race-message" v-if="ready">
+        <div class="row">
+          <div class="twelve columns centered">
+            <code id="message">{{ message }}</code>
+          </div>
+        </div>
+      </div>
+
       <div id="race-track">
         <div class="row">
           <div class="one column header">&nbsp;</div>
@@ -85,6 +93,7 @@
             finishLine: 0,
             racers: [],
             currentRacer: null,
+            lastRoll: null,
             over: false,
             testMode: false,
             roll: 0,
@@ -97,6 +106,27 @@
           },
           ready: function () {
             return (this.racers.length > 0)
+          },
+          message: function () {
+            if (this.lastRoll == null) {
+              return 'Time to RACE! ' + this.currentRacer.name + ' rolls first!'
+            } else if (this.over) {
+              return this.lastRoll.racer.name + ' wins the race! Congratulations!!!'
+            } else if (this.lastRoll.crashed) {
+              return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
+                .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
+                .concat(this.lastRoll.racer.name + ' CRASHED!!! ')
+                .concat(this.currentRacer.name + ' rolls next!')
+            } else if (this.lastRoll.newDamage > 0) {
+              return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
+                .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
+                .concat(this.lastRoll.racer.name + ' now has ' + this.lastRoll.newDamage + ' damage. ')
+                .concat(this.currentRacer.name + ' rolls next!')
+            } else {
+              return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
+                .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
+                .concat(this.currentRacer.name + ' rolls next!')
+            }
           }
         },
         methods: {
@@ -107,6 +137,7 @@
                 this.racers = response.data.racers
                 this.finishLine = response.data.finishLine
                 this.currentRacer = response.data.currentRacer
+                this.lastRoll = response.data.lastRoll
                 this.over = response.data.over
               })
           },
@@ -138,6 +169,7 @@
                     this.racers = response.data.racers
                     this.finishLine = response.data.finishLine
                     this.currentRacer = response.data.currentRacer
+                    this.lastRoll = response.data.lastRoll
                     this.over = response.data.over
 
                     this.processing = false

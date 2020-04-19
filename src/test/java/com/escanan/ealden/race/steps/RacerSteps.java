@@ -56,9 +56,7 @@ public class RacerSteps {
 
     @When("I roll a {int}")
     public void roll(int roll) {
-        raceService.save(race);
-
-        racePage = RacePage.load();
+        loadRace();
 
         racePage.roll(roll, speedType);
 
@@ -67,9 +65,7 @@ public class RacerSteps {
 
     @When("I choose to start over in a new race")
     public void createNewRace() {
-        raceService.save(race);
-
-        racePage = RacePage.load();
+        loadRace();
 
         racePage.newRace();
 
@@ -83,6 +79,11 @@ public class RacerSteps {
             racer.setDamage(MAX_DAMAGE);
         }
 
+        loadRace();
+    }
+
+    @When("I try to view the race")
+    public void loadRace() {
         raceService.save(race);
 
         racePage = RacePage.load();
@@ -164,6 +165,11 @@ public class RacerSteps {
         boolean didWin = YES.equals(win);
 
         assertThat(race.getLastRoll().isWin(), is(equalTo(didWin)));
+    }
+
+    @Then("I must see the message: {string}")
+    public void assertMessage(String message) {
+        assertThat(racePage.getMessage(), is(equalTo(message)));
     }
 
     @Then("our race must be over!")

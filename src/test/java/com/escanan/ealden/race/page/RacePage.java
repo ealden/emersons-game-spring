@@ -95,6 +95,10 @@ public class RacePage {
         return (raceControlsHidden && !raceOverHidden);
     }
 
+    public String getMessage() {
+        return getMessageField().getText().trim();
+    }
+
     private WebElement getRollField() {
         return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
     }
@@ -131,6 +135,10 @@ public class RacePage {
 
     private WebElement getNewRaceButton() {
         return driver.findElement(By.id("new-race"));
+    }
+
+    private WebElement getMessageField() {
+        return doWait().until(visibilityOfElementLocated(By.id("message")));
     }
 
     private void waitUntilProcessingComplete() {

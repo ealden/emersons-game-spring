@@ -164,13 +164,11 @@ Feature: Racer
       | 2         | 5       | SUPER   | 5     | 0     | 2             | 6           | YES     | NO  |
       | 2         | 5       | SUPER   | 6     | 1     | 3             | 6           | YES     | NO  |
 
-  @wip
   Scenario: Welcome Message
     Given I am in a race
     When  I try to view the race
     Then  I must see the message: "Time to RACE! Alice rolls first!"
 
-  @wip
   Scenario Outline: Message
     Given I am in a race
     And   I am at position <Position>
