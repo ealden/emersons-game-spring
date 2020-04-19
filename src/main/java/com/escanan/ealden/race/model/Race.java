@@ -105,14 +105,20 @@ public class Race {
     }
 
     public boolean isOver() {
-        boolean allCrashed = true;
-
         for (Racer racer : racers) {
             if (racer.isWinner()) {
                 return true;
-            } else {
-                allCrashed = (allCrashed && racer.isCrashed());
             }
+        }
+
+        return isAllCrashed();
+    }
+
+    public boolean isAllCrashed() {
+        boolean allCrashed = true;
+
+        for (Racer racer : racers) {
+            allCrashed = (allCrashed && racer.isCrashed());
         }
 
         return allCrashed;
