@@ -101,7 +101,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustBeFalseIfNoRacersHaveWon() {
+    public void isOverMustReturnFalseIfNoRacersHaveWon() {
         Racer racer = new Racer();
         Racer racer2 = new Racer();
         Racer racer3 = new Racer();
@@ -114,7 +114,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustBeTrueIfARacerHasWon() {
+    public void isOverMustReturnTrueIfARacerHasWon() {
         Racer racer = new Racer();
         Racer racer2 = new Racer();
         Racer racer3 = new Racer();
@@ -129,7 +129,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustBeTrueIfAllRacersCrashed() {
+    public void isOverMustReturnTrueIfAllRacersCrashed() {
         Racer racer = new Racer();
         Racer racer2 = new Racer();
         Racer racer3 = new Racer();
@@ -146,7 +146,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustBeFalseIfNotAllRacersCrashed() {
+    public void isOverMustReturnFalseIfNotAllRacersCrashed() {
         Racer racer = new Racer();
         Racer racer2 = new Racer();
         Racer racer3 = new Racer();
@@ -162,7 +162,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getLastRollMustBeNullIfNoRollsYet() {
+    public void getLastRollMustReturnNullIfNoRollsYet() {
         assertThat(race.getLastRoll(), is(nullValue()));
     }
 

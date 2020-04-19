@@ -102,21 +102,21 @@ public class RacerTest {
     }
 
     @Test
-    public void isCrashedMustBeFalseIfDamageLessThanMaxDamage() {
+    public void isCrashedMustReturnFalseIfDamageLessThanMaxDamage() {
         racer.setDamage(MAX_DAMAGE - 1);
 
         assertThat(racer.isCrashed(), is(false));
     }
 
     @Test
-    public void isCrashedMustBeTrueIfDamageEqualToMaxDamage() {
+    public void isCrashedMustReturnTrueIfDamageEqualToMaxDamage() {
         racer.setDamage(MAX_DAMAGE);
 
         assertThat(racer.isCrashed(), is(true));
     }
 
     @Test
-    public void isCrashedMustBeTrueIfDamageMoreThanMaxDamage() {
+    public void isCrashedMustReturnTrueIfDamageMoreThanMaxDamage() {
         racer.setDamage(MAX_DAMAGE + 1);
 
         assertThat(racer.isCrashed(), is(true));
@@ -124,7 +124,7 @@ public class RacerTest {
 
 
     @Test
-    public void isWinnerMustBeTrueIfCrossedFinishLine() {
+    public void isWinnerMustReturnTrueIfCrossedFinishLine() {
         int position = race.getFinishLine() + 1;
 
         racer.setPosition(position);
@@ -133,7 +133,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isWinnerMustBeFalseIfNotYetOnFinishLine() {
+    public void isWinnerMustReturnFalseIfNotYetOnFinishLine() {
         int position = race.getFinishLine() - 1;
 
         racer.setPosition(position);
