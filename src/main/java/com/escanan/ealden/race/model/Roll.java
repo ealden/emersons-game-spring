@@ -28,6 +28,7 @@ public class Roll {
     private int newPosition;
     private int newDamage;
     private boolean crashed;
+    private boolean win;
 
     public Long getId() {
         return id;
@@ -74,6 +75,10 @@ public class Roll {
         return crashed;
     }
 
+    public boolean isWin() {
+        return win;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -116,5 +121,9 @@ public class Roll {
 
     public void setCrashed(boolean crashed) {
         this.crashed = crashed;
+    }
+
+    public void setWin(boolean win) {
+        this.win = win;
     }
 }

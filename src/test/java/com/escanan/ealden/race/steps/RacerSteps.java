@@ -159,6 +159,13 @@ public class RacerSteps {
         assertThat(race.getLastRoll().isCrashed(), is(equalTo(didCrash)));
     }
 
+    @Then("Win: {string}")
+    public void assertRollWithWinLogged(String win) {
+        boolean didWin = YES.equals(win);
+
+        assertThat(race.getLastRoll().isWin(), is(equalTo(didWin)));
+    }
+
     @Then("our race must be over!")
     public void assertRacersCrashedAndBurned() {
         assertThat(racePage.isOver(), is(true));
