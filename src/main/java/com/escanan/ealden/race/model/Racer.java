@@ -165,6 +165,6 @@ public class Racer {
     }
 
     private void incrementDamage() {
-        damage++;
+        damage += 2;
     }
 }

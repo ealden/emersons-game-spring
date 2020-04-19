@@ -70,7 +70,7 @@ public class RacerTest {
         racer.roll(6, SUPER);
 
         assertThat(racer.getPosition(), is(6));
-        assertThat(racer.getDamage(), is(1));
+        assertThat(racer.getDamage(), is(2));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class RacerTest {
         racer.roll(6, SUPER);
 
         assertThat(racer.getPosition(), is(5));
-        assertThat(racer.getDamage(), is(2));
+        assertThat(racer.getDamage(), is(3));
     }
 
     @Test

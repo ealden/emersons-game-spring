@@ -21,15 +21,15 @@ Feature: Racer
       | 0         | 0       | NORMAL  | 5     | 1             | 0           | --      |
       | 0         | 0       | NORMAL  | 6     | 2             | 0           | --      |
 
-    Examples: SUPER speed is move based on roll but take 1 damage every time we roll
+    Examples: SUPER speed is move based on roll but take 2 damage every time we roll
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
-      | 0         | 0       | SUPER   | 1     | 1             | 1           | --      |
-      | 0         | 0       | SUPER   | 2     | 2             | 1           | --      |
-      | 0         | 0       | SUPER   | 3     | 3             | 1           | --      |
-      | 0         | 0       | SUPER   | 4     | 4             | 1           | --      |
-      | 0         | 0       | SUPER   | 5     | 5             | 1           | --      |
-      | 0         | 0       | SUPER   | 6     | 6             | 1           | --      |
+      | 0         | 0       | SUPER   | 1     | 1             | 2           | --      |
+      | 0         | 0       | SUPER   | 2     | 2             | 2           | --      |
+      | 0         | 0       | SUPER   | 3     | 3             | 2           | --      |
+      | 0         | 0       | SUPER   | 4     | 4             | 2           | --      |
+      | 0         | 0       | SUPER   | 5     | 5             | 2           | --      |
+      | 0         | 0       | SUPER   | 6     | 6             | 2           | --      |
 
     Examples: Damage is deducted from each roll
 
@@ -40,12 +40,12 @@ Feature: Racer
       | 0         | 1       | NORMAL  | 4     | 1             | 1           | --      |
       | 0         | 1       | NORMAL  | 5     | 0             | 1           | --      |
       | 0         | 1       | NORMAL  | 6     | 1             | 1           | --      |
-      | 0         | 1       | SUPER   | 1     | 0             | 2           | --      |
-      | 0         | 1       | SUPER   | 2     | 1             | 2           | --      |
-      | 0         | 1       | SUPER   | 3     | 2             | 2           | --      |
-      | 0         | 1       | SUPER   | 4     | 3             | 2           | --      |
-      | 0         | 1       | SUPER   | 5     | 4             | 2           | --      |
-      | 0         | 1       | SUPER   | 6     | 5             | 2           | --      |
+      | 0         | 1       | SUPER   | 1     | 0             | 3           | --      |
+      | 0         | 1       | SUPER   | 2     | 1             | 3           | --      |
+      | 0         | 1       | SUPER   | 3     | 2             | 3           | --      |
+      | 0         | 1       | SUPER   | 4     | 3             | 3           | --      |
+      | 0         | 1       | SUPER   | 5     | 4             | 3           | --      |
+      | 0         | 1       | SUPER   | 6     | 5             | 3           | --      |
 
     Examples: We will no longer be able to move given enough damage
 
@@ -60,12 +60,12 @@ Feature: Racer
     Examples: We will crash given max damage
 
       | Position  | Damage  | Speed   | Roll  | New Position  | New Damage  | Result  |
-      | 5         | 5       | SUPER   | 1     | 5             | 6           | CRASHED |
-      | 5         | 5       | SUPER   | 2     | 5             | 6           | CRASHED |
-      | 5         | 5       | SUPER   | 3     | 5             | 6           | CRASHED |
-      | 5         | 5       | SUPER   | 4     | 5             | 6           | CRASHED |
-      | 5         | 5       | SUPER   | 5     | 5             | 6           | CRASHED |
-      | 5         | 5       | SUPER   | 6     | 6             | 6           | CRASHED |
+      | 5         | 5       | SUPER   | 1     | 5             | 7           | CRASHED |
+      | 5         | 5       | SUPER   | 2     | 5             | 7           | CRASHED |
+      | 5         | 5       | SUPER   | 3     | 5             | 7           | CRASHED |
+      | 5         | 5       | SUPER   | 4     | 5             | 7           | CRASHED |
+      | 5         | 5       | SUPER   | 5     | 5             | 7           | CRASHED |
+      | 5         | 5       | SUPER   | 6     | 6             | 7           | CRASHED |
 
     Examples: We win if we reach the finish line!
 
@@ -76,12 +76,12 @@ Feature: Racer
       | 9         | 0       | NORMAL  | 4     | 10            | 0           | WIN     |
       | 9         | 0       | NORMAL  | 5     | 10            | 0           | WIN     |
       | 9         | 0       | NORMAL  | 6     | 10            | 0           | WIN     |
-      | 9         | 0       | SUPER   | 1     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 2     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 3     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 4     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 5     | 10            | 1           | WIN     |
-      | 9         | 0       | SUPER   | 6     | 10            | 1           | WIN     |
+      | 9         | 0       | SUPER   | 1     | 10            | 2           | WIN     |
+      | 9         | 0       | SUPER   | 2     | 10            | 2           | WIN     |
+      | 9         | 0       | SUPER   | 3     | 10            | 2           | WIN     |
+      | 9         | 0       | SUPER   | 4     | 10            | 2           | WIN     |
+      | 9         | 0       | SUPER   | 5     | 10            | 2           | WIN     |
+      | 9         | 0       | SUPER   | 6     | 10            | 2           | WIN     |
 
   Scenario: New Race
     Given I am in a race
@@ -120,49 +120,49 @@ Feature: Racer
       | 0         | 0       | NORMAL  | 4     | 2     | 2             | 0           | NO      | NO  |
       | 0         | 0       | NORMAL  | 5     | 1     | 1             | 0           | NO      | NO  |
       | 0         | 0       | NORMAL  | 6     | 2     | 2             | 0           | NO      | NO  |
-      | 0         | 0       | SUPER   | 1     | 1     | 1             | 1           | NO      | NO  |
-      | 0         | 0       | SUPER   | 2     | 2     | 2             | 1           | NO      | NO  |
-      | 0         | 0       | SUPER   | 3     | 3     | 3             | 1           | NO      | NO  |
-      | 0         | 0       | SUPER   | 4     | 4     | 4             | 1           | NO      | NO  |
-      | 0         | 0       | SUPER   | 5     | 5     | 5             | 1           | NO      | NO  |
-      | 0         | 0       | SUPER   | 6     | 6     | 6             | 1           | NO      | NO  |
+      | 0         | 0       | SUPER   | 1     | 1     | 1             | 2           | NO      | NO  |
+      | 0         | 0       | SUPER   | 2     | 2     | 2             | 2           | NO      | NO  |
+      | 0         | 0       | SUPER   | 3     | 3     | 3             | 2           | NO      | NO  |
+      | 0         | 0       | SUPER   | 4     | 4     | 4             | 2           | NO      | NO  |
+      | 0         | 0       | SUPER   | 5     | 5     | 5             | 2           | NO      | NO  |
+      | 0         | 0       | SUPER   | 6     | 6     | 6             | 2           | NO      | NO  |
       | 9         | 0       | NORMAL  | 1     | 1     | 10            | 0           | NO      | YES |
       | 9         | 0       | NORMAL  | 2     | 2     | 10            | 0           | NO      | YES |
       | 9         | 0       | NORMAL  | 3     | 1     | 10            | 0           | NO      | YES |
       | 9         | 0       | NORMAL  | 4     | 2     | 10            | 0           | NO      | YES |
       | 9         | 0       | NORMAL  | 5     | 1     | 10            | 0           | NO      | YES |
       | 9         | 0       | NORMAL  | 6     | 2     | 10            | 0           | NO      | YES |
-      | 9         | 0       | SUPER   | 1     | 1     | 10            | 1           | NO      | YES |
-      | 9         | 0       | SUPER   | 2     | 2     | 10            | 1           | NO      | YES |
-      | 9         | 0       | SUPER   | 3     | 3     | 10            | 1           | NO      | YES |
-      | 9         | 0       | SUPER   | 4     | 4     | 10            | 1           | NO      | YES |
-      | 9         | 0       | SUPER   | 5     | 5     | 10            | 1           | NO      | YES |
-      | 9         | 0       | SUPER   | 5     | 5     | 10            | 1           | NO      | YES |
-      | 9         | 0       | SUPER   | 6     | 6     | 10            | 1           | NO      | YES |
+      | 9         | 0       | SUPER   | 1     | 1     | 10            | 2           | NO      | YES |
+      | 9         | 0       | SUPER   | 2     | 2     | 10            | 2           | NO      | YES |
+      | 9         | 0       | SUPER   | 3     | 3     | 10            | 2           | NO      | YES |
+      | 9         | 0       | SUPER   | 4     | 4     | 10            | 2           | NO      | YES |
+      | 9         | 0       | SUPER   | 5     | 5     | 10            | 2           | NO      | YES |
+      | 9         | 0       | SUPER   | 5     | 5     | 10            | 2           | NO      | YES |
+      | 9         | 0       | SUPER   | 6     | 6     | 10            | 2           | NO      | YES |
       | 1         | 1       | NORMAL  | 1     | 0     | 1             | 1           | NO      | NO  |
       | 1         | 1       | NORMAL  | 2     | 1     | 2             | 1           | NO      | NO  |
       | 1         | 1       | NORMAL  | 3     | 0     | 1             | 1           | NO      | NO  |
       | 1         | 1       | NORMAL  | 4     | 1     | 2             | 1           | NO      | NO  |
       | 1         | 1       | NORMAL  | 5     | 0     | 1             | 1           | NO      | NO  |
       | 1         | 1       | NORMAL  | 6     | 1     | 2             | 1           | NO      | NO  |
-      | 1         | 1       | SUPER   | 1     | 0     | 1             | 2           | NO      | NO  |
-      | 1         | 1       | SUPER   | 2     | 1     | 2             | 2           | NO      | NO  |
-      | 1         | 1       | SUPER   | 3     | 2     | 3             | 2           | NO      | NO  |
-      | 1         | 1       | SUPER   | 4     | 3     | 4             | 2           | NO      | NO  |
-      | 1         | 1       | SUPER   | 5     | 4     | 5             | 2           | NO      | NO  |
-      | 1         | 1       | SUPER   | 6     | 5     | 6             | 2           | NO      | NO  |
+      | 1         | 1       | SUPER   | 1     | 0     | 1             | 3           | NO      | NO  |
+      | 1         | 1       | SUPER   | 2     | 1     | 2             | 3           | NO      | NO  |
+      | 1         | 1       | SUPER   | 3     | 2     | 3             | 3           | NO      | NO  |
+      | 1         | 1       | SUPER   | 4     | 3     | 4             | 3           | NO      | NO  |
+      | 1         | 1       | SUPER   | 5     | 4     | 5             | 3           | NO      | NO  |
+      | 1         | 1       | SUPER   | 6     | 5     | 6             | 3           | NO      | NO  |
       | 2         | 5       | NORMAL  | 1     | 0     | 2             | 5           | NO      | NO  |
       | 2         | 5       | NORMAL  | 2     | 0     | 2             | 5           | NO      | NO  |
       | 2         | 5       | NORMAL  | 3     | 0     | 2             | 5           | NO      | NO  |
       | 2         | 5       | NORMAL  | 4     | 0     | 2             | 5           | NO      | NO  |
       | 2         | 5       | NORMAL  | 5     | 0     | 2             | 5           | NO      | NO  |
       | 2         | 5       | NORMAL  | 6     | 0     | 2             | 5           | NO      | NO  |
-      | 2         | 5       | SUPER   | 1     | 0     | 2             | 6           | YES     | NO  |
-      | 2         | 5       | SUPER   | 2     | 0     | 2             | 6           | YES     | NO  |
-      | 2         | 5       | SUPER   | 3     | 0     | 2             | 6           | YES     | NO  |
-      | 2         | 5       | SUPER   | 4     | 0     | 2             | 6           | YES     | NO  |
-      | 2         | 5       | SUPER   | 5     | 0     | 2             | 6           | YES     | NO  |
-      | 2         | 5       | SUPER   | 6     | 1     | 3             | 6           | YES     | NO  |
+      | 2         | 5       | SUPER   | 1     | 0     | 2             | 7           | YES     | NO  |
+      | 2         | 5       | SUPER   | 2     | 0     | 2             | 7           | YES     | NO  |
+      | 2         | 5       | SUPER   | 3     | 0     | 2             | 7           | YES     | NO  |
+      | 2         | 5       | SUPER   | 4     | 0     | 2             | 7           | YES     | NO  |
+      | 2         | 5       | SUPER   | 5     | 0     | 2             | 7           | YES     | NO  |
+      | 2         | 5       | SUPER   | 6     | 1     | 3             | 7           | YES     | NO  |
 
   Scenario: Welcome Message
     Given I am in a race
@@ -182,9 +182,9 @@ Feature: Racer
 
       | Position  | Damage  | Speed   | Roll  | Message                                                                                     |
       | 0         | 0       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 1. Bob rolls next!                         |
-      | 0         | 0       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 1. Alice now has 1 damage. Bob rolls next!  |
+      | 0         | 0       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 1. Alice now has 2 damage. Bob rolls next!  |
       | 1         | 1       | NORMAL  | 2     | Alice chose NORMAL speed, and rolled 2 and moved 1. Alice has 1 damage. Bob rolls next!     |
-      | 1         | 1       | SUPER   | 2     | Alice chose SUPER speed, and rolled 2 and moved 1. Alice now has 2 damage. Bob rolls next!  |
+      | 1         | 1       | SUPER   | 2     | Alice chose SUPER speed, and rolled 2 and moved 1. Alice now has 3 damage. Bob rolls next!  |
       | 5         | 5       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 0. Alice has 5 damage. Bob rolls next!     |
       | 5         | 5       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 0. Alice CRASHED!!! Bob rolls next!         |
       | 9         | 0       | NORMAL  | 1     | Alice wins the race! Congratulations!!!                                                     |
