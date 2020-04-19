@@ -60,8 +60,12 @@ public class Racer {
         entry.setRoll(roll);
 
         if (SpeedType.NORMAL.equals(speedType)) {
+            entry.setMove(move(normal(roll)));
+
             normalRoll(roll);
         } else if (SpeedType.SUPER.equals(speedType)) {
+            entry.setMove(move(roll));
+
             superRoll(roll);
         }
 
@@ -142,7 +146,11 @@ public class Racer {
     }
 
     private void roll(int roll) {
-        position += max((roll - damage), ZERO_MOVE);
+        position += move(roll);
+    }
+
+    private int move(int roll) {
+        return max((roll - damage), ZERO_MOVE);
     }
 
     private int normal(int roll) {

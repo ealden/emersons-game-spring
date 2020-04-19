@@ -142,13 +142,13 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustLogRollEntry() {
+    public void rollMustLogRollEntryWithNormalSpeed() {
         assertThat(racer.getLastRoll(), is(nullValue()));
 
         racer.setPosition(1);
         racer.setDamage(1);
 
-        racer.roll(1, NORMAL);
+        racer.roll(2, NORMAL);
 
         Roll roll = racer.getLastRoll();
 
@@ -158,6 +158,24 @@ public class RacerTest {
         assertThat(roll.getPosition(), is(equalTo(1)));
         assertThat(roll.getDamage(), is(equalTo(1)));
         assertThat(roll.getSpeedType(), is(equalTo(NORMAL)));
-        assertThat(roll.getRoll(), is(equalTo(1)));
+        assertThat(roll.getRoll(), is(equalTo(2)));
+        assertThat(roll.getMove(), is(equalTo(1)));
+    }
+
+    @Test
+    public void rollMustLogRollEntryWithSuperSpeed() {
+        assertThat(racer.getLastRoll(), is(nullValue()));
+
+        racer.setPosition(1);
+        racer.setDamage(1);
+
+        racer.roll(2, SUPER);
+
+        Roll roll = racer.getLastRoll();
+
+        assertThat(roll, is(not(nullValue())));
+        assertThat(roll.getSpeedType(), is(equalTo(SUPER)));
+        assertThat(roll.getRoll(), is(equalTo(2)));
+        assertThat(roll.getMove(), is(equalTo(1)));
     }
 }

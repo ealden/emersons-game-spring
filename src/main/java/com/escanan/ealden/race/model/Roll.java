@@ -24,6 +24,7 @@ public class Roll {
     private int damage;
     private SpeedType speedType;
     private int roll;
+    private int move;
 
     public Long getId() {
         return id;
@@ -54,6 +55,10 @@ public class Roll {
         return roll;
     }
 
+    public int getMove() {
+        return move;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -80,5 +85,9 @@ public class Roll {
 
     public void setRoll(int roll) {
         this.roll = roll;
+    }
+
+    public void setMove(int move) {
+        this.move = move;
     }
 }
