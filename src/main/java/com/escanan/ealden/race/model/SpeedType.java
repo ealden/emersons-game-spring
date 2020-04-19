@@ -1,5 +1,7 @@
 package com.escanan.ealden.race.model;
 
+import static java.lang.Math.max;
+
 public enum SpeedType {
     NORMAL  (1, 2, 1, 0),
     SUPER   (0, 7, 0, 2);
@@ -18,5 +20,9 @@ public enum SpeedType {
 
     public int calculate(int roll) {
         return (((prefix + roll) % modulo) + offset);
+    }
+
+    public int move(int roll, int damage) {
+        return max((calculate(roll) - damage), 0);
     }
 }

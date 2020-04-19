@@ -25,4 +25,14 @@ public class SpeedTypeTest {
         assertThat(SUPER.calculate(5), is(equalTo(5)));
         assertThat(SUPER.calculate(6), is(equalTo(6)));
     }
+
+    @Test
+    public void move() {
+        assertThat(NORMAL.move(5, 0), is(equalTo(1)));
+        assertThat(NORMAL.move(5, 1), is(equalTo(0)));
+        assertThat(NORMAL.move(5, 2), is(equalTo(0)));
+        assertThat(SUPER.move(5, 0), is(equalTo(5)));
+        assertThat(SUPER.move(5, 1), is(equalTo(4)));
+        assertThat(SUPER.move(5, 6), is(equalTo(0)));
+    }
 }
