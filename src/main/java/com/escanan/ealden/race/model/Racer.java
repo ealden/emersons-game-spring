@@ -3,22 +3,16 @@ package com.escanan.ealden.race.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.escanan.ealden.race.model.Roll.beforeRoll;
-import static java.lang.Math.max;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
 public class Racer {
     public static final int MAX_DAMAGE = 6;
-
-    private static final int ZERO_MOVE = 0;
-    private static final int ODD_NORMAL_MOVE = 1;
-    private static final int EVEN_NORMAL_MOVE = 2;
 
     @Id
     @GeneratedValue
@@ -50,15 +44,10 @@ public class Racer {
     public void roll(int roll, SpeedType speedType) {
         Roll entry = beforeRoll(this, roll, speedType);
 
-        if (SpeedType.NORMAL.equals(speedType)) {
-            entry.setMove(move(normal(roll)));
+        entry.setMove(speedType.move(roll, damage));
 
-            normalRoll(roll);
-        } else if (SpeedType.SUPER.equals(speedType)) {
-            entry.setMove(move(roll));
-
-            superRoll(roll);
-        }
+        position += speedType.move(roll, damage);
+        damage += speedType.getDamage();
 
         entry.afterRoll(this);
 
@@ -132,35 +121,5 @@ public class Racer {
 
     public void setRank(int rank) {
         this.rank = rank;
-    }
-
-    private void normalRoll(int roll) {
-        roll(normal(roll));
-    }
-
-    private void superRoll(int roll) {
-        roll(roll);
-
-        incrementDamage();
-    }
-
-    private void roll(int roll) {
-        position += move(roll);
-    }
-
-    private int move(int roll) {
-        return max((roll - damage), ZERO_MOVE);
-    }
-
-    private int normal(int roll) {
-        return (isOdd(roll) ? ODD_NORMAL_MOVE : EVEN_NORMAL_MOVE);
-    }
-
-    private boolean isOdd(int roll) {
-        return (roll % 2) == 1;
-    }
-
-    private void incrementDamage() {
-        damage += 2;
     }
 }
