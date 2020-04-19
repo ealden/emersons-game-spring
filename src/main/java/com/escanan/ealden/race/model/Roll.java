@@ -30,6 +30,18 @@ public class Roll {
     private boolean crashed;
     private boolean win;
 
+    public static Roll beforeRoll(Racer racer, int roll, SpeedType speedType) {
+        Roll entry = new Roll();
+        entry.setRacer(racer);
+        entry.setRace(racer.getRace());
+        entry.setPosition(racer.getPosition());
+        entry.setDamage(racer.getDamage());
+        entry.setSpeedType(speedType);
+        entry.setRoll(roll);
+
+        return entry;
+    }
+
     public Long getId() {
         return id;
     }
@@ -125,5 +137,12 @@ public class Roll {
 
     public void setWin(boolean win) {
         this.win = win;
+    }
+
+    public void afterRoll(Racer racer) {
+        setNewPosition(racer.getPosition());
+        setNewDamage(racer.getDamage());
+        setCrashed(racer.isCrashed());
+        setWin(racer.isWinner());
     }
 }

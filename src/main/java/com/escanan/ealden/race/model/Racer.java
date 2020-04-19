@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.escanan.ealden.race.model.Roll.beforeRoll;
 import static java.lang.Math.max;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
@@ -51,13 +52,7 @@ public class Racer {
     }
 
     public void roll(int roll, SpeedType speedType) {
-        Roll entry = new Roll();
-        entry.setRacer(this);
-        entry.setRace(getRace());
-        entry.setPosition(getPosition());
-        entry.setDamage(getDamage());
-        entry.setSpeedType(speedType);
-        entry.setRoll(roll);
+        Roll entry = beforeRoll(this, roll, speedType);
 
         if (SpeedType.NORMAL.equals(speedType)) {
             entry.setMove(move(normal(roll)));
@@ -69,13 +64,16 @@ public class Racer {
             superRoll(roll);
         }
 
-        entry.setNewPosition(getPosition());
-        entry.setNewDamage(getDamage());
-        entry.setCrashed(isCrashed());
-        entry.setWin(isWinner());
+        entry.afterRoll(this);
 
-        rolls.add(entry);
-        lastRoll = entry;
+        addRoll(entry);
+    }
+
+    private Racer addRoll(Roll roll) {
+        rolls.add(roll);
+        lastRoll = roll;
+
+        return this;
     }
 
     public Long getId() {
