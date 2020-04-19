@@ -1,4 +1,4 @@
-Feature: Racer
+Feature: Emerson's Game
 
   Scenario Outline: Race
     Given I am in a race
