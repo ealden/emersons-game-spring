@@ -164,6 +164,34 @@ Feature: Racer
       | 2         | 5       | SUPER   | 5     | 0     | 2             | 6           | YES     | NO  |
       | 2         | 5       | SUPER   | 6     | 1     | 3             | 6           | YES     | NO  |
 
+  @wip
+  Scenario: Welcome Message
+    Given I am in a race
+    When  I try to view the race
+    Then  I must see the message: "Time to RACE! Alice rolls first!"
+
+  @wip
+  Scenario Outline: Message
+    Given I am in a race
+    And   I am at position <Position>
+    And   I have damage of <Damage>
+    And   I see the finish line at position 10
+    When  I choose "<Speed>" speed
+    And   I roll a <Roll>
+    Then  I must see the message: "<Message>"
+
+    Examples:
+
+      | Position  | Damage  | Speed   | Roll  | Message                                                                                     |
+      | 0         | 0       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 1. Bob rolls next!                         |
+      | 0         | 0       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 1. Alice now has 1 damage. Bob rolls next!  |
+      | 1         | 1       | NORMAL  | 2     | Alice chose NORMAL speed, and rolled 2 and moved 1. Alice now has 1 damage. Bob rolls next! |
+      | 1         | 1       | SUPER   | 2     | Alice chose SUPER speed, and rolled 2 and moved 1. Alice now has 2 damage. Bob rolls next!  |
+      | 5         | 5       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 0. Alice now has 5 damage. Bob rolls next! |
+      | 5         | 5       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 0. Alice CRASHED!!! Bob rolls next!         |
+      | 9         | 0       | NORMAL  | 1     | Alice wins the race! Congratulations!!!                                                     |
+      | 9         | 0       | SUPER   | 1     | Alice wins the race! Congratulations!!!                                                     |
+
   Scenario: Crash and Burn
     Given I am in a race
     When  all racers have crashed!
