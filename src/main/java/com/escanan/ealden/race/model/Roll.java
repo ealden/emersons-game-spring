@@ -20,6 +20,7 @@ public class Roll {
     private Racer racer;
 
     private int position;
+    private int damage;
 
     public Long getId() {
         return id;
@@ -38,6 +39,10 @@ public class Roll {
         return position;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -52,5 +57,9 @@ public class Roll {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 }
