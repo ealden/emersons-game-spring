@@ -16,10 +16,6 @@ import static javax.persistence.FetchType.EAGER;
 public class Racer {
     public static final int MAX_DAMAGE = 6;
 
-    public enum SpeedType {
-        NORMAL, SUPER
-    }
-
     private static final int ZERO_MOVE = 0;
     private static final int ODD_NORMAL_MOVE = 1;
     private static final int EVEN_NORMAL_MOVE = 2;

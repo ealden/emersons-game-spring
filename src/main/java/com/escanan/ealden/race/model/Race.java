@@ -1,7 +1,5 @@
 package com.escanan.ealden.race.model;
 
-import com.escanan.ealden.race.model.Racer.SpeedType;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

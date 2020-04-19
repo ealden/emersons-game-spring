@@ -1,6 +1,7 @@
 package com.escanan.ealden.race.page;
 
 import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.model.SpeedType;
 import com.google.common.base.Joiner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -50,12 +51,12 @@ public class RacePage {
         }
     }
 
-    public RacePage roll(int roll, Racer.SpeedType speedType) {
+    public RacePage roll(int roll, SpeedType speedType) {
         getRollField().sendKeys("" + roll);
 
-        if (Racer.SpeedType.NORMAL == speedType) {
+        if (SpeedType.NORMAL == speedType) {
             getNormalSpeedButton().click();
-        } else if (Racer.SpeedType.SUPER == speedType) {
+        } else if (SpeedType.SUPER == speedType) {
             getSuperSpeedButton().click();
         }
 

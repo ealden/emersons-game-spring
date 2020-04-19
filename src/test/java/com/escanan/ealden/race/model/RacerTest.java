@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
-import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
-import static com.escanan.ealden.race.model.Racer.SpeedType.SUPER;
+import static com.escanan.ealden.race.model.SpeedType.NORMAL;
+import static com.escanan.ealden.race.model.SpeedType.SUPER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 

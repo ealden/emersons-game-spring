@@ -2,7 +2,7 @@ package com.escanan.ealden.race.steps;
 
 import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
-import com.escanan.ealden.race.model.Racer.SpeedType;
+import com.escanan.ealden.race.model.SpeedType;
 import com.escanan.ealden.race.page.RacePage;
 import com.escanan.ealden.race.service.RaceService;
 import io.cucumber.java.en.Given;

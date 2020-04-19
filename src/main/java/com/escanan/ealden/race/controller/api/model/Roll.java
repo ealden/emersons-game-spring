@@ -1,6 +1,6 @@
 package com.escanan.ealden.race.controller.api.model;
 
-import com.escanan.ealden.race.model.Racer.SpeedType;
+import com.escanan.ealden.race.model.SpeedType;
 
 public class Roll {
     private SpeedType speedType;

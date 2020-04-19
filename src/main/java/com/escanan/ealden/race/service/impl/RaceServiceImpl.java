@@ -3,6 +3,7 @@ package com.escanan.ealden.race.service.impl;
 import com.escanan.ealden.race.data.RaceRepository;
 import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.model.SpeedType;
 import com.escanan.ealden.race.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +41,7 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public Race roll(int roll, Racer.SpeedType speedType) {
+    public Race roll(int roll, SpeedType speedType) {
         Race race = getCurrentRace();
 
         if (!testMode) {

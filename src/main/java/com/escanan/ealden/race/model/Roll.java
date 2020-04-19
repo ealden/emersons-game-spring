@@ -1,6 +1,5 @@
 package com.escanan.ealden.race.model;
 
-import com.escanan.ealden.race.model.Racer.SpeedType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
@@ -8,8 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
-import static com.escanan.ealden.race.model.Racer.SpeedType.SUPER;
+import static com.escanan.ealden.race.model.SpeedType.NORMAL;
+import static com.escanan.ealden.race.model.SpeedType.SUPER;
 
 @Entity
 public class Roll {
