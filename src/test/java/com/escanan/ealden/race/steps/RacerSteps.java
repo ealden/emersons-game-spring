@@ -145,6 +145,11 @@ public class RacerSteps {
         assertThat(race.getLastRoll().getNewPosition(), is(equalTo(newPosition)));
     }
 
+    @Then("New Damage: {int}")
+    public void assertRollWithNewDamageLogged(int newDamage) {
+        assertThat(race.getLastRoll().getNewDamage(), is(equalTo(newDamage)));
+    }
+
     @Then("our race must be over!")
     public void assertRacersCrashedAndBurned() {
         assertThat(racePage.isOver(), is(true));

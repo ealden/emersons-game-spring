@@ -26,6 +26,7 @@ public class Roll {
     private int roll;
     private int move;
     private int newPosition;
+    private int newDamage;
 
     public Long getId() {
         return id;
@@ -64,6 +65,10 @@ public class Roll {
         return newPosition;
     }
 
+    public int getNewDamage() {
+        return newDamage;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -98,5 +103,9 @@ public class Roll {
 
     public void setNewPosition(int newPosition) {
         this.newPosition = newPosition;
+    }
+
+    public void setNewDamage(int newDamage) {
+        this.newDamage = newDamage;
     }
 }
