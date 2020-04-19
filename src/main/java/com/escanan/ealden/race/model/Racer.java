@@ -69,6 +69,8 @@ public class Racer {
             superRoll(roll);
         }
 
+        entry.setNewPosition(getPosition());
+
         rolls.add(entry);
         lastRoll = entry;
     }

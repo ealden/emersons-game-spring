@@ -25,6 +25,7 @@ public class Roll {
     private SpeedType speedType;
     private int roll;
     private int move;
+    private int newPosition;
 
     public Long getId() {
         return id;
@@ -59,6 +60,10 @@ public class Roll {
         return move;
     }
 
+    public int getNewPosition() {
+        return newPosition;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -89,5 +94,9 @@ public class Roll {
 
     public void setMove(int move) {
         this.move = move;
+    }
+
+    public void setNewPosition(int newPosition) {
+        this.newPosition = newPosition;
     }
 }
