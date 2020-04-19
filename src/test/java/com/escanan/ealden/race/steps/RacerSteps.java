@@ -2,6 +2,7 @@ package com.escanan.ealden.race.steps;
 
 import com.escanan.ealden.race.model.Race;
 import com.escanan.ealden.race.model.Racer;
+import com.escanan.ealden.race.model.Racer.SpeedType;
 import com.escanan.ealden.race.page.RacePage;
 import com.escanan.ealden.race.service.RaceService;
 import io.cucumber.java.en.Given;
@@ -20,9 +21,9 @@ public class RacerSteps {
 
     private RacePage racePage;
 
-    private Race race = null;
-    private Racer racer = null;
-    private Racer.SpeedType speedType = null;
+    private Race race;
+    private Racer racer;
+    private SpeedType speedType;
 
     @Given("I am in a race")
     public void newRace() {
@@ -47,7 +48,7 @@ public class RacerSteps {
 
     @When("I choose {string} speed")
     public void speed(String speed) {
-        speedType = Racer.SpeedType.valueOf(speed);
+        speedType = SpeedType.valueOf(speed);
     }
 
     @When("I roll a {int}")
