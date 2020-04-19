@@ -130,6 +130,11 @@ public class RacerSteps {
         assertThat(race.getLastRoll().getSpeedType(), is(equalTo(SpeedType.valueOf(speedType))));
     }
 
+    @Then("Roll: {int}")
+    public void assertRollWithRollLogged(int roll) {
+        assertThat(race.getLastRoll().getRoll(), is(equalTo(roll)));
+    }
+
     @Then("our race must be over!")
     public void assertRacersCrashedAndBurned() {
         assertThat(racePage.isOver(), is(true));

@@ -57,6 +57,7 @@ public class Racer {
         entry.setPosition(getPosition());
         entry.setDamage(getDamage());
         entry.setSpeedType(speedType);
+        entry.setRoll(roll);
 
         if (SpeedType.NORMAL.equals(speedType)) {
             normalRoll(roll);
