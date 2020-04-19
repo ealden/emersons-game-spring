@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
+import static com.escanan.ealden.race.model.Racer.SpeedType.SUPER;
+
 @Entity
 public class Roll {
     @Id
@@ -93,6 +96,14 @@ public class Roll {
 
     public boolean isDamaged() {
         return (newDamage > 0);
+    }
+
+    public boolean isNormalSpeed() {
+        return NORMAL.equals(speedType);
+    }
+
+    public boolean isSuperSpeed() {
+        return SUPER.equals(speedType);
     }
 
     public void setId(Long id) {
