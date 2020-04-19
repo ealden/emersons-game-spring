@@ -71,6 +71,7 @@ public class Racer {
 
         entry.setNewPosition(getPosition());
         entry.setNewDamage(getDamage());
+        entry.setCrashed(isCrashed());
 
         rolls.add(entry);
         lastRoll = entry;

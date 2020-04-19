@@ -17,6 +17,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.sameInstance;
 
 public class RacerSteps {
+    private static final String YES = "YES";
+
     @Autowired
     private RaceService raceService;
 
@@ -148,6 +150,13 @@ public class RacerSteps {
     @Then("New Damage: {int}")
     public void assertRollWithNewDamageLogged(int newDamage) {
         assertThat(race.getLastRoll().getNewDamage(), is(equalTo(newDamage)));
+    }
+
+    @Then("Crashed: {string}")
+    public void assertRollWithCrashedLogged(String crashed) {
+        boolean didCrash = YES.equals(crashed);
+
+        assertThat(race.getLastRoll().isCrashed(), is(equalTo(didCrash)));
     }
 
     @Then("our race must be over!")

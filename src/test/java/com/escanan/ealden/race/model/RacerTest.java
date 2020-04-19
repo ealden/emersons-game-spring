@@ -162,6 +162,7 @@ public class RacerTest {
         assertThat(roll.getMove(), is(equalTo(1)));
         assertThat(roll.getNewPosition(), is(equalTo(2)));
         assertThat(roll.getNewDamage(), is(equalTo(1)));
+        assertThat(roll.isCrashed(), is(false));
     }
 
     @Test
@@ -179,5 +180,20 @@ public class RacerTest {
         assertThat(roll.getSpeedType(), is(equalTo(SUPER)));
         assertThat(roll.getRoll(), is(equalTo(2)));
         assertThat(roll.getMove(), is(equalTo(1)));
+    }
+
+    @Test
+    public void rollMustLogRollEntryThatCrashed() {
+        assertThat(racer.getLastRoll(), is(nullValue()));
+
+        racer.setPosition(1);
+        racer.setDamage(5);
+
+        racer.roll(2, SUPER);
+
+        Roll roll = racer.getLastRoll();
+
+        assertThat(roll, is(not(nullValue())));
+        assertThat(roll.isCrashed(), is(true));
     }
 }
