@@ -44,8 +44,6 @@ public class Racer {
     public void roll(int roll, SpeedType speedType) {
         Roll entry = beforeRoll(this, roll, speedType);
 
-        entry.setMove(speedType.move(roll, damage));
-
         position += speedType.move(roll, damage);
         damage += speedType.getDamage();
 

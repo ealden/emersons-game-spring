@@ -40,6 +40,7 @@ public class Roll {
         entry.setDamage(racer.getDamage());
         entry.setSpeedType(speedType);
         entry.setRoll(roll);
+        entry.setMove(speedType.move(roll, racer.getDamage()));
 
         return entry;
     }
