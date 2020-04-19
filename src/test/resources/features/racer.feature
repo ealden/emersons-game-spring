@@ -93,7 +93,6 @@ Feature: Racer
     And   I must now have damage of 0
     And   I must see the race result: --
 
-  @wip
   Scenario Outline: Log Roll Entry
     Given I am in a race
     And   I am at position <Position>
