@@ -160,4 +160,21 @@ public class RaceTest {
 
         assertThat(race.isOver(), is(false));
     }
+
+    @Test
+    public void getLastRollMustBeNullIfNoRollsYet() {
+        assertThat(race.getLastRoll(), is(nullValue()));
+    }
+
+    @Test
+    public void getLastRollMustReturnRollIfRollMade() {
+        Racer racer = new Racer();
+
+        race.addRacer(racer);
+
+        race.roll(1, NORMAL);
+
+        assertThat(race.getLastRoll(), is(not(nullValue())));
+        assertThat(race.getLastRoll().getRace(), is(sameInstance(race)));
+    }
 }

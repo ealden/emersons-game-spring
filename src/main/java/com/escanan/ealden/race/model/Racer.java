@@ -1,8 +1,15 @@
 package com.escanan.ealden.race.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Math.max;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
 public class Racer {
@@ -23,6 +30,13 @@ public class Racer {
     @ManyToOne
     private Race race;
 
+    @OneToMany(mappedBy = "racer", cascade = ALL, fetch = EAGER)
+    @OrderBy("id")
+    private List<Roll> rolls = new ArrayList<>();
+
+    @ManyToOne
+    private Roll lastRoll;
+
     private String name;
     private int position = 0;
     private int damage = 0;
@@ -37,18 +51,26 @@ public class Racer {
     }
 
     public void roll(int roll, SpeedType speedType) {
+        Roll entry = new Roll();
+        entry.setRacer(this);
+        entry.setRace(getRace());
+
         if (SpeedType.NORMAL.equals(speedType)) {
             normalRoll(roll);
         } else if (SpeedType.SUPER.equals(speedType)) {
             superRoll(roll);
         }
+
+        rolls.add(entry);
+        lastRoll = entry;
     }
 
     public Long getId() {
         return id;
     }
 
-    Race getRace() {
+    @JsonIgnore
+    public Race getRace() {
         return race;
     }
 
@@ -70,6 +92,11 @@ public class Racer {
 
     public int getRank() {
         return rank;
+    }
+
+    @JsonIgnore
+    public Roll getLastRoll() {
+        return lastRoll;
     }
 
     public boolean isCrashed() {

@@ -7,7 +7,7 @@ import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static com.escanan.ealden.race.model.Racer.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.Racer.SpeedType.SUPER;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 public class RacerTest {
     private Racer racer;
@@ -139,5 +139,18 @@ public class RacerTest {
         racer.setPosition(position);
 
         assertThat(racer.isWinner(), is(false));
+    }
+
+    @Test
+    public void rollMustLogRollEntry() {
+        assertThat(racer.getLastRoll(), is(nullValue()));
+
+        racer.roll(1, NORMAL);
+
+        Roll roll = racer.getLastRoll();
+
+        assertThat(roll, is(not(nullValue())));
+        assertThat(roll.getRacer(), is(sameInstance(racer)));
+        assertThat(roll.getRace(), is(sameInstance(race)));
     }
 }

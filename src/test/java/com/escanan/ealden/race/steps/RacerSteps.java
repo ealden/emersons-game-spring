@@ -14,6 +14,7 @@ import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.sameInstance;
 
 public class RacerSteps {
     @Autowired
@@ -58,6 +59,8 @@ public class RacerSteps {
         racePage = RacePage.load();
 
         racePage.roll(roll, speedType);
+
+        race = raceService.getCurrentRace();
     }
 
     @When("I choose to start over in a new race")
@@ -103,6 +106,13 @@ public class RacerSteps {
     public void assertRacerCrashed() {
         assertThat(racePage.isRacerCrashed(racer), is(true));
         assertThat(racePage.isOver(), is(false));
+    }
+
+    @Then("I must now have a log entry with the following:")
+    public void assertRollWithRacerLogged() {
+        Racer previousRacer = race.getRacers().get(0);
+
+        assertThat(race.getLastRoll().getRacer(), is(sameInstance(previousRacer)));
     }
 
     @Then("our race must be over!")

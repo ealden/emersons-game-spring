@@ -19,12 +19,19 @@ public class Race {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy="race", cascade = ALL, fetch = EAGER)
+    @OneToMany(mappedBy = "race", cascade = ALL, fetch = EAGER)
     @OrderBy("id")
     private List<Racer> racers = new ArrayList<>();
 
     @ManyToOne
     private Racer currentRacer;
+
+    @OneToMany(mappedBy = "race", cascade = ALL, fetch = EAGER)
+    @OrderBy("id")
+    private List<Roll> rolls = new ArrayList<>();
+
+    @ManyToOne
+    private Roll lastRoll;
 
     private int finishLine = DEFAULT_FINISH_LINE;
 
@@ -59,6 +66,8 @@ public class Race {
         if (currentRacer != null) {
             currentRacer.roll(roll, speedType);
 
+            lastRoll = currentRacer.getLastRoll();
+
             nextRacer();
         }
     }
@@ -89,6 +98,10 @@ public class Race {
 
     public int getFinishLine() {
         return finishLine;
+    }
+
+    public Roll getLastRoll() {
+        return lastRoll;
     }
 
     public boolean isOver() {
