@@ -117,12 +117,12 @@
                 .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
                 .concat(this.lastRoll.racer.name + ' CRASHED!!! ')
                 .concat(this.currentRacer.name + ' rolls next!')
-            } else if ((this.lastRoll.newDamage > 0) && (this.lastRoll.speedType == 'NORMAL')) {
+            } else if (this.lastRoll.damaged && (this.lastRoll.speedType == 'NORMAL')) {
               return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
                 .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
                 .concat(this.lastRoll.racer.name + ' has ' + this.lastRoll.newDamage + ' damage. ')
                 .concat(this.currentRacer.name + ' rolls next!')
-            } else if ((this.lastRoll.newDamage > 0) && (this.lastRoll.speedType == 'SUPER')) {
+            } else if (this.lastRoll.damaged && (this.lastRoll.speedType == 'SUPER')) {
               return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
                 .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
                 .concat(this.lastRoll.racer.name + ' now has ' + this.lastRoll.newDamage + ' damage. ')

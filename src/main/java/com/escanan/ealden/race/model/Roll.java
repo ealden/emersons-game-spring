@@ -91,6 +91,10 @@ public class Roll {
         return win;
     }
 
+    public boolean isDamaged() {
+        return (newDamage > 0);
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
