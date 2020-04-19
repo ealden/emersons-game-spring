@@ -183,9 +183,9 @@ Feature: Racer
       | Position  | Damage  | Speed   | Roll  | Message                                                                                     |
       | 0         | 0       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 1. Bob rolls next!                         |
       | 0         | 0       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 1. Alice now has 1 damage. Bob rolls next!  |
-      | 1         | 1       | NORMAL  | 2     | Alice chose NORMAL speed, and rolled 2 and moved 1. Alice now has 1 damage. Bob rolls next! |
+      | 1         | 1       | NORMAL  | 2     | Alice chose NORMAL speed, and rolled 2 and moved 1. Alice has 1 damage. Bob rolls next!     |
       | 1         | 1       | SUPER   | 2     | Alice chose SUPER speed, and rolled 2 and moved 1. Alice now has 2 damage. Bob rolls next!  |
-      | 5         | 5       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 0. Alice now has 5 damage. Bob rolls next! |
+      | 5         | 5       | NORMAL  | 1     | Alice chose NORMAL speed, and rolled 1 and moved 0. Alice has 5 damage. Bob rolls next!     |
       | 5         | 5       | SUPER   | 1     | Alice chose SUPER speed, and rolled 1 and moved 0. Alice CRASHED!!! Bob rolls next!         |
       | 9         | 0       | NORMAL  | 1     | Alice wins the race! Congratulations!!!                                                     |
       | 9         | 0       | SUPER   | 1     | Alice wins the race! Congratulations!!!                                                     |
