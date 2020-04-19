@@ -108,7 +108,6 @@ public class RacerSteps {
     @Then("I must see the race result: CRASHED")
     public void assertRacerCrashed() {
         assertThat(racePage.isRacerCrashed(racer), is(true));
-        assertThat(racePage.isOver(), is(false));
     }
 
     @Then("I must now have a log entry with the following:")
