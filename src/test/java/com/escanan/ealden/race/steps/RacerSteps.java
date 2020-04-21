@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -21,6 +22,9 @@ public class RacerSteps {
 
     @Autowired
     private RaceService raceService;
+
+    @Value("${race.test.headless}")
+    private boolean headless;
 
     private RacePage racePage;
 
@@ -94,7 +98,7 @@ public class RacerSteps {
     public void loadRace() {
         raceService.save(race);
 
-        racePage = RacePage.load();
+        racePage = RacePage.load(headless);
     }
 
     @Then("I must now be at position {int}")
@@ -191,6 +195,6 @@ public class RacerSteps {
 
     @Then("it's over, it's over")
     public void close() {
-        RacePage.close();
+        RacePage.load().close();
     }
 }

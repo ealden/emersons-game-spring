@@ -22,31 +22,39 @@ public class RacePage {
 
     private static WebDriver driver;
 
-    private RacePage() {
+    private boolean headless;
+
+    private RacePage(boolean headless) {
+        this.headless = headless;
+
         driver.navigate().to(ROOT_URL);
     }
 
     public static RacePage load() {
-        if (driver == null) {
-            driver = createDriver();
-        }
-
-        return new RacePage();
+        return load(HEADLESS);
     }
 
-    private static WebDriver createDriver() {
+    public static RacePage load(boolean headless) {
+        if (driver == null) {
+            driver = createDriver(headless);
+        }
+
+        return new RacePage(headless);
+    }
+
+    private static WebDriver createDriver(boolean headless) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--silent");
 
-        if (HEADLESS) {
+        if (headless) {
             options.addArguments("--headless");
         }
 
         return new ChromeDriver(options);
     }
 
-    public static void close() {
-        if (HEADLESS) {
+    public void close() {
+        if (headless) {
             driver.quit();
         }
     }
