@@ -52,6 +52,7 @@ public class RacePage {
     }
 
     public RacePage roll(int roll, SpeedType speedType) {
+        getRollField().clear();
         getRollField().sendKeys("" + roll);
 
         if (SpeedType.NORMAL == speedType) {
