@@ -101,45 +101,45 @@ public class RacePage {
     }
 
     private WebElement getRollField() {
-        return doWait().until(visibilityOfElementLocated(By.id("test-roll")));
+        return findElementById("test-roll");
     }
 
     private WebElement getProcessingField() {
-        return doWait().until(visibilityOfElementLocated(By.id("test-processing")));
+        return findElementById("test-processing");
     }
 
     private WebElement getNormalSpeedButton() {
-        return driver.findElement(By.id("roll-normal-speed"));
+        return findElementById("roll-normal-speed");
     }
 
     private WebElement getSuperSpeedButton() {
-        return driver.findElement(By.id("roll-super-speed"));
+        return findElementById("roll-super-speed");
     }
 
     private WebElement getRacerPositionField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "position"));
 
-        return driver.findElement(By.id(id));
+        return findElementById(id);
     }
 
     private WebElement getRacerDamageField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "damage"));
 
-        return driver.findElement(By.id(id));
+        return findElementById(id);
     }
 
     private WebElement getRacerCrashedField(Racer racer) {
         String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "crashed"));
 
-        return driver.findElement(By.id(id));
+        return findElementById(id);
     }
 
     private WebElement getNewRaceButton() {
-        return driver.findElement(By.id("new-race"));
+        return findElementById("new-race");
     }
 
     private WebElement getMessageField() {
-        return doWait().until(visibilityOfElementLocated(By.id("message")));
+        return findElementById("message");
     }
 
     private void waitUntilProcessingComplete() {
@@ -148,5 +148,13 @@ public class RacePage {
 
     private WebDriverWait doWait() {
         return new WebDriverWait(driver, 20);
+    }
+
+    private WebElement findElement(By by) {
+        return doWait().until(visibilityOfElementLocated(by));
+    }
+
+    private WebElement findElementById(String id) {
+        return findElement(By.id(id));
     }
 }
