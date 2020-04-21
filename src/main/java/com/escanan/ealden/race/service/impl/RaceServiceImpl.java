@@ -14,7 +14,7 @@ public class RaceServiceImpl implements RaceService {
     @Autowired
     private RaceRepository raceRepository;
 
-    @Value("${race.enable.testMode:false}")
+    @Value("${race.test.enable}")
     private boolean testMode;
 
     @Override

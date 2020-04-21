@@ -16,7 +16,7 @@ public class RacesController {
     @Autowired
     private RaceService raceService;
 
-    @Value("${race.enable.testMode:false}")
+    @Value("${race.test.enable}")
     private boolean testMode;
 
     @GetMapping("/api/races")

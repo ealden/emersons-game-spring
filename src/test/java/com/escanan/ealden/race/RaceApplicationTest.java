@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
         properties = {
                 "logging.pattern.console=",
-                "race.enable.testMode=true",
+                "race.test.enable=true",
                 "race.test.headless=${EMERSONS_GAME_HEADLESS:true}"
         }
 )
