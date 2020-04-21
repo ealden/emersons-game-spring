@@ -117,21 +117,15 @@ public class RacePage {
     }
 
     private WebElement getRacerPositionField(Racer racer) {
-        String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "position"));
-
-        return findElementById(id);
+        return findElementById(test(racer, "position"));
     }
 
     private WebElement getRacerDamageField(Racer racer) {
-        String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "damage"));
-
-        return findElementById(id);
+        return findElementById(test(racer, "damage"));
     }
 
     private WebElement getRacerCrashedField(Racer racer) {
-        String id = Joiner.on("-").join(asList("test", "racer", racer.getId(), "crashed"));
-
-        return findElementById(id);
+        return findElementById(test(racer, "crashed"));
     }
 
     private WebElement getNewRaceButton() {
@@ -156,5 +150,9 @@ public class RacePage {
 
     private WebElement findElementById(String id) {
         return findElement(By.id(id));
+    }
+
+    private String test(Racer racer, String key) {
+        return Joiner.on("-").join(asList("test", "racer", racer.getId(), key));
     }
 }
