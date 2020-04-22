@@ -1,4 +1,17 @@
 Feature: Emerson's Game
+  
+  Emerson's Game is a racing game that teaches proper software engineering, and why we should focus on quality.
+
+  The game involves 2 or more racers on a race track, trying to cross the finish line.  Each racer takes turns,
+  choosing whether they want to go NORMAL speed or SUPER speed, and then rolling the dice.  Each racer then moves
+  the corresponding number of positions based on these rules:
+
+   - If NORMAL speed and dice roll is ODD, move 1 position forward
+   - If NORMAL speed and dice roll is EVEN, move 2 positions forward
+   - If SUPER speed, move based on the dice roll, but take 1 damage each time
+   - Damage is deducted to each roll
+
+  More info at: https://ealden.escanan.com/specification-by-example-1096b613cce2
 
   Scenario Outline: Race
     Given I am in a race
