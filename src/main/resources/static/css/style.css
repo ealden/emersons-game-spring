@@ -43,3 +43,11 @@ h1 {
 .hidden {
   visibility: hidden;
 }
+
+#about {
+  padding-top: 5rem;
+}
+
+.indent-right {
+  padding-left: 2rem;
+}

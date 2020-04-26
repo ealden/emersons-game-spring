@@ -84,6 +84,16 @@
       <input v-if="testMode" id="test-roll" v-model="roll">
 
       <span v-if="testMode && processing" id="test-processing">{{ processing }}</span>
+
+      <div id="about">
+        <p><strong>Emerson's Game</strong> is a racing game that teaches proper software engineering, and why we should focus on quality.  This implementation was build using <a href="https://ealden.escanan.com/specification-by-example-1096b613cce2"><strong>Specification by Example</strong></a>.</p>
+        <p>The rules of Emerson's Game are:</p>
+        <ul class="indent-right">
+          <li>Choose either normal speed or super speed, then roll a dice</li>
+          <li>If you choose normal, odd dice moves 1, while even moves 2</li>
+          <li>If you choose super, move on the dice, but take 1 damage each roll</li>
+        </ul>
+      </div>
     </div>
 
     <script src="js/index.js"></script>
