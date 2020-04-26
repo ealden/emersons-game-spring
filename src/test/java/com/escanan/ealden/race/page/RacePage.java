@@ -12,8 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
-import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementValue;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
@@ -146,7 +145,7 @@ public class RacePage {
     }
 
     private void waitUntilProcessingComplete() {
-        doWait().until(textToBePresentInElementValue(getProcessingField(), "false"));
+        doWait().until(invisibilityOfElementLocated(By.id("test-processing")));
     }
 
     private WebDriverWait doWait() {

@@ -82,7 +82,8 @@
       </div>
 
       <input v-if="testMode" id="test-roll" v-model="roll">
-      <input v-if="testMode" id="test-processing" v-model="processing">
+
+      <span v-if="testMode && processing" id="test-processing">{{ processing }}</span>
     </div>
 
     <script src="js/index.js"></script>
