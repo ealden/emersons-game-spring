@@ -86,6 +86,8 @@ public class Race {
     public String getMessage() {
         if ((currentRacer != null) && (getLastRoll() == null)) {
             return format("Time to RACE!  %s rolls first!", currentRacer.getName());
+        } else if (isAllCrashed()) {
+            return "All racers CRASHED!!!  This race is over!";
         } else {
             return null;
         }
@@ -122,7 +124,7 @@ public class Race {
     }
 
     public boolean isAllCrashed() {
-        boolean allCrashed = true;
+        boolean allCrashed = !racers.isEmpty();
 
         for (Racer racer : racers) {
             allCrashed = (allCrashed && racer.isCrashed());

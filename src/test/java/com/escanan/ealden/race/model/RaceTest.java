@@ -1,5 +1,6 @@
 package com.escanan.ealden.race.model;
 
+import org.checkerframework.checker.units.qual.Speed;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -199,5 +200,20 @@ public class RaceTest {
         race.addRacer(new Racer("Racer 1"));
 
         assertThat(race.getMessage(), is(equalTo("Time to RACE!  Racer 1 rolls first!")));
+    }
+
+    @Test
+    public void getMessageWhenAllRacersCrashed() {
+        race.addRacer(new Racer("Racer 1"));
+        race.addRacer(new Racer("Racer 2"));
+        race.addRacer(new Racer("Racer 3"));
+
+        for (Racer racer : race.getRacers()) {
+            racer.setDamage(MAX_DAMAGE);
+        }
+
+        race.roll(0, NORMAL);
+
+        assertThat(race.getMessage(), is(equalTo("All racers CRASHED!!!  This race is over!")));
     }
 }
