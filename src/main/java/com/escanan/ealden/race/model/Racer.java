@@ -101,6 +101,10 @@ public class Racer {
         return (position >= race.getFinishLine());
     }
 
+    public boolean isDamaged() {
+        return damage > 0;
+    }
+
     public void setRace(Race race) {
         this.race = race;
     }

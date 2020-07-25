@@ -212,4 +212,25 @@ public class RacerTest {
         assertThat(roll, is(not(nullValue())));
         assertThat(roll.isWin(), is(true));
     }
+
+    @Test
+    public void isDamagedMustBeTrueIfDamageGreaterThanZero() {
+        racer.setDamage(1);
+
+        assertThat(racer.isDamaged(), is(true));
+    }
+
+    @Test
+    public void isDamagedMustBeFalseIfDamageIsZero() {
+        racer.setDamage(0);
+
+        assertThat(racer.isDamaged(), is(false));
+    }
+
+    @Test
+    public void isDamagedMustBeFalseIfDamageIsLessThanZero() {
+        racer.setDamage(-1);
+
+        assertThat(racer.isDamaged(), is(false));
+    }
 }
