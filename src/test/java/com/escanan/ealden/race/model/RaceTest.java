@@ -216,4 +216,17 @@ public class RaceTest {
 
         assertThat(race.getMessage(), is(equalTo("All racers CRASHED!!!  This race is over!")));
     }
+
+    @Test
+    public void getMessageWhenARacerWins() {
+        race.addRacer(new Racer("Racer 1"));
+        race.addRacer(new Racer("Racer 2"));
+        race.addRacer(new Racer("Racer 3"));
+
+        race.getRacers().get(0).setPosition(10);
+
+        race.roll(0, NORMAL);
+
+        assertThat(race.getMessage(), is(equalTo("Racer 1 wins the race!  Congratulations!!!")));
+    }
 }

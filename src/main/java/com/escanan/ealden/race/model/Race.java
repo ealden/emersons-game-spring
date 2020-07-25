@@ -88,6 +88,8 @@ public class Race {
             return format("Time to RACE!  %s rolls first!", currentRacer.getName());
         } else if (isAllCrashed()) {
             return "All racers CRASHED!!!  This race is over!";
+        } else if (isOver()) {
+            return format("%s wins the race!  Congratulations!!!", lastRoll.getRacer().getName());
         } else {
             return null;
         }
