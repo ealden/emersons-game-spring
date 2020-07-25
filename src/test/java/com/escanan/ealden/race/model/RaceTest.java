@@ -193,4 +193,11 @@ public class RaceTest {
     public void getMessageWithNoRacers() {
         assertThat(race.getMessage(), is(nullValue()));
     }
+
+    @Test
+    public void getMessageWithRacers() {
+        race.addRacer(new Racer("Racer 1"));
+
+        assertThat(race.getMessage(), is(equalTo("Time to RACE!  Racer 1 rolls first!")));
+    }
 }

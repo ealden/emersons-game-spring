@@ -23,9 +23,7 @@ var app = new Vue({
     },
     message: function () {
       if (this.raceMessage != null) {
-        return raceMessage;
-      } else if (this.lastRoll == null) {
-        return 'Time to RACE! ' + this.currentRacer.name + ' rolls first!'
+        return this.raceMessage;
       } else if (this.allCrashed) {
         return 'All racers CRASHED!!!  This race is over!'
       } else if (this.over) {

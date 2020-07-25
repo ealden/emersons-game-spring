@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.String.format;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
@@ -83,7 +84,11 @@ public class Race {
     }
 
     public String getMessage() {
-        return null;
+        if ((currentRacer != null) && (getLastRoll() == null)) {
+            return format("Time to RACE!  %s rolls first!", currentRacer.getName());
+        } else {
+            return null;
+        }
     }
 
     public Long getId() {
