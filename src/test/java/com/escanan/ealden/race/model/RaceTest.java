@@ -190,12 +190,12 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWithNoRacers() {
+    public void getMessageWhenNoRacersJoined() {
         assertThat(race.getMessage(), is(nullValue()));
     }
 
     @Test
-    public void getMessageWithRacers() {
+    public void getMessageWhenRacersJoined() {
         race.addRacer(new Racer("Racer 1"));
 
         assertThat(race.getMessage(), is(equalTo("Time to RACE!  Racer 1 rolls first!")));
