@@ -19,7 +19,11 @@ public enum SpeedType {
     }
 
     public int calculate(int roll) {
-        return (((prefix + roll) % modulo) + offset);
+        if (roll > 0) {
+            return (((prefix + roll) % modulo) + offset);
+        } else {
+            return 0;
+        }
     }
 
     public int move(int roll, int damage) {

@@ -18,12 +18,18 @@ public class SpeedTypeTest {
         assertThat(NORMAL.calculate(5), is(equalTo(1)));
         assertThat(NORMAL.calculate(6), is(equalTo(2)));
 
+        assertThat(NORMAL.calculate(0), is(equalTo(0)));
+        assertThat(NORMAL.calculate(-1), is(equalTo(0)));
+
         assertThat(SUPER.calculate(1), is(equalTo(1)));
         assertThat(SUPER.calculate(2), is(equalTo(2)));
         assertThat(SUPER.calculate(3), is(equalTo(3)));
         assertThat(SUPER.calculate(4), is(equalTo(4)));
         assertThat(SUPER.calculate(5), is(equalTo(5)));
         assertThat(SUPER.calculate(6), is(equalTo(6)));
+
+        assertThat(SUPER.calculate(0), is(equalTo(0)));
+        assertThat(SUPER.calculate(-1), is(equalTo(0)));
     }
 
     @Test
