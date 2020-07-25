@@ -82,6 +82,10 @@ public class Race {
         }
     }
 
+    public String getMessage() {
+        return null;
+    }
+
     public Long getId() {
         return id;
     }

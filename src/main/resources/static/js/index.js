@@ -2,6 +2,7 @@ var app = new Vue({
   el: '#app',
   data () {
     return {
+      raceMessage: null,
       finishLine: 0,
       racers: [],
       currentRacer: null,
@@ -21,7 +22,9 @@ var app = new Vue({
       return (this.racers.length > 0)
     },
     message: function () {
-      if (this.lastRoll == null) {
+      if (this.raceMessage != null) {
+        return raceMessage;
+      } else if (this.lastRoll == null) {
         return 'Time to RACE! ' + this.currentRacer.name + ' rolls first!'
       } else if (this.allCrashed) {
         return 'All racers CRASHED!!!  This race is over!'
@@ -54,6 +57,7 @@ var app = new Vue({
       axios
         .get('/api/races')
         .then(response => {
+          this.raceMessage = response.data.message
           this.racers = response.data.racers
           this.finishLine = response.data.finishLine
           this.currentRacer = response.data.currentRacer
@@ -87,6 +91,7 @@ var app = new Vue({
           axios
             .get('/api/races')
             .then(response => {
+              this.raceMessage = response.data.message
               this.racers = response.data.racers
               this.finishLine = response.data.finishLine
               this.currentRacer = response.data.currentRacer
