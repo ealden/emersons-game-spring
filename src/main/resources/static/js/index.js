@@ -2,9 +2,9 @@ var app = new Vue({
   el: '#app',
   data () {
     return {
-      message: null,
       finishLine: 0,
       racers: [],
+      message: null,
       currentRacer: null,
       lastRoll: null,
       allCrashed: false,
@@ -27,13 +27,17 @@ var app = new Vue({
       axios
         .get('/api/races')
         .then(response => {
-          this.message = response.data.message
           this.racers = response.data.racers
           this.finishLine = response.data.finishLine
+          this.message = response.data.message
           this.currentRacer = response.data.currentRacer
           this.lastRoll = response.data.lastRoll
           this.allCrashed = response.data.allCrashed
           this.over = response.data.over
+
+          this.roll = 0
+
+          this.processing = false
         })
     },
     fetchSettings: function () {
@@ -41,6 +45,8 @@ var app = new Vue({
         .get('/api/races/settings')
         .then(response => {
           this.testMode = response.data.testMode
+
+          this.processing = false
         })
     },
     rollNormalSpeed: function (event) {
@@ -58,19 +64,7 @@ var app = new Vue({
           'roll': this.roll
         })
         .then(response => {
-          axios
-            .get('/api/races')
-            .then(response => {
-              this.message = response.data.message
-              this.racers = response.data.racers
-              this.finishLine = response.data.finishLine
-              this.currentRacer = response.data.currentRacer
-              this.lastRoll = response.data.lastRoll
-              this.allCrashed = response.data.allCrashed
-              this.over = response.data.over
-
-              this.processing = false
-            })
+          this.fetchRace()
         })
     },
     newRace: function () {
@@ -79,18 +73,12 @@ var app = new Vue({
       axios
         .post('/api/races/new', {})
         .then(response => {
-          this.loadRace()
-
-          this.processing = false
+          this.fetchRace()
         })
-    },
-    loadRace: function () {
-      this.fetchSettings()
-      this.fetchRace()
-      this.roll = 0
     }
   },
   mounted () {
-    this.loadRace()
+    this.fetchSettings()
+    this.fetchRace()
   }
 })
