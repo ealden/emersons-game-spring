@@ -98,6 +98,15 @@ public class Race {
                     lastRoll.getMove(),
                     lastRoll.getRacer().getName(),
                     currentRacer.getName());
+        } else if ((lastRoll != null) && (lastRoll.getSpeedType() == SpeedType.NORMAL) && (lastRoll.getRacer().getDamage() > 0)) {
+            return format("%s chose %s speed, and rolled %d and moved %d.  %s has %d damage.  %s rolls next!",
+                    lastRoll.getRacer().getName(),
+                    lastRoll.getSpeedType().toString().toUpperCase(),
+                    lastRoll.getRoll(),
+                    lastRoll.getMove(),
+                    lastRoll.getRacer().getName(),
+                    lastRoll.getNewDamage(),
+                    currentRacer.getName());
         } else {
             return null;
         }
