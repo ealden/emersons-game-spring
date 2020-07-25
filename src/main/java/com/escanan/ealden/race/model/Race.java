@@ -90,6 +90,14 @@ public class Race {
             return "All racers CRASHED!!!  This race is over!";
         } else if (isOver()) {
             return format("%s wins the race!  Congratulations!!!", lastRoll.getRacer().getName());
+        } else if ((lastRoll != null) && lastRoll.getRacer().isCrashed()) {
+            return format("%s chose %s speed, and rolled %d and moved %d.  %s CRASHED!!!  %s rolls next!",
+                    lastRoll.getRacer().getName(),
+                    lastRoll.getSpeedType().toString().toUpperCase(),
+                    lastRoll.getRoll(),
+                    lastRoll.getMove(),
+                    lastRoll.getRacer().getName(),
+                    currentRacer.getName());
         } else {
             return null;
         }
