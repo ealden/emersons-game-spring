@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
+import static com.escanan.ealden.race.model.SpeedType.SUPER;
 import static java.lang.String.format;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
@@ -101,6 +102,15 @@ public class Race {
                     currentRacer.getName());
         } else if (isRacing() && lastRoll.getRacer().isDamaged() && (NORMAL == lastRoll.getSpeedType())) {
             return format("%s chose %s speed, and rolled %d and moved %d.  %s has %d damage.  %s rolls next!",
+                    lastRoll.getRacer().getName(),
+                    lastRoll.getSpeedType().toString().toUpperCase(),
+                    lastRoll.getRoll(),
+                    lastRoll.getMove(),
+                    lastRoll.getRacer().getName(),
+                    lastRoll.getNewDamage(),
+                    currentRacer.getName());
+        } else if (isRacing() && lastRoll.getRacer().isDamaged() && (SUPER == lastRoll.getSpeedType())) {
+            return format("%s chose %s speed, and rolled %d and moved %d.  %s now has %d damage.  %s rolls next!",
                     lastRoll.getRacer().getName(),
                     lastRoll.getSpeedType().toString().toUpperCase(),
                     lastRoll.getRoll(),

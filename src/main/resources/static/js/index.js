@@ -24,11 +24,6 @@ var app = new Vue({
     message: function () {
       if (this.raceMessage != null) {
         return this.raceMessage;
-      } else if (this.lastRoll.damaged && this.lastRoll.superSpeed) {
-        return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
-          .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
-          .concat(this.lastRoll.racer.name + ' now has ' + this.lastRoll.newDamage + ' damage. ')
-          .concat(this.currentRacer.name + ' rolls next!')
       } else {
         return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
           .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')

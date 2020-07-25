@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
+import static com.escanan.ealden.race.model.SpeedType.SUPER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -254,5 +255,18 @@ public class RaceTest {
         race.roll(0, NORMAL);
 
         assertThat(race.getMessage(), is(equalTo("Racer 1 chose NORMAL speed, and rolled 0 and moved 0.  Racer 1 has 1 damage.  Racer 2 rolls next!")));
+    }
+
+    @Test
+    public void getMessageWhenLastRacerDamagedAndRollWithSuperSpeed() {
+        race.addRacer(new Racer("Racer 1"));
+        race.addRacer(new Racer("Racer 2"));
+        race.addRacer(new Racer("Racer 3"));
+
+        race.getRacers().get(0).setDamage(1);
+
+        race.roll(0, SUPER);
+
+        assertThat(race.getMessage(), is(equalTo("Racer 1 chose SUPER speed, and rolled 0 and moved 0.  Racer 1 now has 3 damage.  Racer 2 rolls next!")));
     }
 }
