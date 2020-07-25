@@ -188,4 +188,9 @@ public class RaceTest {
         assertThat(race.getLastRoll(), is(not(nullValue())));
         assertThat(race.getLastRoll().getRace(), is(sameInstance(race)));
     }
+
+    @Test
+    public void getMessageWithNoRacers() {
+        assertThat(race.getMessage(), is(nullValue()));
+    }
 }
