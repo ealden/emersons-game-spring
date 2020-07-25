@@ -2,7 +2,7 @@ var app = new Vue({
   el: '#app',
   data () {
     return {
-      raceMessage: null,
+      message: null,
       finishLine: 0,
       racers: [],
       currentRacer: null,
@@ -20,15 +20,6 @@ var app = new Vue({
     },
     ready: function () {
       return (this.racers.length > 0)
-    },
-    message: function () {
-      if (this.raceMessage != null) {
-        return this.raceMessage;
-      } else {
-        return ''.concat(this.lastRoll.racer.name + ' chose ' + this.lastRoll.speedType + ' speed, ')
-          .concat('and rolled ' + this.lastRoll.roll + ' and moved ' + this.lastRoll.move + '. ')
-          .concat(this.currentRacer.name + ' rolls next!')
-      }
     }
   },
   methods: {
@@ -36,7 +27,7 @@ var app = new Vue({
       axios
         .get('/api/races')
         .then(response => {
-          this.raceMessage = response.data.message
+          this.message = response.data.message
           this.racers = response.data.racers
           this.finishLine = response.data.finishLine
           this.currentRacer = response.data.currentRacer
@@ -70,7 +61,7 @@ var app = new Vue({
           axios
             .get('/api/races')
             .then(response => {
-              this.raceMessage = response.data.message
+              this.message = response.data.message
               this.racers = response.data.racers
               this.finishLine = response.data.finishLine
               this.currentRacer = response.data.currentRacer

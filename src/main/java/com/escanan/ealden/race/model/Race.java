@@ -118,6 +118,13 @@ public class Race {
                     lastRoll.getRacer().getName(),
                     lastRoll.getNewDamage(),
                     currentRacer.getName());
+        } else if (isRacing()) {
+            return format("%s chose %s speed, and rolled %d and moved %d.  %s rolls next!",
+                    lastRoll.getRacer().getName(),
+                    lastRoll.getSpeedType().toString().toUpperCase(),
+                    lastRoll.getRoll(),
+                    lastRoll.getMove(),
+                    currentRacer.getName());
         } else {
             return null;
         }
