@@ -6,7 +6,6 @@ var app = new Vue({
       racers: [],
       message: null,
       currentRacer: null,
-      lastRoll: null,
       allCrashed: false,
       over: false,
       testMode: false,
@@ -31,7 +30,6 @@ var app = new Vue({
           this.finishLine = response.data.finishLine
           this.message = response.data.message
           this.currentRacer = response.data.currentRacer
-          this.lastRoll = response.data.lastRoll
           this.allCrashed = response.data.allCrashed
           this.over = response.data.over
 
