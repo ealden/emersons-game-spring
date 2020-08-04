@@ -4,4 +4,4 @@ Race game.  Built using Specification by Example.
 
 ## Run acceptance tests
 
-`./gradlew cucumber`
+`./gradlew test cucumber`
