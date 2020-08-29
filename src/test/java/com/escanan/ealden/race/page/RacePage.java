@@ -19,25 +19,19 @@ public class RacePage {
     private static final boolean HEADLESS = true;
     private static final String CRASHED = "true";
 
-    private static WebDriver driver;
+    private WebDriver driver;
 
     private boolean headless;
 
     private RacePage(boolean headless) {
         this.headless = headless;
 
+        driver = createDriver(headless);
+
         driver.navigate().to(ROOT_URL);
     }
 
-    public static RacePage load() {
-        return load(HEADLESS);
-    }
-
     public static RacePage load(boolean headless) {
-        if (driver == null) {
-            driver = createDriver(headless);
-        }
-
         return new RacePage(headless);
     }
 

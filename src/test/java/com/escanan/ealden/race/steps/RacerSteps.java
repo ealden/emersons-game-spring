@@ -5,6 +5,7 @@ import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.model.SpeedType;
 import com.escanan.ealden.race.page.RacePage;
 import com.escanan.ealden.race.service.RaceService;
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -31,6 +32,11 @@ public class RacerSteps {
     private Race race;
     private Racer racer;
     private SpeedType speedType;
+
+    @After
+    public void tearDown() {
+        racePage.close();
+    }
 
     @Given("I am in a race")
     public void newRace() {
@@ -191,10 +197,5 @@ public class RacerSteps {
     @Then("I must see the race result: --")
     public void assertNoRaceResult() {
         assertThat(racePage.isOver(), is(false));
-    }
-
-    @Then("it's over, it's over")
-    public void close() {
-        RacePage.load().close();
     }
 }

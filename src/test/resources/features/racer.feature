@@ -147,6 +147,3 @@ Feature: Emerson's Game
     When  all racers have crashed!
     Then  our race must be over!
     And   I must see the message: "All racers CRASHED!!! This race is over!"
-
-  Scenario: End
-    When  it's over, it's over
