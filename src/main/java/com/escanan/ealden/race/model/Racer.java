@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.escanan.ealden.race.model.Roll.beforeRoll;
+import static com.escanan.ealden.race.model.Roll.createRoll;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
@@ -42,14 +42,13 @@ public class Racer {
     }
 
     public void roll(int roll, SpeedType speedType) {
-        Roll entry = beforeRoll(this, roll, speedType);
+        int oldPosition = position;
+        int oldDamage = damage;
 
         position += speedType.move(roll, damage);
         damage += speedType.getDamage();
 
-        entry.afterRoll(this);
-
-        addRoll(entry);
+        addRoll(createRoll(this, oldPosition, oldDamage, roll, speedType));
     }
 
     private Racer addRoll(Roll roll) {

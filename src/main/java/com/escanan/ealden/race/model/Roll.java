@@ -32,15 +32,19 @@ public class Roll {
     private boolean crashed;
     private boolean win;
 
-    public static Roll beforeRoll(Racer racer, int roll, SpeedType speedType) {
+    public static Roll createRoll(Racer racer, int oldPosition, int oldDamage, int roll, SpeedType speedType) {
         Roll entry = new Roll();
         entry.setRacer(racer);
         entry.setRace(racer.getRace());
-        entry.setPosition(racer.getPosition());
-        entry.setDamage(racer.getDamage());
+        entry.setPosition(oldPosition);
+        entry.setDamage(oldDamage);
         entry.setSpeedType(speedType);
         entry.setRoll(roll);
-        entry.setMove(speedType.move(roll, racer.getDamage()));
+        entry.setMove(speedType.move(roll, oldDamage));
+        entry.setNewPosition(racer.getPosition());
+        entry.setNewDamage(racer.getDamage());
+        entry.setCrashed(racer.isCrashed());
+        entry.setWin(racer.isWinner());
 
         return entry;
     }
@@ -152,12 +156,5 @@ public class Roll {
 
     public void setWin(boolean win) {
         this.win = win;
-    }
-
-    public void afterRoll(Racer racer) {
-        setNewPosition(racer.getPosition());
-        setNewDamage(racer.getDamage());
-        setCrashed(racer.isCrashed());
-        setWin(racer.isWinner());
     }
 }
