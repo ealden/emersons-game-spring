@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
-import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
@@ -21,6 +23,18 @@ public class RacePage {
     private WebDriver driver;
 
     private boolean headless;
+
+    private By testRoll = id("test-roll");
+    private By testProcessing = id("test-processing");
+
+    private By raceControls = id("race-controls");
+    private By raceOver = id("race-over");
+
+    private By rollNormalSpeed = id("roll-normal-speed");
+    private By rollSuperSpeed = id("roll-super-speed");
+    private By newRace = id("new-race");
+
+    private By message = id("message");
 
     private RacePage(boolean headless) {
         this.headless = headless;
@@ -91,8 +105,8 @@ public class RacePage {
     }
 
     public boolean isOver() {
-        boolean raceControlsHidden = driver.findElements(By.id("race-controls")).isEmpty();
-        boolean raceOverHidden = driver.findElements(By.id("race-over")).isEmpty();
+        boolean raceControlsHidden = driver.findElements(raceControls).isEmpty();
+        boolean raceOverHidden = driver.findElements(raceOver).isEmpty();
 
         return (raceControlsHidden && !raceOverHidden);
     }
@@ -102,43 +116,43 @@ public class RacePage {
     }
 
     private WebElement getRollField() {
-        return findElementById("test-roll");
+        return findElement(testRoll);
     }
 
     private WebElement getProcessingField() {
-        return findElementById("test-processing");
+        return findElement(testProcessing);
     }
 
     private WebElement getNormalSpeedButton() {
-        return findElementById("roll-normal-speed");
+        return findElement(rollNormalSpeed);
     }
 
     private WebElement getSuperSpeedButton() {
-        return findElementById("roll-super-speed");
+        return findElement(rollSuperSpeed);
     }
 
     private WebElement getRacerPositionField(Racer racer) {
-        return findElementById(test(racer, "position"));
+        return findElement(test(racer, "position"));
     }
 
     private WebElement getRacerDamageField(Racer racer) {
-        return findElementById(test(racer, "damage"));
+        return findElement(test(racer, "damage"));
     }
 
     private WebElement getRacerCrashedField(Racer racer) {
-        return findElementById(test(racer, "crashed"));
+        return findElement(test(racer, "crashed"));
     }
 
     private WebElement getNewRaceButton() {
-        return findElementById("new-race");
+        return findElement(newRace);
     }
 
     private WebElement getMessageField() {
-        return findElementById("message");
+        return findElement(message);
     }
 
     private void waitUntilProcessingComplete() {
-        doWait().until(invisibilityOfElementLocated(By.id("test-processing")));
+        doWait().until(invisibilityOfElementLocated(testProcessing));
     }
 
     private WebDriverWait doWait() {
@@ -149,11 +163,7 @@ public class RacePage {
         return doWait().until(visibilityOfElementLocated(by));
     }
 
-    private WebElement findElementById(String id) {
-        return findElement(By.id(id));
-    }
-
-    private String test(Racer racer, String key) {
-        return Joiner.on("-").join(asList("test", "racer", racer.getId(), key));
+    private By test(Racer racer, String key) {
+        return id(Joiner.on("-").join(asList("test", "racer", racer.getId(), key)));
     }
 }
