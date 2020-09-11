@@ -70,9 +70,9 @@ public class RacePage {
         getRollField().sendKeys("" + roll);
 
         if (SpeedType.NORMAL == speedType) {
-            getNormalSpeedButton().click();
+            click(rollNormalSpeed);
         } else if (SpeedType.SUPER == speedType) {
-            getSuperSpeedButton().click();
+            click(rollSuperSpeed);
         }
 
         waitUntilProcessingComplete();
@@ -81,11 +81,15 @@ public class RacePage {
     }
 
     public RacePage newRace() {
-        getNewRaceButton().click();
+        click(newRace);
 
         waitUntilProcessingComplete();
 
         return this;
+    }
+
+    private void click(By element) {
+        findElement(element).click();
     }
 
     public int getRacerPosition(Racer racer) {
@@ -119,18 +123,6 @@ public class RacePage {
         return findElement(testRoll);
     }
 
-    private WebElement getProcessingField() {
-        return findElement(testProcessing);
-    }
-
-    private WebElement getNormalSpeedButton() {
-        return findElement(rollNormalSpeed);
-    }
-
-    private WebElement getSuperSpeedButton() {
-        return findElement(rollSuperSpeed);
-    }
-
     private WebElement getRacerPositionField(Racer racer) {
         return findElement(test(racer, "position"));
     }
@@ -141,10 +133,6 @@ public class RacePage {
 
     private WebElement getRacerCrashedField(Racer racer) {
         return findElement(test(racer, "crashed"));
-    }
-
-    private WebElement getNewRaceButton() {
-        return findElement(newRace);
     }
 
     private WebElement getMessageField() {
