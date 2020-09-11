@@ -16,7 +16,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
-    private static final boolean HEADLESS = true;
     private static final String CRASHED = "true";
 
     private WebDriver driver;
