@@ -96,7 +96,7 @@ public class RacePage {
         return parseInt(getRacerPositionField(racer).getText());
     }
 
-    public int getRacerDamage(Racer racer) {
+    public int damageOf(Racer racer) {
         return parseInt(getRacerDamageField(racer).getText());
     }
 
