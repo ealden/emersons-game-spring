@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
-import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
@@ -24,17 +23,17 @@ public class RacePage {
 
     private boolean headless;
 
-    private By testRoll = id("test-roll");
-    private By testProcessing = id("test-processing");
+    private By testRoll = By.id("test-roll");
+    private By testProcessing = By.id("test-processing");
 
-    private By raceControls = id("race-controls");
-    private By raceOver = id("race-over");
+    private By raceControls = By.id("race-controls");
+    private By raceOver = By.id("race-over");
 
-    private By normalSpeed = id("roll-normal-speed");
-    private By superSpeed = id("roll-super-speed");
-    private By newRace = id("new-race");
+    private By normalSpeed = By.id("roll-normal-speed");
+    private By superSpeed = By.id("roll-super-speed");
+    private By newRace = By.id("new-race");
 
-    private By message = id("message");
+    private By message = By.id("message");
 
     private RacePage(boolean headless) {
         this.headless = headless;
@@ -136,6 +135,6 @@ public class RacePage {
     }
 
     private WebElement findTestElement(Racer racer, String key) {
-        return findElement(id(Joiner.on("-").join(asList("test", "racer", racer.getId(), key))));
+        return findElement(By.id(Joiner.on("-").join(asList("test", "racer", racer.getId(), key))));
     }
 }
