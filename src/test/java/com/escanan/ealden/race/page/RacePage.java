@@ -30,8 +30,8 @@ public class RacePage {
     private By raceControls = id("race-controls");
     private By raceOver = id("race-over");
 
-    private By rollNormalSpeed = id("roll-normal-speed");
-    private By rollSuperSpeed = id("roll-super-speed");
+    private By normalSpeed = id("roll-normal-speed");
+    private By superSpeed = id("roll-super-speed");
     private By newRace = id("new-race");
 
     private By message = id("message");
@@ -69,9 +69,9 @@ public class RacePage {
         input(testRoll, roll);
 
         if (SpeedType.NORMAL == speedType) {
-            click(rollNormalSpeed);
+            click(normalSpeed);
         } else if (SpeedType.SUPER == speedType) {
-            click(rollSuperSpeed);
+            click(superSpeed);
         }
 
         waitUntilProcessingComplete();
