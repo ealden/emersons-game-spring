@@ -109,23 +109,23 @@ public class RacerSteps {
 
     @Then("I must now be at position {int}")
     public void assertNewPosition(int newPosition) {
-        assertThat(racePage.positionOf(racer), is(equalTo(newPosition)));
+        assertThat(racePage.getPositionOf(racer), is(equalTo(newPosition)));
     }
 
     @Then("I must now have damage of {int}")
     public void assertNewDamage(int newDamage) {
-        assertThat(racePage.damageOf(racer), is(equalTo(newDamage)));
+        assertThat(racePage.getDamageOf(racer), is(equalTo(newDamage)));
     }
 
     @Then("I must see the race result: WIN")
     public void assertRacerWins() {
-        assertThat(racePage.positionOf(racer), is(equalTo(race.getFinishLine())));
+        assertThat(racePage.getPositionOf(racer), is(equalTo(race.getFinishLine())));
         assertThat(racePage.isOver(), is(true));
     }
 
     @Then("I must see the race result: CRASHED")
     public void assertRacerCrashed() {
-        assertThat(racePage.isRacerCrashed(racer), is(true));
+        assertThat(racePage.hasCrashed(racer), is(true));
     }
 
     @Then("I must now have a log entry with the following:")

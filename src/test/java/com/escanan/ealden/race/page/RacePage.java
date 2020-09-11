@@ -99,15 +99,15 @@ public class RacePage {
         findElement(element).sendKeys(keys);
     }
 
-    public int positionOf(Racer racer) {
+    public int getPositionOf(Racer racer) {
         return parseInt(findTestElement(racer, "position").getText());
     }
 
-    public int damageOf(Racer racer) {
+    public int getDamageOf(Racer racer) {
         return parseInt(findTestElement(racer, "damage").getText());
     }
 
-    public boolean isRacerCrashed(Racer racer) {
+    public boolean hasCrashed(Racer racer) {
         return CRASHED.equals(findTestElement(racer, "crashed").getText());
     }
 
