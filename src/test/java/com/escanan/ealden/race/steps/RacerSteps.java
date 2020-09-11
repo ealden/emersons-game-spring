@@ -119,7 +119,7 @@ public class RacerSteps {
 
     @Then("I must see the race result: WIN")
     public void assertRacerWins() {
-        assertThat(racePage.isRacerAtFinishLine(racer, race.getFinishLine()), is(true));
+        assertThat(racePage.positionOf(racer), is(equalTo(race.getFinishLine())));
         assertThat(racePage.isOver(), is(true));
     }
 

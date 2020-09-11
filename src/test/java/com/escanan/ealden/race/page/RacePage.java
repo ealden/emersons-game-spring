@@ -108,10 +108,6 @@ public class RacePage {
         return parseInt(findTestElement(racer, "damage").getText());
     }
 
-    public boolean isRacerAtFinishLine(Racer racer, int finishLine) {
-        return (positionOf(racer) == finishLine);
-    }
-
     public boolean isRacerCrashed(Racer racer) {
         return CRASHED.equals(findTestElement(racer, "crashed").getText());
     }
