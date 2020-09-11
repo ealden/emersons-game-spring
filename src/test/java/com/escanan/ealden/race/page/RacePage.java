@@ -66,8 +66,7 @@ public class RacePage {
     }
 
     public RacePage roll(int roll, SpeedType speedType) {
-        getRollField().clear();
-        getRollField().sendKeys("" + roll);
+        input(testRoll, roll);
 
         if (SpeedType.NORMAL == speedType) {
             click(rollNormalSpeed);
@@ -90,6 +89,15 @@ public class RacePage {
 
     private void click(By element) {
         findElement(element).click();
+    }
+
+    private void input(By element, int i) {
+        input(element, "" + i);
+    }
+
+    private void input(By element, String keys) {
+        findElement(element).clear();
+        findElement(element).sendKeys(keys);
     }
 
     public int positionOf(Racer racer) {
@@ -117,10 +125,6 @@ public class RacePage {
 
     public String getMessage() {
         return findElement(message).getText().trim();
-    }
-
-    private WebElement getRollField() {
-        return findElement(testRoll);
     }
 
     private void waitUntilProcessingComplete() {
