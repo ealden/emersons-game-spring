@@ -92,7 +92,7 @@ public class RacePage {
         findElement(element).click();
     }
 
-    public int getRacerPosition(Racer racer) {
+    public int positionOf(Racer racer) {
         return parseInt(getRacerPositionField(racer).getText());
     }
 
@@ -101,7 +101,7 @@ public class RacePage {
     }
 
     public boolean isRacerAtFinishLine(Racer racer, int finishLine) {
-        return (getRacerPosition(racer) == finishLine);
+        return (positionOf(racer) == finishLine);
     }
 
     public boolean isRacerCrashed(Racer racer) {
