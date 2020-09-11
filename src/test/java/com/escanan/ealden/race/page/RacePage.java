@@ -116,15 +116,11 @@ public class RacePage {
     }
 
     public String getMessage() {
-        return getMessageField().getText().trim();
+        return findElement(message).getText().trim();
     }
 
     private WebElement getRollField() {
         return findElement(testRoll);
-    }
-
-    private WebElement getMessageField() {
-        return findElement(message);
     }
 
     private void waitUntilProcessingComplete() {
