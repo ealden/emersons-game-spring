@@ -124,15 +124,15 @@ public class RacePage {
     }
 
     private WebElement getRacerPositionField(Racer racer) {
-        return findElement(test(racer, "position"));
+        return findTestElement(racer, "position");
     }
 
     private WebElement getRacerDamageField(Racer racer) {
-        return findElement(test(racer, "damage"));
+        return findTestElement(racer, "damage");
     }
 
     private WebElement getRacerCrashedField(Racer racer) {
-        return findElement(test(racer, "crashed"));
+        return findTestElement(racer, "crashed");
     }
 
     private WebElement getMessageField() {
@@ -151,7 +151,7 @@ public class RacePage {
         return doWait().until(visibilityOfElementLocated(by));
     }
 
-    private By test(Racer racer, String key) {
-        return id(Joiner.on("-").join(asList("test", "racer", racer.getId(), key)));
+    private WebElement findTestElement(Racer racer, String key) {
+        return findElement(id(Joiner.on("-").join(asList("test", "racer", racer.getId(), key))));
     }
 }
