@@ -135,6 +135,8 @@ public class RacePage {
     }
 
     private WebElement findTestElement(Racer racer, String key) {
-        return findElement(By.id(Joiner.on("-").join(asList("test", "racer", racer.getId(), key))));
+        String testId = Joiner.on("-").join(asList("test", "racer", racer.getId(), key));
+
+        return findElement(By.id(testId));
     }
 }
