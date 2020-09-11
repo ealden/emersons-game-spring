@@ -93,11 +93,11 @@ public class RacePage {
     }
 
     public int positionOf(Racer racer) {
-        return parseInt(getRacerPositionField(racer).getText());
+        return parseInt(findTestElement(racer, "position").getText());
     }
 
     public int damageOf(Racer racer) {
-        return parseInt(getRacerDamageField(racer).getText());
+        return parseInt(findTestElement(racer, "damage").getText());
     }
 
     public boolean isRacerAtFinishLine(Racer racer, int finishLine) {
@@ -105,7 +105,7 @@ public class RacePage {
     }
 
     public boolean isRacerCrashed(Racer racer) {
-        return CRASHED.equals(getRacerCrashedField(racer).getText());
+        return CRASHED.equals(findTestElement(racer, "crashed").getText());
     }
 
     public boolean isOver() {
@@ -121,18 +121,6 @@ public class RacePage {
 
     private WebElement getRollField() {
         return findElement(testRoll);
-    }
-
-    private WebElement getRacerPositionField(Racer racer) {
-        return findTestElement(racer, "position");
-    }
-
-    private WebElement getRacerDamageField(Racer racer) {
-        return findTestElement(racer, "damage");
-    }
-
-    private WebElement getRacerCrashedField(Racer racer) {
-        return findTestElement(racer, "crashed");
     }
 
     private WebElement getMessageField() {
