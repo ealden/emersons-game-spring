@@ -1,6 +1,5 @@
 package com.escanan.ealden.race.model;
 
-import org.checkerframework.checker.units.qual.Speed;
 import org.junit.Before;
 import org.junit.Test;
 
