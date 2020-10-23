@@ -1,5 +1,4 @@
-var app = new Vue({
-  el: '#app',
+const EmersonsGame = {
   data () {
     return {
       finishLine: 0,
@@ -79,4 +78,6 @@ var app = new Vue({
     this.fetchSettings()
     this.fetchRace()
   }
-})
+}
+
+Vue.createApp(EmersonsGame).mount('#app')
