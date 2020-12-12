@@ -2,7 +2,6 @@ package com.escanan.ealden.race.page;
 
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.model.SpeedType;
-import com.google.common.base.Joiner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.lang.Integer.parseInt;
-import static java.util.Arrays.asList;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
@@ -135,7 +133,7 @@ public class RacePage {
     }
 
     private WebElement findTestElement(Racer racer, String key) {
-        String testId = Joiner.on("-").join(asList("test", "racer", racer.getId(), key));
+        String testId = String.join("-", "test", "racer", racer.getId().toString(), key);
 
         return findElement(By.id(testId));
     }
