@@ -7,5 +7,5 @@ public interface RaceService {
     Race getCurrentRace();
     Race newRace();
     Race save(Race race);
-    Race roll(int roll, SpeedType speedType);
+    Race roll(int number, SpeedType speedType);
 }

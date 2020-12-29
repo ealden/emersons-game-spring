@@ -41,13 +41,13 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public Race roll(int roll, SpeedType speedType) {
+    public Race roll(int number, SpeedType speedType) {
         Race race = getCurrentRace();
 
         if (!testMode) {
             race.roll(speedType);
         } else {
-            race.roll(roll, speedType);
+            race.roll(number, speedType);
         }
 
         return save(race);

@@ -65,9 +65,9 @@ public class Race {
         roll(roll, speedType);
     }
 
-    public void roll(int roll, SpeedType speedType) {
+    public void roll(int number, SpeedType speedType) {
         if (currentRacer != null) {
-            currentRacer.roll(roll, speedType);
+            currentRacer.roll(number, speedType);
 
             lastRoll = currentRacer.getLastRoll();
 

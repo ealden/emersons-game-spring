@@ -32,15 +32,15 @@ public class Roll {
     private boolean crashed;
     private boolean win;
 
-    public static Roll createRoll(Racer racer, int oldPosition, int oldDamage, int roll, SpeedType speedType) {
+    public static Roll createRoll(Racer racer, int oldPosition, int oldDamage, int number, SpeedType speedType) {
         Roll entry = new Roll();
         entry.setRacer(racer);
         entry.setRace(racer.getRace());
         entry.setPosition(oldPosition);
         entry.setDamage(oldDamage);
         entry.setSpeedType(speedType);
-        entry.setNumber(roll);
-        entry.setMove(speedType.move(roll, oldDamage));
+        entry.setNumber(number);
+        entry.setMove(speedType.move(number, oldDamage));
         entry.setNewPosition(racer.getPosition());
         entry.setNewDamage(racer.getDamage());
         entry.setCrashed(racer.isCrashed());

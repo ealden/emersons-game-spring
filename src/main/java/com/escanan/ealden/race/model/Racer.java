@@ -41,14 +41,14 @@ public class Racer {
         this.name = name;
     }
 
-    public void roll(int roll, SpeedType speedType) {
+    public void roll(int number, SpeedType speedType) {
         int oldPosition = position;
         int oldDamage = damage;
 
-        position += speedType.move(roll, damage);
+        position += speedType.move(number, damage);
         damage += speedType.getDamage();
 
-        addRoll(createRoll(this, oldPosition, oldDamage, roll, speedType));
+        addRoll(createRoll(this, oldPosition, oldDamage, number, speedType));
     }
 
     private Racer addRoll(Roll roll) {

@@ -18,16 +18,16 @@ public enum SpeedType {
         this.damage = damage;
     }
 
-    public int calculate(int roll) {
-        if (roll <= 0) {
+    public int calculate(int number) {
+        if (number <= 0) {
             return 0;
         }
 
-        return (((prefix + roll) % modulo) + offset);
+        return (((prefix + number) % modulo) + offset);
     }
 
-    public int move(int roll, int damage) {
-        return max((calculate(roll) - damage), 0);
+    public int move(int number, int damage) {
+        return max((calculate(number) - damage), 0);
     }
 
     public int getDamage() {
