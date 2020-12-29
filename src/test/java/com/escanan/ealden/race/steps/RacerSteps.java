@@ -152,7 +152,7 @@ public class RacerSteps {
 
     @Then("Roll: {int}")
     public void assertRollWithRollLogged(int roll) {
-        assertThat(race.getLastRoll().getRoll(), is(equalTo(roll)));
+        assertThat(race.getLastRoll().getNumber(), is(equalTo(roll)));
     }
 
     @Then("Move: {int}")

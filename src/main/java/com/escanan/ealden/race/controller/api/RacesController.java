@@ -26,7 +26,7 @@ public class RacesController {
 
     @PostMapping("/api/races/roll")
     public Race roll(@RequestBody Roll roll) {
-        return raceService.roll(roll.getRoll(), roll.getSpeedType());
+        return raceService.roll(roll.getNumber(), roll.getSpeedType());
     }
 
     @PostMapping("/api/races/new")

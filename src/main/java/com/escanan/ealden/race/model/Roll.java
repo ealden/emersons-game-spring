@@ -25,7 +25,7 @@ public class Roll {
     private int position;
     private int damage;
     private SpeedType speedType;
-    private int roll;
+    private int number;
     private int move;
     private int newPosition;
     private int newDamage;
@@ -39,7 +39,7 @@ public class Roll {
         entry.setPosition(oldPosition);
         entry.setDamage(oldDamage);
         entry.setSpeedType(speedType);
-        entry.setRoll(roll);
+        entry.setNumber(roll);
         entry.setMove(speedType.move(roll, oldDamage));
         entry.setNewPosition(racer.getPosition());
         entry.setNewDamage(racer.getDamage());
@@ -74,8 +74,8 @@ public class Roll {
         return speedType;
     }
 
-    public int getRoll() {
-        return roll;
+    public int getNumber() {
+        return number;
     }
 
     public int getMove() {
@@ -134,8 +134,8 @@ public class Roll {
         this.speedType = speedType;
     }
 
-    public void setRoll(int roll) {
-        this.roll = roll;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public void setMove(int move) {

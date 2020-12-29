@@ -158,7 +158,7 @@ public class RacerTest {
         assertThat(roll.getPosition(), is(equalTo(1)));
         assertThat(roll.getDamage(), is(equalTo(1)));
         assertThat(roll.getSpeedType(), is(equalTo(NORMAL)));
-        assertThat(roll.getRoll(), is(equalTo(2)));
+        assertThat(roll.getNumber(), is(equalTo(2)));
         assertThat(roll.getMove(), is(equalTo(1)));
         assertThat(roll.getNewPosition(), is(equalTo(2)));
         assertThat(roll.getNewDamage(), is(equalTo(1)));
@@ -179,7 +179,7 @@ public class RacerTest {
 
         assertThat(roll, is(not(nullValue())));
         assertThat(roll.getSpeedType(), is(equalTo(SUPER)));
-        assertThat(roll.getRoll(), is(equalTo(2)));
+        assertThat(roll.getNumber(), is(equalTo(2)));
         assertThat(roll.getMove(), is(equalTo(1)));
     }
 

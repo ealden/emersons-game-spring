@@ -98,7 +98,7 @@ public class Race {
             return format("%s chose %s speed, and rolled %d and moved %d.  %s CRASHED!!!  %s rolls next!",
                     lastRoll.getRacer().getName(),
                     lastRoll.getSpeedType().toString().toUpperCase(),
-                    lastRoll.getRoll(),
+                    lastRoll.getNumber(),
                     lastRoll.getMove(),
                     lastRoll.getRacer().getName(),
                     currentRacer.getName());
@@ -106,7 +106,7 @@ public class Race {
             return format("%s chose %s speed, and rolled %d and moved %d.  %s has %d damage.  %s rolls next!",
                     lastRoll.getRacer().getName(),
                     lastRoll.getSpeedType().toString().toUpperCase(),
-                    lastRoll.getRoll(),
+                    lastRoll.getNumber(),
                     lastRoll.getMove(),
                     lastRoll.getRacer().getName(),
                     lastRoll.getNewDamage(),
@@ -115,7 +115,7 @@ public class Race {
             return format("%s chose %s speed, and rolled %d and moved %d.  %s now has %d damage.  %s rolls next!",
                     lastRoll.getRacer().getName(),
                     lastRoll.getSpeedType().toString().toUpperCase(),
-                    lastRoll.getRoll(),
+                    lastRoll.getNumber(),
                     lastRoll.getMove(),
                     lastRoll.getRacer().getName(),
                     lastRoll.getNewDamage(),
@@ -124,7 +124,7 @@ public class Race {
             return format("%s chose %s speed, and rolled %d and moved %d.  %s rolls next!",
                     lastRoll.getRacer().getName(),
                     lastRoll.getSpeedType().toString().toUpperCase(),
-                    lastRoll.getRoll(),
+                    lastRoll.getNumber(),
                     lastRoll.getMove(),
                     currentRacer.getName());
         } else {
