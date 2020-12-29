@@ -14,8 +14,6 @@ public class RaceApplication {
 
     @Bean
     public CommandLineRunner seedData(RaceService raceService) {
-        return (args -> {
-            raceService.newRace();
-        });
+        return (args -> raceService.newRace());
     }
 }
