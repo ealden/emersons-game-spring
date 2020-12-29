@@ -1,14 +1,14 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.1'
-    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-    id 'java'
-    id 'war'
+    id "org.springframework.boot" version "2.4.1"
+    id "io.spring.dependency-management" version "1.0.10.RELEASE"
+    id "java"
+    id "war"
     id "org.sonarqube" version "3.0"
 }
 
-group = 'com.escanan.ealden'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+group = "com.escanan.ealden"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "1.8"
 
 configurations {
     cucumberRuntime {
@@ -25,18 +25,18 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'org.postgresql:postgresql'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.cucumber:cucumber-java:6.9.1'
-    testImplementation 'io.cucumber:cucumber-junit:6.9.1'
-    testImplementation 'io.cucumber:cucumber-spring:6.9.1'
-    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    cucumberRuntime 'com.h2database:h2'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+    runtimeOnly "com.h2database:h2"
+    runtimeOnly "org.postgresql:postgresql"
+    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "io.cucumber:cucumber-java:6.9.1"
+    testImplementation "io.cucumber:cucumber-junit:6.9.1"
+    testImplementation "io.cucumber:cucumber-spring:6.9.1"
+    testImplementation "org.seleniumhq.selenium:selenium-java:3.141.59"
+    cucumberRuntime "com.h2database:h2"
 }
 
 test {
@@ -48,9 +48,9 @@ task cucumber() {
 
     doLast {
         javaexec {
-            main = 'io.cucumber.core.cli.Main'
+            main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--strict', '--tags', 'not @wip', '--plugin', 'pretty', '--glue', 'com.escanan.ealden.race', 'src/test/resources']
+            args = ["--strict", "--tags", "not @wip", "--plugin", "pretty", "--glue", "com.escanan.ealden.race", "src/test/resources"]
         }
     }
 }
@@ -60,9 +60,9 @@ task wip() {
 
     doLast {
         javaexec {
-            main = 'io.cucumber.core.cli.Main'
+            main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--tags', '@wip', '--plugin', 'pretty', '--glue', 'com.escanan.ealden.race', 'src/test/resources']
+            args = ["--tags", "@wip", "--plugin", "pretty", "--glue", "com.escanan.ealden.race", "src/test/resources"]
         }
     }
 }
