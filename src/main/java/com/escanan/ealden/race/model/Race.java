@@ -3,9 +3,9 @@ package com.escanan.ealden.race.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.SpeedType.SUPER;
@@ -60,7 +60,7 @@ public class Race {
     }
 
     public void roll(SpeedType speedType) {
-        int roll = new Random().nextInt(MAX_ROLL) + 1;
+        int roll = new SecureRandom().nextInt(MAX_ROLL) + 1;
 
         roll(roll, speedType);
     }
