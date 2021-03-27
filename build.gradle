@@ -47,22 +47,16 @@ task cucumber() {
     dependsOn assemble, compileTestJava
 
     doLast {
-        javaexec {
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ["--strict", "--tags", "not @wip", "--plugin", "pretty", "--glue", "com.escanan.ealden.race", "src/test/resources"]
+        def feature = "src/test/resources"
+
+        if (project.hasProperty("feature")) {
+            feature = project.getProperty("feature")
         }
-    }
-}
 
-task focus() {
-    dependsOn assemble, compileTestJava
-
-    doLast {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ["--tags", "@focus", "--tags", "not @wip", "--plugin", "pretty", "--glue", "com.escanan.ealden.race", "src/test/resources"]
+            args = ["--strict", "--tags", "not @wip", "--plugin", "pretty", "--glue", "com.escanan.ealden.race", feature]
         }
     }
 }
