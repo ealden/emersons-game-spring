@@ -29,7 +29,7 @@ public class RacerSteps {
     private RacePage page;
 
     private Race race;
-    private Racer racer;
+
     private SpeedType speedType;
 
     @After
@@ -42,7 +42,6 @@ public class RacerSteps {
     @Given("I am in a race")
     public void newRace() {
         race = raceService.newRace();
-        racer = race.getRacers().get(0);
 
         page = new RacePage(headless);
         page.load();
@@ -50,14 +49,14 @@ public class RacerSteps {
 
     @Given("I am at position {int}")
     public void setPosition(int position) {
-        racer.setPosition(position);
+        race.getCurrentRacer().setPosition(position);
 
         raceService.save(race);
     }
 
     @Given("I have damage of {int}")
     public void setDamage(int damage) {
-        racer.setDamage(damage);
+        race.getCurrentRacer().setDamage(damage);
 
         raceService.save(race);
     }
@@ -84,7 +83,6 @@ public class RacerSteps {
         page.newRace();
 
         race = raceService.getCurrentRace();
-        racer = race.getRacers().get(0);
     }
 
     @When("all racers have crashed!")
