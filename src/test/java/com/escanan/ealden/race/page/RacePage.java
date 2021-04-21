@@ -33,11 +33,11 @@ public class RacePage {
 
     public RacePage(boolean headless) {
         driver = createDriver(headless);
-
-        driver.navigate().to(ROOT_URL);
     }
 
     public RacePage load() {
+        driver.navigate().to(ROOT_URL);
+
         return this;
     }
 
