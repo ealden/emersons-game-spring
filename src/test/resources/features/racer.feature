@@ -117,8 +117,7 @@ Feature: Emerson's Game
     And   I must see the race result: --
 
   Scenario: Welcome Message
-    Given I am in a race
-    When  I try to view the race
+    When  I am in a race
     Then  I must see the message: "Time to RACE! Alice rolls first!"
 
   Scenario Outline: Message

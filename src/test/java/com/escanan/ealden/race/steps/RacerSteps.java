@@ -75,8 +75,6 @@ public class RacerSteps {
 
     @When("I roll a {int}")
     public void roll(int roll) {
-        loadRace();
-
         page.roll(roll, speedType);
 
         race = raceService.getCurrentRace();
@@ -90,8 +88,6 @@ public class RacerSteps {
 
     @When("I choose to start over in a new race")
     public void createNewRace() {
-        loadRace();
-
         page.newRace();
 
         race = raceService.getCurrentRace();
@@ -109,10 +105,6 @@ public class RacerSteps {
         raceService.save(race);
 
         page.load();
-    }
-
-    @When("I try to view the race")
-    public void loadRace() {
     }
 
     @Then("I must now be at position {int}")
