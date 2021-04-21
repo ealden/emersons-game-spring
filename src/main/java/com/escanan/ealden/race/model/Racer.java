@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.escanan.ealden.race.model.Roll.createRoll;
 import static javax.persistence.CascadeType.ALL;
@@ -104,6 +105,10 @@ public class Racer {
         return damage > 0;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setRace(Race race) {
         this.race = race;
     }
@@ -122,5 +127,25 @@ public class Racer {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Racer racer = (Racer) o;
+
+        return Objects.equals(id, racer.id) && Objects.equals(name, racer.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

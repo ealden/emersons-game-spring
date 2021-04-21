@@ -233,4 +233,43 @@ public class RacerTest {
 
         assertThat(racer.isDamaged(), is(false));
     }
+
+    @Test
+    public void racersMustBeEqualIfIdsAndNamesAreEqual() {
+        racer.setId(1L);
+        racer.setName("Alice");
+
+        Racer otherRacer = new Racer();
+        otherRacer.setId(1L);
+        otherRacer.setName("Alice");
+
+        assertThat(racer, is(equalTo(otherRacer)));
+        assertThat(racer.hashCode(), is(equalTo(otherRacer.hashCode())));
+    }
+
+    @Test
+    public void racersMustNotBeEqualIfIdsAreNotEqual() {
+        racer.setId(1L);
+        racer.setName("Alice");
+
+        Racer otherRacer = new Racer();
+        otherRacer.setId(2L);
+        otherRacer.setName("Alice");
+
+        assertThat(racer, is(not(equalTo(otherRacer))));
+        assertThat(racer.hashCode(), is(not(equalTo(otherRacer.hashCode()))));
+    }
+
+    @Test
+    public void racersMustNotBeEqualIfNamesAreNotEqual() {
+        racer.setId(1L);
+        racer.setName("Alice");
+
+        Racer otherRacer = new Racer();
+        otherRacer.setId(1L);
+        otherRacer.setName("Bob");
+
+        assertThat(racer, is(not(equalTo(otherRacer))));
+        assertThat(racer.hashCode(), is(not(equalTo(otherRacer.hashCode()))));
+    }
 }
