@@ -19,8 +19,6 @@ public class RacePage {
 
     private WebDriver driver;
 
-    private boolean headless;
-
     private By testRoll = By.id("test-roll");
     private By testProcessing = By.id("test-processing");
 
@@ -34,8 +32,6 @@ public class RacePage {
     private By message = By.id("message");
 
     private RacePage(boolean headless) {
-        this.headless = headless;
-
         driver = createDriver(headless);
 
         driver.navigate().to(ROOT_URL);
