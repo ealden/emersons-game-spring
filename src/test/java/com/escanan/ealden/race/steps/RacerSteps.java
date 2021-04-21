@@ -42,6 +42,9 @@ public class RacerSteps {
     public void newRace() {
         race = raceService.newRace();
         racer = race.getRacers().get(0);
+
+        page = new RacePage(headless);
+        page.load();
     }
 
     @Given("I am at position {int}")
@@ -105,13 +108,11 @@ public class RacerSteps {
 
         raceService.save(race);
 
-        loadRace();
+        page.load();
     }
 
     @When("I try to view the race")
     public void loadRace() {
-        page = new RacePage(headless);
-        page.load();
     }
 
     @Then("I must now be at position {int}")
