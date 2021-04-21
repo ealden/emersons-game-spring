@@ -89,6 +89,12 @@ public class RacerSteps {
     public void racersCrashed() {
         page.roll(1, SpeedType.NORMAL);
 
+        crashAllRacers();
+
+        page.load();
+    }
+
+    private void crashAllRacers() {
         Race race = raceService.getCurrentRace();
 
         for (Racer racer : race.getRacers()) {
@@ -96,8 +102,6 @@ public class RacerSteps {
         }
 
         raceService.save(race);
-
-        page.load();
     }
 
     @Then("I must now be at position {int}")
