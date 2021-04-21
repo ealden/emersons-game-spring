@@ -80,12 +80,6 @@ public class RacerSteps {
         race = raceService.getCurrentRace();
     }
 
-    private void roll(int roll, SpeedType speedType) {
-        this.speedType = speedType;
-
-        roll(roll);
-    }
-
     @When("I choose to start over in a new race")
     public void createNewRace() {
         page.newRace();
@@ -96,7 +90,9 @@ public class RacerSteps {
 
     @When("all racers have crashed!")
     public void racersCrashed() {
-        roll(1, SpeedType.NORMAL);
+        page.roll(1, SpeedType.NORMAL);
+
+        Race race = raceService.getCurrentRace();
 
         for (Racer racer : race.getRacers()) {
             racer.setDamage(MAX_DAMAGE);
