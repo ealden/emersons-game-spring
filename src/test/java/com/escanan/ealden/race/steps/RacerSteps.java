@@ -47,16 +47,22 @@ public class RacerSteps {
     @Given("I am at position {int}")
     public void setPosition(int position) {
         racer.setPosition(position);
+
+        raceService.save(race);
     }
 
     @Given("I have damage of {int}")
     public void setDamage(int damage) {
         racer.setDamage(damage);
+
+        raceService.save(race);
     }
 
     @Given("I see the finish line at position {int}")
     public void setFinishLine(int finishLine) {
         race.setFinishLine(finishLine);
+
+        raceService.save(race);
     }
 
     @When("I choose {string} speed")
@@ -97,13 +103,13 @@ public class RacerSteps {
             racer.setDamage(MAX_DAMAGE);
         }
 
+        raceService.save(race);
+
         loadRace();
     }
 
     @When("I try to view the race")
     public void loadRace() {
-        raceService.save(race);
-
         page = new RacePage(headless);
         page.load();
     }
