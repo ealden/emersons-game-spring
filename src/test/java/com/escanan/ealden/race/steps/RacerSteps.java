@@ -77,8 +77,6 @@ public class RacerSteps {
     @When("I roll a {int}")
     public void roll(int roll) {
         page.roll(roll, speedType);
-
-        race = raceService.getCurrentRace();
     }
 
     @When("I choose to start over in a new race")
@@ -127,9 +125,7 @@ public class RacerSteps {
 
     @Then("I must now have a log entry with the following:")
     public void assertRollWithRacerLogged() {
-        Racer previousRacer = race.getRacers().get(0);
-
-        assertThat(race.getLastRoll().getRacer(), is(sameInstance(previousRacer)));
+        assertThat(getLastRoll().getRacer(), is(equalTo(race.getCurrentRacer())));
     }
 
     private Roll getLastRoll() {
