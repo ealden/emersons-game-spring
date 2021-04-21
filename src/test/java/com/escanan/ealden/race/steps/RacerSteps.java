@@ -25,7 +25,7 @@ public class RacerSteps {
     @Value("${race.test.headless}")
     private boolean headless;
 
-    private RacePage racePage;
+    private RacePage page;
 
     private Race race;
     private Racer racer;
@@ -33,7 +33,7 @@ public class RacerSteps {
 
     @After
     public void tearDown() {
-        racePage.close();
+        page.close();
     }
 
     @Given("I am in a race")
@@ -66,7 +66,7 @@ public class RacerSteps {
     public void roll(int roll) {
         loadRace();
 
-        racePage.roll(roll, speedType);
+        page.roll(roll, speedType);
 
         race = raceService.getCurrentRace();
     }
@@ -81,7 +81,7 @@ public class RacerSteps {
     public void createNewRace() {
         loadRace();
 
-        racePage.newRace();
+        page.newRace();
 
         race = raceService.getCurrentRace();
         racer = race.getRacers().get(0);
@@ -102,28 +102,28 @@ public class RacerSteps {
     public void loadRace() {
         raceService.save(race);
 
-        racePage = RacePage.load(headless);
+        page = RacePage.load(headless);
     }
 
     @Then("I must now be at position {int}")
     public void assertNewPosition(int newPosition) {
-        assertThat(racePage.getPositionOf(racer), is(equalTo(newPosition)));
+        assertThat(page.getPositionOf(racer), is(equalTo(newPosition)));
     }
 
     @Then("I must now have damage of {int}")
     public void assertNewDamage(int newDamage) {
-        assertThat(racePage.getDamageOf(racer), is(equalTo(newDamage)));
+        assertThat(page.getDamageOf(racer), is(equalTo(newDamage)));
     }
 
     @Then("I must see the race result: WIN")
     public void assertRacerWins() {
-        assertThat(racePage.getPositionOf(racer), is(equalTo(race.getFinishLine())));
-        assertThat(racePage.isOver(), is(true));
+        assertThat(page.getPositionOf(racer), is(equalTo(race.getFinishLine())));
+        assertThat(page.isOver(), is(true));
     }
 
     @Then("I must see the race result: CRASHED")
     public void assertRacerCrashed() {
-        assertThat(racePage.hasCrashed(racer), is(true));
+        assertThat(page.hasCrashed(racer), is(true));
     }
 
     @Then("I must now have a log entry with the following:")
@@ -184,16 +184,16 @@ public class RacerSteps {
 
     @Then("I must see the message: {string}")
     public void assertMessage(String message) {
-        assertThat(racePage.getMessage(), is(equalTo(message)));
+        assertThat(page.getMessage(), is(equalTo(message)));
     }
 
     @Then("our race must be over!")
     public void assertRacersCrashedAndBurned() {
-        assertThat(racePage.isOver(), is(true));
+        assertThat(page.isOver(), is(true));
     }
 
     @Then("I must see the race result: --")
     public void assertNoRaceResult() {
-        assertThat(racePage.isOver(), is(false));
+        assertThat(page.isOver(), is(false));
     }
 }
