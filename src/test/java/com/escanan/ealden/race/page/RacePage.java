@@ -31,17 +31,17 @@ public class RacePage {
 
     private By message = By.id("message");
 
-    private RacePage(boolean headless) {
+    public RacePage(boolean headless) {
         driver = createDriver(headless);
 
         driver.navigate().to(ROOT_URL);
     }
 
-    public static RacePage load(boolean headless) {
+    public RacePage load(boolean headless) {
         return new RacePage(headless);
     }
 
-    private static WebDriver createDriver(boolean headless) {
+    private WebDriver createDriver(boolean headless) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--silent");
 
