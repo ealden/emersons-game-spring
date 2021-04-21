@@ -105,7 +105,7 @@ public class RacerSteps {
         raceService.save(race);
 
         page = new RacePage(headless);
-        page.load(headless);
+        page.load();
     }
 
     @Then("I must now be at position {int}")

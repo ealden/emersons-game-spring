@@ -37,8 +37,8 @@ public class RacePage {
         driver.navigate().to(ROOT_URL);
     }
 
-    public RacePage load(boolean headless) {
-        return new RacePage(headless);
+    public RacePage load() {
+        return this;
     }
 
     private WebDriver createDriver(boolean headless) {
