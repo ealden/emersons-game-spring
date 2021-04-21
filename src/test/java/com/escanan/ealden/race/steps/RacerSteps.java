@@ -29,6 +29,7 @@ public class RacerSteps {
     private RacePage page;
 
     private Race race;
+    private Roll lastRoll;
 
     private SpeedType speedType;
 
@@ -131,7 +132,11 @@ public class RacerSteps {
     }
 
     private Roll getLastRoll() {
-        return raceService.getCurrentRace().getLastRoll();
+        if (lastRoll == null) {
+            lastRoll = raceService.getCurrentRace().getLastRoll();
+        }
+
+        return lastRoll;
     }
 
     @Then("Position: {int}")
