@@ -57,9 +57,7 @@ public class RacePage {
     }
 
     public void close() {
-        if (headless) {
-            driver.quit();
-        }
+        driver.quit();
     }
 
     public RacePage roll(int roll, SpeedType speedType) {

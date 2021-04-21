@@ -33,7 +33,9 @@ public class RacerSteps {
 
     @After
     public void tearDown() {
-        page.close();
+        if (headless) {
+            page.close();
+        }
     }
 
     @Given("I am in a race")
