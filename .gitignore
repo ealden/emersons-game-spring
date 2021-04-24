@@ -2,3 +2,4 @@
 build
 .idea
 chromedriver.exe
+.DS_Store
