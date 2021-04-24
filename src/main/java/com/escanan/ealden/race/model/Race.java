@@ -31,7 +31,7 @@ public class Race {
 
     @OneToMany(mappedBy = "race", cascade = ALL, fetch = EAGER)
     @OrderBy("id")
-    private List<Roll> rolls = new ArrayList<>();
+    private final List<Roll> rolls = new ArrayList<>();
 
     @ManyToOne
     private Roll lastRoll;

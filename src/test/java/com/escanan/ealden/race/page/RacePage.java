@@ -17,19 +17,19 @@ public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
     private static final String CRASHED = "true";
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    private By testRoll = By.id("test-roll");
-    private By testProcessing = By.id("test-processing");
+    private final By testRoll = By.id("test-roll");
+    private final By testProcessing = By.id("test-processing");
 
-    private By raceControls = By.id("race-controls");
-    private By raceOver = By.id("race-over");
+    private final By raceControls = By.id("race-controls");
+    private final By raceOver = By.id("race-over");
 
-    private By normalSpeed = By.id("roll-normal-speed");
-    private By superSpeed = By.id("roll-super-speed");
-    private By newRace = By.id("new-race");
+    private final By normalSpeed = By.id("roll-normal-speed");
+    private final By superSpeed = By.id("roll-super-speed");
+    private final By newRace = By.id("new-race");
 
-    private By message = By.id("message");
+    private final By message = By.id("message");
 
     public RacePage(boolean headless) {
         driver = createDriver(headless);

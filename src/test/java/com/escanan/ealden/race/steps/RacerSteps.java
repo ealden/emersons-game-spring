@@ -15,7 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class RacerSteps {
     private static final String YES = "YES";
