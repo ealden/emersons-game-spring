@@ -1,7 +1,7 @@
 package com.escanan.ealden.race.model;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.SpeedType.SUPER;
@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 public class RollTest {
     private Roll roll;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         roll = new Roll();
     }

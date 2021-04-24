@@ -1,7 +1,7 @@
 package com.escanan.ealden.race.model;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
@@ -13,7 +13,7 @@ public class RacerTest {
     private Racer racer;
     private Race race;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         racer = new Racer();
 

@@ -1,6 +1,6 @@
 package com.escanan.ealden.race.model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.SpeedType.SUPER;
