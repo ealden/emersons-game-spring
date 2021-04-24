@@ -6,7 +6,7 @@ plugins {
     id "org.sonarqube" version "3.1.1"
 }
 
-group = "com.escanan.ealden"
+group = "com.escanan.ealden.race"
 version = "1.0.0"
 sourceCompatibility = "1.8"
 
