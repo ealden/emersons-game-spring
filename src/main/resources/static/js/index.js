@@ -39,7 +39,7 @@ const EmersonsGame = {
     },
     fetchSettings: function () {
       axios
-        .get('/api/races/settings')
+        .get('/api/settings')
         .then(response => {
           this.testMode = response.data.testMode
 
