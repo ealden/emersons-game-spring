@@ -1,14 +1,14 @@
 plugins {
-    id "org.springframework.boot" version "2.4.5"
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
-    id "java"
-    id "war"
-    id "org.sonarqube" version "3.1.1"
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'war'
+    id 'org.sonarqube' version '3.1.1'
 }
 
-group = "com.escanan.ealden.race"
-version = "1.0.0"
-sourceCompatibility = "1.8"
+group = 'com.escanan.ealden.race'
+version = '1.0.0'
+sourceCompatibility = '1.8'
 
 configurations {
     cucumberRuntime {
@@ -25,18 +25,18 @@ repositories {
 }
 
 dependencies {
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
-    implementation "org.springframework.boot:spring-boot-starter-web"
-    developmentOnly "org.springframework.boot:spring-boot-devtools"
-    runtimeOnly "com.h2database:h2"
-    runtimeOnly "org.postgresql:postgresql"
-    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
-    testImplementation "org.springframework.boot:spring-boot-starter-test"
-    testImplementation "io.cucumber:cucumber-java:6.10.3"
-    testImplementation "io.cucumber:cucumber-junit:6.10.3"
-    testImplementation "io.cucumber:cucumber-spring:6.10.3"
-    testImplementation "org.seleniumhq.selenium:selenium-java:3.141.59"
-    cucumberRuntime "com.h2database:h2"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.postgresql:postgresql'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.cucumber:cucumber-java:6.10.3'
+    testImplementation 'io.cucumber:cucumber-junit:6.10.3'
+    testImplementation 'io.cucumber:cucumber-spring:6.10.3'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    cucumberRuntime 'com.h2database:h2'
 }
 
 test {
@@ -47,16 +47,16 @@ task cucumber() {
     dependsOn assemble, compileTestJava
 
     doLast {
-        def feature = "src/test/resources"
+        def feature = 'src/test/resources'
 
-        if (project.hasProperty("feature")) {
-            feature = project.getProperty("feature")
+        if (project.hasProperty('feature')) {
+            feature = project.getProperty('feature')
         }
 
         javaexec {
-            main = "io.cucumber.core.cli.Main"
+            main = 'io.cucumber.core.cli.Main'
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ["--tags", "not @wip", "--plugin", "pretty", "--glue", "com.escanan.ealden.race", feature]
+            args = ['--tags', 'not @wip', '--plugin', 'pretty', '--glue', 'com.escanan.ealden.race', feature]
         }
     }
 }
