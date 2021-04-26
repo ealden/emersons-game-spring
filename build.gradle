@@ -8,7 +8,6 @@ plugins {
 
 group = 'com.escanan.ealden.race'
 version = '1.0.0'
-sourceCompatibility = '1.8'
 
 configurations {
     cucumberRuntime {
@@ -37,6 +36,10 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-spring:6.10.3'
     testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     cucumberRuntime 'com.h2database:h2'
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
 }
 
 test {
