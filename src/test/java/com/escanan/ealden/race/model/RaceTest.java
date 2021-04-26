@@ -142,6 +142,17 @@ public class RaceTest {
     }
 
     @Test
+    public void isOverMustReturnTrueIfAllRacersCrashed() {
+        Race race = new Race();
+
+        Racer racer = new Racer();
+        racer.setDamage(MAX_DAMAGE);
+        race.addRacer(racer);
+
+        assertThat(race.isOver(), is(true));
+    }
+
+    @Test
     public void isAllCrashedMustReturnTrueIfAllRacersCrashed() {
         Race race = new Race();
 
@@ -176,17 +187,6 @@ public class RaceTest {
         race.addRacer(racer3);
 
         assertThat(race.isAllCrashed(), is(false));
-    }
-
-    @Test
-    public void isOverMustReturnTrueIfAllRacersCrashed() {
-        Race race = new Race();
-
-        Racer racer = new Racer();
-        racer.setDamage(MAX_DAMAGE);
-        race.addRacer(racer);
-
-        assertThat(race.isOver(), is(true));
     }
 
     @Test
