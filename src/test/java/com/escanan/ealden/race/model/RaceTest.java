@@ -238,7 +238,7 @@ public class RaceTest {
         racer3.setDamage(MAX_DAMAGE);
         race.addRacer(racer3);
 
-        race.roll(0, NORMAL);
+        race.roll(1, NORMAL);
 
         assertThat(race.getMessage(), is(equalTo("All racers CRASHED!!!  This race is over!")));
     }
@@ -255,7 +255,7 @@ public class RaceTest {
         race.addRacer(new Racer("Charlie"));
         race.addRacer(new Racer("Dave"));
 
-        race.roll(0, NORMAL);
+        race.roll(1, NORMAL);
 
         assertThat(race.getMessage(), is(equalTo("Alice wins the race!  Congratulations!!!")));
     }
@@ -272,9 +272,9 @@ public class RaceTest {
         race.addRacer(new Racer("Charlie"));
         race.addRacer(new Racer("Dave"));
 
-        race.roll(0, NORMAL);
+        race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 0 and moved 0.  Alice CRASHED!!!  Bob rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 1 and moved 0.  Alice CRASHED!!!  Bob rolls next!")));
     }
 
     @Test
@@ -289,9 +289,9 @@ public class RaceTest {
         race.addRacer(new Racer("Charlie"));
         race.addRacer(new Racer("Dave"));
 
-        race.roll(0, NORMAL);
+        race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 0 and moved 0.  Alice has 1 damage.  Bob rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 1 and moved 0.  Alice has 1 damage.  Bob rolls next!")));
     }
 
     @Test
@@ -306,9 +306,9 @@ public class RaceTest {
         race.addRacer(new Racer("Charlie"));
         race.addRacer(new Racer("Dave"));
 
-        race.roll(0, SUPER);
+        race.roll(1, SUPER);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose SUPER speed, and rolled 0 and moved 0.  Alice now has 3 damage.  Bob rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose SUPER speed, and rolled 1 and moved 0.  Alice now has 3 damage.  Bob rolls next!")));
     }
 
     @Test
@@ -319,8 +319,8 @@ public class RaceTest {
         race.addRacer(new Racer("Charlie"));
         race.addRacer(new Racer("Dave"));
 
-        race.roll(0, NORMAL);
+        race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 0 and moved 0.  Bob rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 1 and moved 1.  Bob rolls next!")));
     }
 }
