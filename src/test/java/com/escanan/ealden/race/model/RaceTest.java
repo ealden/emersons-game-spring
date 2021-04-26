@@ -1,6 +1,5 @@
 package com.escanan.ealden.race.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
@@ -11,17 +10,11 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class RaceTest {
-    private Race race;
-
-    @BeforeEach
-    public void setUp() {
-        race = new Race();
-    }
-
     @Test
     public void addRacerMustAddRacerToRacers() {
-        Racer racer = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
 
         assertThat(race.getRacers(), contains(racer));
@@ -29,8 +22,9 @@ public class RaceTest {
 
     @Test
     public void addRacerMustAssociateRacerToRace() {
-        Racer racer = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
 
         assertThat(racer.getRace(), is(sameInstance(race)));
@@ -38,10 +32,12 @@ public class RaceTest {
 
     @Test
     public void addRacerMustSetFirstRacerAsCurrentRacer() {
-        Racer racer = new Racer();
-        Racer racer2 = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
+
+        Racer racer2 = new Racer();
         race.addRacer(racer2);
 
         assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
@@ -49,12 +45,15 @@ public class RaceTest {
 
     @Test
     public void addRacersMustRankRacers() {
-        Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
+
+        Racer racer2 = new Racer();
         race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
         race.addRacer(racer3);
 
         assertThat(racer.getRank(), is(1));
@@ -64,6 +63,8 @@ public class RaceTest {
 
     @Test
     public void rollMustNotRollIfNoRacers() {
+        Race race = new Race();
+
         assertDoesNotThrow(() -> {
             race.roll(1, NORMAL);
         });
@@ -71,12 +72,15 @@ public class RaceTest {
 
     @Test
     public void rollMustSetCurrentRacerToNextRacerInRank() {
-        Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
+
+        Racer racer2 = new Racer();
         race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
         race.addRacer(racer3);
 
         race.roll(1, NORMAL);
@@ -86,12 +90,15 @@ public class RaceTest {
 
     @Test
     public void rollMustSetCurrentRacerToFirstRacerAfterRound() {
-        Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
+
+        Racer racer2 = new Racer();
         race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
         race.addRacer(racer3);
 
         race.roll(1, NORMAL);
@@ -103,12 +110,15 @@ public class RaceTest {
 
     @Test
     public void isOverMustReturnFalseIfNoRacersHaveWon() {
-        Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
+        Race race = new Race();
 
+        Racer racer = new Racer();
         race.addRacer(racer);
+
+        Racer racer2 = new Racer();
         race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
         race.addRacer(racer3);
 
         assertThat(race.isOver(), is(false));
@@ -116,73 +126,80 @@ public class RaceTest {
 
     @Test
     public void isOverMustReturnTrueIfARacerHasWon() {
+        Race race = new Race();
+
         Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
-
         race.addRacer(racer);
-        race.addRacer(racer2);
-        race.addRacer(racer3);
 
+        Racer racer2 = new Racer();
+        race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
         racer3.setPosition(race.getFinishLine());
+        race.addRacer(racer3);
 
         assertThat(race.isOver(), is(true));
     }
 
     @Test
     public void isAllCrashedMustReturnTrueIfAllRacersCrashed() {
+        Race race = new Race();
+
         Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
-
-        race.addRacer(racer);
-        race.addRacer(racer2);
-        race.addRacer(racer3);
-
         racer.setDamage(MAX_DAMAGE);
+        race.addRacer(racer);
+
+        Racer racer2 = new Racer();
         racer2.setDamage(MAX_DAMAGE);
+        race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
         racer3.setDamage(MAX_DAMAGE);
+        race.addRacer(racer3);
 
         assertThat(race.isAllCrashed(), is(true));
     }
 
     @Test
     public void isAllCrashedMustReturnFalseIfNotAllRacersCrashed() {
+        Race race = new Race();
+
         Racer racer = new Racer();
-        Racer racer2 = new Racer();
-        Racer racer3 = new Racer();
-
         race.addRacer(racer);
-        race.addRacer(racer2);
-        race.addRacer(racer3);
-
         racer.setDamage(MAX_DAMAGE);
+
+        Racer racer2 = new Racer();
         racer2.setDamage(MAX_DAMAGE);
+        race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
+        race.addRacer(racer3);
 
         assertThat(race.isAllCrashed(), is(false));
     }
 
     @Test
     public void isOverMustReturnTrueIfAllRacersCrashed() {
+        Race race = new Race();
+
         Racer racer = new Racer();
-
-        race.addRacer(racer);
-
         racer.setDamage(MAX_DAMAGE);
+        race.addRacer(racer);
 
         assertThat(race.isOver(), is(true));
     }
 
     @Test
     public void getLastRollMustReturnNullIfNoRollsYet() {
+        Race race = new Race();
+
         assertThat(race.getLastRoll(), is(nullValue()));
     }
 
     @Test
     public void getLastRollMustReturnRollIfRollMade() {
-        Racer racer = new Racer();
-
-        race.addRacer(racer);
+        Race race = new Race();
+        race.addRacer(new Racer());
 
         race.roll(1, NORMAL);
 
@@ -192,11 +209,14 @@ public class RaceTest {
 
     @Test
     public void getMessageWhenNoRacersJoined() {
+        Race race = new Race();
+
         assertThat(race.getMessage(), is(nullValue()));
     }
 
     @Test
     public void getMessageWhenRacersJoined() {
+        Race race = new Race();
         race.addRacer(new Racer("Racer 1"));
 
         assertThat(race.getMessage(), is(equalTo("Time to RACE!  Racer 1 rolls first!")));
@@ -204,13 +224,19 @@ public class RaceTest {
 
     @Test
     public void getMessageWhenAllRacersCrashed() {
-        race.addRacer(new Racer("Racer 1"));
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
+        Race race = new Race();
 
-        for (Racer racer : race.getRacers()) {
-            racer.setDamage(MAX_DAMAGE);
-        }
+        Racer racer = new Racer();
+        racer.setDamage(MAX_DAMAGE);
+        race.addRacer(racer);
+
+        Racer racer2 = new Racer();
+        racer2.setDamage(MAX_DAMAGE);
+        race.addRacer(racer2);
+
+        Racer racer3 = new Racer();
+        racer3.setDamage(MAX_DAMAGE);
+        race.addRacer(racer3);
 
         race.roll(0, NORMAL);
 
@@ -219,11 +245,14 @@ public class RaceTest {
 
     @Test
     public void getMessageWhenARacerWins() {
-        race.addRacer(new Racer("Racer 1"));
+        Race race = new Race();
+
+        Racer racer = new Racer("Racer 1");
+        racer.setPosition(race.getFinishLine());
+        race.addRacer(racer);
+
         race.addRacer(new Racer("Racer 2"));
         race.addRacer(new Racer("Racer 3"));
-
-        race.getRacers().get(0).setPosition(10);
 
         race.roll(0, NORMAL);
 
@@ -232,11 +261,14 @@ public class RaceTest {
 
     @Test
     public void getMessageWhenLastRacerCrashed() {
-        race.addRacer(new Racer("Racer 1"));
+        Race race = new Race();
+
+        Racer racer = new Racer("Racer 1");
+        racer.setDamage(MAX_DAMAGE);
+        race.addRacer(racer);
+
         race.addRacer(new Racer("Racer 2"));
         race.addRacer(new Racer("Racer 3"));
-
-        race.getRacers().get(0).setDamage(MAX_DAMAGE);
 
         race.roll(0, NORMAL);
 
@@ -245,11 +277,14 @@ public class RaceTest {
 
     @Test
     public void getMessageWhenLastRacerDamagedAndRollWithNormalSpeed() {
-        race.addRacer(new Racer("Racer 1"));
+        Race race = new Race();
+
+        Racer racer = new Racer("Racer 1");
+        racer.setDamage(1);
+        race.addRacer(racer);
+
         race.addRacer(new Racer("Racer 2"));
         race.addRacer(new Racer("Racer 3"));
-
-        race.getRacers().get(0).setDamage(1);
 
         race.roll(0, NORMAL);
 
@@ -258,11 +293,14 @@ public class RaceTest {
 
     @Test
     public void getMessageWhenLastRacerDamagedAndRollWithSuperSpeed() {
-        race.addRacer(new Racer("Racer 1"));
+        Race race = new Race();
+
+        Racer racer = new Racer("Racer 1");
+        racer.setDamage(1);
+        race.addRacer(racer);
+
         race.addRacer(new Racer("Racer 2"));
         race.addRacer(new Racer("Racer 3"));
-
-        race.getRacers().get(0).setDamage(1);
 
         race.roll(0, SUPER);
 
@@ -271,6 +309,7 @@ public class RaceTest {
 
     @Test
     public void getMessageAfterRacerRolls() {
+        Race race = new Race();
         race.addRacer(new Racer("Racer 1"));
         race.addRacer(new Racer("Racer 2"));
         race.addRacer(new Racer("Racer 3"));
