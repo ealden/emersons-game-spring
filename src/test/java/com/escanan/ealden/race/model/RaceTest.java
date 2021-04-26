@@ -217,9 +217,9 @@ public class RaceTest {
     @Test
     public void getMessageWhenRacersJoined() {
         Race race = new Race();
-        race.addRacer(new Racer("Racer 1"));
+        race.addRacer(new Racer("Alice"));
 
-        assertThat(race.getMessage(), is(equalTo("Time to RACE!  Racer 1 rolls first!")));
+        assertThat(race.getMessage(), is(equalTo("Time to RACE!  Alice rolls first!")));
     }
 
     @Test
@@ -247,75 +247,75 @@ public class RaceTest {
     public void getMessageWhenARacerWins() {
         Race race = new Race();
 
-        Racer racer = new Racer("Racer 1");
+        Racer racer = new Racer("Alice");
         racer.setPosition(race.getFinishLine());
         race.addRacer(racer);
 
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
+        race.addRacer(new Racer("Bob"));
+        race.addRacer(new Racer("Charlie"));
 
         race.roll(0, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Racer 1 wins the race!  Congratulations!!!")));
+        assertThat(race.getMessage(), is(equalTo("Alice wins the race!  Congratulations!!!")));
     }
 
     @Test
     public void getMessageWhenLastRacerCrashed() {
         Race race = new Race();
 
-        Racer racer = new Racer("Racer 1");
+        Racer racer = new Racer("Alice");
         racer.setDamage(MAX_DAMAGE);
         race.addRacer(racer);
 
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
+        race.addRacer(new Racer("Bob"));
+        race.addRacer(new Racer("Charlie"));
 
         race.roll(0, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Racer 1 chose NORMAL speed, and rolled 0 and moved 0.  Racer 1 CRASHED!!!  Racer 2 rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 0 and moved 0.  Alice CRASHED!!!  Bob rolls next!")));
     }
 
     @Test
     public void getMessageWhenLastRacerDamagedAndRollWithNormalSpeed() {
         Race race = new Race();
 
-        Racer racer = new Racer("Racer 1");
+        Racer racer = new Racer("Alice");
         racer.setDamage(1);
         race.addRacer(racer);
 
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
+        race.addRacer(new Racer("Bob"));
+        race.addRacer(new Racer("Charlie"));
 
         race.roll(0, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Racer 1 chose NORMAL speed, and rolled 0 and moved 0.  Racer 1 has 1 damage.  Racer 2 rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 0 and moved 0.  Alice has 1 damage.  Bob rolls next!")));
     }
 
     @Test
     public void getMessageWhenLastRacerDamagedAndRollWithSuperSpeed() {
         Race race = new Race();
 
-        Racer racer = new Racer("Racer 1");
+        Racer racer = new Racer("Alice");
         racer.setDamage(1);
         race.addRacer(racer);
 
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
+        race.addRacer(new Racer("Bob"));
+        race.addRacer(new Racer("Charlie"));
 
         race.roll(0, SUPER);
 
-        assertThat(race.getMessage(), is(equalTo("Racer 1 chose SUPER speed, and rolled 0 and moved 0.  Racer 1 now has 3 damage.  Racer 2 rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose SUPER speed, and rolled 0 and moved 0.  Alice now has 3 damage.  Bob rolls next!")));
     }
 
     @Test
     public void getMessageAfterRacerRolls() {
         Race race = new Race();
-        race.addRacer(new Racer("Racer 1"));
-        race.addRacer(new Racer("Racer 2"));
-        race.addRacer(new Racer("Racer 3"));
+        race.addRacer(new Racer("Alice"));
+        race.addRacer(new Racer("Bob"));
+        race.addRacer(new Racer("Charlie"));
 
         race.roll(0, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Racer 1 chose NORMAL speed, and rolled 0 and moved 0.  Racer 2 rolls next!")));
+        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 0 and moved 0.  Bob rolls next!")));
     }
 }
