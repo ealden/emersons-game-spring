@@ -253,6 +253,7 @@ public class RaceTest {
 
         race.addRacer(new Racer("Bob"));
         race.addRacer(new Racer("Charlie"));
+        race.addRacer(new Racer("Dave"));
 
         race.roll(0, NORMAL);
 
@@ -269,6 +270,7 @@ public class RaceTest {
 
         race.addRacer(new Racer("Bob"));
         race.addRacer(new Racer("Charlie"));
+        race.addRacer(new Racer("Dave"));
 
         race.roll(0, NORMAL);
 
@@ -285,6 +287,7 @@ public class RaceTest {
 
         race.addRacer(new Racer("Bob"));
         race.addRacer(new Racer("Charlie"));
+        race.addRacer(new Racer("Dave"));
 
         race.roll(0, NORMAL);
 
@@ -301,6 +304,7 @@ public class RaceTest {
 
         race.addRacer(new Racer("Bob"));
         race.addRacer(new Racer("Charlie"));
+        race.addRacer(new Racer("Dave"));
 
         race.roll(0, SUPER);
 
@@ -313,6 +317,7 @@ public class RaceTest {
         race.addRacer(new Racer("Alice"));
         race.addRacer(new Racer("Bob"));
         race.addRacer(new Racer("Charlie"));
+        race.addRacer(new Racer("Dave"));
 
         race.roll(0, NORMAL);
 
