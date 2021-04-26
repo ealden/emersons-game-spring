@@ -14,6 +14,7 @@ import static javax.persistence.FetchType.EAGER;
 @Entity
 public class Racer {
     public static final int MAX_DAMAGE = 6;
+    public static final int NO_DAMAGE = 0;
 
     @Id
     @GeneratedValue
@@ -102,7 +103,7 @@ public class Racer {
     }
 
     public boolean isDamaged() {
-        return damage > 0;
+        return damage > NO_DAMAGE;
     }
 
     public void setId(Long id) {
