@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.escanan.ealden.race'
-version = '1.0.0'
+version = '1.0.0-SNAPSHOT'
 
 configurations {
     cucumberRuntime {
