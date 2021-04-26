@@ -1,6 +1,5 @@
 package com.escanan.ealden.race.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
@@ -10,20 +9,16 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class RollTest {
-    private Roll roll;
-
-    @BeforeEach
-    public void setUp() {
-        roll = new Roll();
-    }
-
     @Test
     public void isDamagedMustReturnFalseIfNoNewDamage() {
+        Roll roll = new Roll();
+
         assertThat(roll.isDamaged(), is(equalTo(false)));
     }
 
     @Test
     public void isDamagedMustReturnTrueIfAtLeastOneNewDamage() {
+        Roll roll = new Roll();
         roll.setNewDamage(1);
 
         assertThat(roll.isDamaged(), is(equalTo(true)));
@@ -31,6 +26,7 @@ public class RollTest {
 
     @Test
     public void isNormalSpeedMustReturnTrueIfSpeedTypeIsNormal() {
+        Roll roll = new Roll();
         roll.setSpeedType(NORMAL);
 
         assertThat(roll.isNormalSpeed(), is(equalTo(true)));
@@ -38,6 +34,7 @@ public class RollTest {
 
     @Test
     public void isNormalSpeedMustReturnFalseIfSpeedTypeIsSuper() {
+        Roll roll = new Roll();
         roll.setSpeedType(SUPER);
 
         assertThat(roll.isNormalSpeed(), is(equalTo(false)));
@@ -45,6 +42,7 @@ public class RollTest {
 
     @Test
     public void isSuperSpeedMustReturnTrueIfSpeedTypeIsSuper() {
+        Roll roll = new Roll();
         roll.setSpeedType(SUPER);
 
         assertThat(roll.isSuperSpeed(), is(equalTo(true)));
@@ -52,6 +50,7 @@ public class RollTest {
 
     @Test
     public void isSuperSpeedMustReturnFalseIfSpeedTypeIsNormal() {
+        Roll roll = new Roll();
         roll.setSpeedType(NORMAL);
 
         assertThat(roll.isSuperSpeed(), is(equalTo(false)));
