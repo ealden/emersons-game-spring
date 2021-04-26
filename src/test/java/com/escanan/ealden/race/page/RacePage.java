@@ -15,7 +15,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class RacePage {
     private static final String ROOT_URL = "http://localhost:8080/";
-    private static final String CRASHED = "true";
 
     private final WebDriver driver;
 
@@ -97,10 +96,6 @@ public class RacePage {
 
     public int getDamageOf(Racer racer) {
         return parseInt(findTestElement(racer, "damage").getText());
-    }
-
-    public boolean hasCrashed(Racer racer) {
-        return CRASHED.equals(findTestElement(racer, "crashed").getText());
     }
 
     public boolean isOver() {
