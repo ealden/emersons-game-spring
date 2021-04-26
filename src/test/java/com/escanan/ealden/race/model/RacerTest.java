@@ -10,31 +10,31 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class RacerTest {
-    private Race race;
+    private Race currentRace;
 
     @BeforeEach
     public void setUp() {
-        race = new Race();
+        currentRace = new Race();
     }
 
     @Test
     public void rollMustSetPositionTo1WithNoDamageIfRollIsOddAndSpeedTypeNormal() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(1, NORMAL);
 
         assertThat(racer.getPosition(), is(1));
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(3, NORMAL);
 
         assertThat(racer.getPosition(), is(1));
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(5, NORMAL);
 
         assertThat(racer.getPosition(), is(1));
@@ -44,21 +44,21 @@ public class RacerTest {
     @Test
     public void rollMustSetPositionTo2WithNoDamageIfRollIsEvenAndSpeedTypeNormal() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(2, NORMAL);
 
         assertThat(racer.getPosition(), is(2));
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(4, NORMAL);
 
         assertThat(racer.getPosition(), is(2));
         assertThat(racer.getDamage(), is(0));
 
         racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(6, NORMAL);
 
         assertThat(racer.getPosition(), is(2));
@@ -68,7 +68,7 @@ public class RacerTest {
     @Test
     public void rollMustSetPositionToRollWithDamageIfSpeedTypeSuper() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.roll(6, SUPER);
 
         assertThat(racer.getPosition(), is(6));
@@ -78,7 +78,7 @@ public class RacerTest {
     @Test
     public void rollMustDeductDamageFromRollIfAnyIfSpeedTypeSuper() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setDamage(1);
 
         racer.roll(6, SUPER);
@@ -89,10 +89,10 @@ public class RacerTest {
 
     @Test
     public void getPositionMustReturnCurrentPositionIfNotYetOnFinishLine() {
-        int position = race.getFinishLine() - 1;
+        int position = currentRace.getFinishLine() - 1;
 
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(position);
 
         assertThat(racer.getPosition(), is(position));
@@ -100,13 +100,13 @@ public class RacerTest {
 
     @Test
     public void getPositionMustReturnFinishLineIfCrossedFinishLine() {
-        int position = race.getFinishLine() + 10;
+        int position = currentRace.getFinishLine() + 10;
 
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(position);
 
-        assertThat(racer.getPosition(), is(race.getFinishLine()));
+        assertThat(racer.getPosition(), is(currentRace.getFinishLine()));
     }
 
     @Test
@@ -136,10 +136,10 @@ public class RacerTest {
 
     @Test
     public void isWinnerMustReturnTrueIfCrossedFinishLine() {
-        int position = race.getFinishLine() + 1;
+        int position = currentRace.getFinishLine() + 1;
 
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(position);
 
         assertThat(racer.isWinner(), is(true));
@@ -147,10 +147,10 @@ public class RacerTest {
 
     @Test
     public void isWinnerMustReturnFalseIfNotYetOnFinishLine() {
-        int position = race.getFinishLine() - 1;
+        int position = currentRace.getFinishLine() - 1;
 
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(position);
 
         assertThat(racer.isWinner(), is(false));
@@ -159,7 +159,7 @@ public class RacerTest {
     @Test
     public void rollMustLogRollEntryWithNormalSpeed() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(1);
         racer.setDamage(1);
 
@@ -171,7 +171,7 @@ public class RacerTest {
 
         assertThat(roll, is(not(nullValue())));
         assertThat(roll.getRacer(), is(sameInstance(racer)));
-        assertThat(roll.getRace(), is(sameInstance(race)));
+        assertThat(roll.getRace(), is(sameInstance(currentRace)));
         assertThat(roll.getPosition(), is(equalTo(1)));
         assertThat(roll.getDamage(), is(equalTo(1)));
         assertThat(roll.getSpeedType(), is(equalTo(NORMAL)));
@@ -186,7 +186,7 @@ public class RacerTest {
     @Test
     public void rollMustLogRollEntryWithSuperSpeed() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(1);
         racer.setDamage(1);
 
@@ -205,7 +205,7 @@ public class RacerTest {
     @Test
     public void rollMustLogRollEntryThatCrashed() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
 
         assertThat(racer.getLastRoll(), is(nullValue()));
 
@@ -223,7 +223,7 @@ public class RacerTest {
     @Test
     public void rollMustLogRollEntryThatWon() {
         Racer racer = new Racer();
-        racer.setRace(race);
+        racer.setRace(currentRace);
         racer.setPosition(9);
         racer.setDamage(0);
 
