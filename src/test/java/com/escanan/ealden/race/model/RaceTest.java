@@ -3,6 +3,7 @@ package com.escanan.ealden.race.model;
 import org.junit.jupiter.api.Test;
 
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
+import static com.escanan.ealden.race.model.Racer.NO_DAMAGE;
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.SpeedType.SUPER;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -184,6 +185,7 @@ public class RaceTest {
         race.addRacer(racer2);
 
         Racer racer3 = new Racer();
+        racer3.setDamage(NO_DAMAGE);
         race.addRacer(racer3);
 
         assertThat(race.isAllCrashed(), is(false));
