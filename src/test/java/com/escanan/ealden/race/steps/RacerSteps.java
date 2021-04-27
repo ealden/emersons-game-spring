@@ -19,8 +19,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class RacerSteps {
-    private static final String YES = "YES";
-
     @Autowired
     private RaceService raceService;
 
@@ -170,18 +168,14 @@ public class RacerSteps {
         assertThat(getLastRoll().getNewDamage(), is(equalTo(newDamage)));
     }
 
-    @Then("Crashed: {string}")
-    public void assertRollWithCrashedLogged(String crashed) {
-        boolean didCrash = YES.equals(crashed);
-
-        assertThat(getLastRoll().isCrashed(), is(equalTo(didCrash)));
+    @Then("Crashed: {yesno}")
+    public void assertRollWithCrashedLogged(boolean crashed) {
+        assertThat(getLastRoll().isCrashed(), is(equalTo(crashed)));
     }
 
-    @Then("Win: {string}")
-    public void assertRollWithWinLogged(String win) {
-        boolean didWin = YES.equals(win);
-
-        assertThat(getLastRoll().isWin(), is(equalTo(didWin)));
+    @Then("Win: {yesno}")
+    public void assertRollWithWinLogged(boolean win) {
+       assertThat(getLastRoll().isWin(), is(equalTo(win)));
     }
 
     @Then("I must see the message: {string}")
