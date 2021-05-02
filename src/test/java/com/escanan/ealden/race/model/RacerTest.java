@@ -9,16 +9,16 @@ import static com.escanan.ealden.race.model.SpeedType.SUPER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class RacerTest {
+class RacerTest {
     private Race currentRace;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         currentRace = new Race();
     }
 
     @Test
-    public void rollMustSetPositionTo1WithNoDamageIfRollIsOddAndSpeedTypeNormal() {
+    void rollMustSetPositionTo1WithNoDamageIfRollIsOddAndSpeedTypeNormal() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(1, NORMAL);
@@ -42,7 +42,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustSetPositionTo2WithNoDamageIfRollIsEvenAndSpeedTypeNormal() {
+    void rollMustSetPositionTo2WithNoDamageIfRollIsEvenAndSpeedTypeNormal() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(2, NORMAL);
@@ -66,7 +66,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustSetPositionToRollWithDamageIfSpeedTypeSuper() {
+    void rollMustSetPositionToRollWithDamageIfSpeedTypeSuper() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(6, SUPER);
@@ -76,7 +76,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustDeductDamageFromRollIfAnyIfSpeedTypeSuper() {
+    void rollMustDeductDamageFromRollIfAnyIfSpeedTypeSuper() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.setDamage(1);
@@ -88,7 +88,7 @@ public class RacerTest {
     }
 
     @Test
-    public void getPositionMustReturnCurrentPositionIfNotYetOnFinishLine() {
+    void getPositionMustReturnCurrentPositionIfNotYetOnFinishLine() {
         int position = currentRace.getFinishLine() - 1;
 
         Racer racer = new Racer();
@@ -99,7 +99,7 @@ public class RacerTest {
     }
 
     @Test
-    public void getPositionMustReturnFinishLineIfCrossedFinishLine() {
+    void getPositionMustReturnFinishLineIfCrossedFinishLine() {
         int position = currentRace.getFinishLine() + 10;
 
         Racer racer = new Racer();
@@ -110,7 +110,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isCrashedMustReturnFalseIfDamageLessThanMaxDamage() {
+    void isCrashedMustReturnFalseIfDamageLessThanMaxDamage() {
         Racer racer = new Racer();
         racer.setDamage(MAX_DAMAGE - 1);
 
@@ -118,7 +118,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isCrashedMustReturnTrueIfDamageEqualToMaxDamage() {
+    void isCrashedMustReturnTrueIfDamageEqualToMaxDamage() {
         Racer racer = new Racer();
         racer.setDamage(MAX_DAMAGE);
 
@@ -126,7 +126,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isCrashedMustReturnTrueIfDamageMoreThanMaxDamage() {
+    void isCrashedMustReturnTrueIfDamageMoreThanMaxDamage() {
         Racer racer = new Racer();
         racer.setDamage(MAX_DAMAGE + 1);
 
@@ -135,7 +135,7 @@ public class RacerTest {
 
 
     @Test
-    public void isWinnerMustReturnTrueIfCrossedFinishLine() {
+    void isWinnerMustReturnTrueIfCrossedFinishLine() {
         int position = currentRace.getFinishLine() + 1;
 
         Racer racer = new Racer();
@@ -146,7 +146,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isWinnerMustReturnFalseIfNotYetOnFinishLine() {
+    void isWinnerMustReturnFalseIfNotYetOnFinishLine() {
         int position = currentRace.getFinishLine() - 1;
 
         Racer racer = new Racer();
@@ -157,7 +157,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustLogRollEntryWithNormalSpeed() {
+    void rollMustLogRollEntryWithNormalSpeed() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.setPosition(1);
@@ -184,7 +184,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustLogRollEntryWithSuperSpeed() {
+    void rollMustLogRollEntryWithSuperSpeed() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.setPosition(1);
@@ -203,7 +203,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustLogRollEntryThatCrashed() {
+    void rollMustLogRollEntryThatCrashed() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
 
@@ -221,7 +221,7 @@ public class RacerTest {
     }
 
     @Test
-    public void rollMustLogRollEntryThatWon() {
+    void rollMustLogRollEntryThatWon() {
         Racer racer = new Racer();
         racer.setRace(currentRace);
         racer.setPosition(9);
@@ -238,7 +238,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isDamagedMustBeTrueIfDamageGreaterThanZero() {
+    void isDamagedMustBeTrueIfDamageGreaterThanZero() {
         Racer racer = new Racer();
         racer.setDamage(1);
 
@@ -246,7 +246,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isDamagedMustBeFalseIfDamageIsZero() {
+    void isDamagedMustBeFalseIfDamageIsZero() {
         Racer racer = new Racer();
         racer.setDamage(0);
 
@@ -254,7 +254,7 @@ public class RacerTest {
     }
 
     @Test
-    public void isDamagedMustBeFalseIfDamageIsLessThanZero() {
+    void isDamagedMustBeFalseIfDamageIsLessThanZero() {
         Racer racer = new Racer();
         racer.setDamage(-1);
 
@@ -262,7 +262,7 @@ public class RacerTest {
     }
 
     @Test
-    public void racersMustBeEqualIfIdsAndNamesAreEqual() {
+    void racersMustBeEqualIfIdsAndNamesAreEqual() {
         Racer racer = new Racer();
         racer.setId(1L);
         racer.setName("Alice");
@@ -276,7 +276,7 @@ public class RacerTest {
     }
 
     @Test
-    public void racersMustNotBeEqualIfIdsAreNotEqual() {
+    void racersMustNotBeEqualIfIdsAreNotEqual() {
         Racer racer = new Racer();
         racer.setId(1L);
         racer.setName("Alice");
@@ -290,7 +290,7 @@ public class RacerTest {
     }
 
     @Test
-    public void racersMustNotBeEqualIfNamesAreNotEqual() {
+    void racersMustNotBeEqualIfNamesAreNotEqual() {
         Racer racer = new Racer();
         racer.setId(1L);
         racer.setName("Alice");

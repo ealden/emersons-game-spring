@@ -8,9 +8,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class SpeedTypeTest {
+class SpeedTypeTest {
     @Test
-    public void calculate() {
+    void calculate() {
         assertThat(NORMAL.calculate(1), is(equalTo(1)));
         assertThat(NORMAL.calculate(2), is(equalTo(2)));
         assertThat(NORMAL.calculate(3), is(equalTo(1)));
@@ -33,7 +33,7 @@ public class SpeedTypeTest {
     }
 
     @Test
-    public void move() {
+    void move() {
         assertThat(NORMAL.move(5, 0), is(equalTo(1)));
         assertThat(NORMAL.move(5, 1), is(equalTo(0)));
         assertThat(NORMAL.move(5, 2), is(equalTo(0)));

@@ -10,9 +10,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-public class RaceTest {
+class RaceTest {
     @Test
-    public void addRacerMustAddRacerToRacers() {
+    void addRacerMustAddRacerToRacers() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -22,7 +22,7 @@ public class RaceTest {
     }
 
     @Test
-    public void addRacerMustAssociateRacerToRace() {
+    void addRacerMustAssociateRacerToRace() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -32,7 +32,7 @@ public class RaceTest {
     }
 
     @Test
-    public void addRacerMustSetFirstRacerAsCurrentRacer() {
+    void addRacerMustSetFirstRacerAsCurrentRacer() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -45,7 +45,7 @@ public class RaceTest {
     }
 
     @Test
-    public void addRacersMustRankRacers() {
+    void addRacersMustRankRacers() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -63,7 +63,7 @@ public class RaceTest {
     }
 
     @Test
-    public void rollMustNotRollIfNoRacers() {
+    void rollMustNotRollIfNoRacers() {
         Race race = new Race();
 
         assertDoesNotThrow(() -> {
@@ -72,7 +72,7 @@ public class RaceTest {
     }
 
     @Test
-    public void rollMustSetCurrentRacerToNextRacerInRank() {
+    void rollMustSetCurrentRacerToNextRacerInRank() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -90,7 +90,7 @@ public class RaceTest {
     }
 
     @Test
-    public void rollMustSetCurrentRacerToFirstRacerAfterRound() {
+    void rollMustSetCurrentRacerToFirstRacerAfterRound() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -110,7 +110,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustReturnFalseIfNoRacersHaveWon() {
+    void isOverMustReturnFalseIfNoRacersHaveWon() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -126,7 +126,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustReturnTrueIfARacerHasWon() {
+    void isOverMustReturnTrueIfARacerHasWon() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -143,7 +143,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isOverMustReturnTrueIfAllRacersCrashed() {
+    void isOverMustReturnTrueIfAllRacersCrashed() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -154,7 +154,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isAllCrashedMustReturnTrueIfAllRacersCrashed() {
+    void isAllCrashedMustReturnTrueIfAllRacersCrashed() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -173,7 +173,7 @@ public class RaceTest {
     }
 
     @Test
-    public void isAllCrashedMustReturnFalseIfNotAllRacersCrashed() {
+    void isAllCrashedMustReturnFalseIfNotAllRacersCrashed() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -192,14 +192,14 @@ public class RaceTest {
     }
 
     @Test
-    public void getLastRollMustReturnNullIfNoRollsYet() {
+    void getLastRollMustReturnNullIfNoRollsYet() {
         Race race = new Race();
 
         assertThat(race.getLastRoll(), is(nullValue()));
     }
 
     @Test
-    public void getLastRollMustReturnRollIfRollMade() {
+    void getLastRollMustReturnRollIfRollMade() {
         Race race = new Race();
         race.addRacer(new Racer());
 
@@ -210,14 +210,14 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWhenNoRacersJoined() {
+    void getMessageWhenNoRacersJoined() {
         Race race = new Race();
 
         assertThat(race.getMessage(), is(nullValue()));
     }
 
     @Test
-    public void getMessageWhenRacersJoined() {
+    void getMessageWhenRacersJoined() {
         Race race = new Race();
         race.addRacer(new Racer("Alice"));
 
@@ -225,7 +225,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWhenAllRacersCrashed() {
+    void getMessageWhenAllRacersCrashed() {
         Race race = new Race();
 
         Racer racer = new Racer();
@@ -246,7 +246,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWhenARacerWins() {
+    void getMessageWhenARacerWins() {
         Race race = new Race();
 
         Racer racer = new Racer("Alice");
@@ -263,7 +263,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWhenLastRacerCrashed() {
+    void getMessageWhenLastRacerCrashed() {
         Race race = new Race();
 
         Racer racer = new Racer("Alice");
@@ -280,7 +280,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWhenLastRacerDamagedAndRollWithNormalSpeed() {
+    void getMessageWhenLastRacerDamagedAndRollWithNormalSpeed() {
         Race race = new Race();
 
         Racer racer = new Racer("Alice");
@@ -297,7 +297,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageWhenLastRacerDamagedAndRollWithSuperSpeed() {
+    void getMessageWhenLastRacerDamagedAndRollWithSuperSpeed() {
         Race race = new Race();
 
         Racer racer = new Racer("Alice");
@@ -314,7 +314,7 @@ public class RaceTest {
     }
 
     @Test
-    public void getMessageAfterRacerRolls() {
+    void getMessageAfterRacerRolls() {
         Race race = new Race();
         race.addRacer(new Racer("Alice"));
         race.addRacer(new Racer("Bob"));

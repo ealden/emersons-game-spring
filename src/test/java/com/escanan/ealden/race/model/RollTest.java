@@ -8,16 +8,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class RollTest {
+class RollTest {
     @Test
-    public void isDamagedMustReturnFalseIfNoNewDamage() {
+    void isDamagedMustReturnFalseIfNoNewDamage() {
         Roll roll = new Roll();
 
         assertThat(roll.isDamaged(), is(equalTo(false)));
     }
 
     @Test
-    public void isDamagedMustReturnTrueIfAtLeastOneNewDamage() {
+    void isDamagedMustReturnTrueIfAtLeastOneNewDamage() {
         Roll roll = new Roll();
         roll.setNewDamage(1);
 
@@ -25,7 +25,7 @@ public class RollTest {
     }
 
     @Test
-    public void isNormalSpeedMustReturnTrueIfSpeedTypeIsNormal() {
+    void isNormalSpeedMustReturnTrueIfSpeedTypeIsNormal() {
         Roll roll = new Roll();
         roll.setSpeedType(NORMAL);
 
@@ -33,7 +33,7 @@ public class RollTest {
     }
 
     @Test
-    public void isNormalSpeedMustReturnFalseIfSpeedTypeIsSuper() {
+    void isNormalSpeedMustReturnFalseIfSpeedTypeIsSuper() {
         Roll roll = new Roll();
         roll.setSpeedType(SUPER);
 
@@ -41,7 +41,7 @@ public class RollTest {
     }
 
     @Test
-    public void isSuperSpeedMustReturnTrueIfSpeedTypeIsSuper() {
+    void isSuperSpeedMustReturnTrueIfSpeedTypeIsSuper() {
         Roll roll = new Roll();
         roll.setSpeedType(SUPER);
 
@@ -49,7 +49,7 @@ public class RollTest {
     }
 
     @Test
-    public void isSuperSpeedMustReturnFalseIfSpeedTypeIsNormal() {
+    void isSuperSpeedMustReturnFalseIfSpeedTypeIsNormal() {
         Roll roll = new Roll();
         roll.setSpeedType(NORMAL);
 
