@@ -3,6 +3,7 @@ package com.escanan.ealden.race.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.escanan.ealden.race.model.Race.DEFAULT_FINISH_LINE;
 import static com.escanan.ealden.race.model.Racer.MAX_DAMAGE;
 import static com.escanan.ealden.race.model.SpeedType.NORMAL;
 import static com.escanan.ealden.race.model.SpeedType.SUPER;
@@ -15,6 +16,7 @@ class RacerTest {
     @BeforeEach
     void setUp() {
         currentRace = new Race();
+        currentRace.setFinishLine(DEFAULT_FINISH_LINE);
     }
 
     @Test
