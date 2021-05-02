@@ -35,6 +35,7 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:6.10.3'
     testImplementation 'io.cucumber:cucumber-spring:6.10.3'
     testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:4.4.1'
     cucumberRuntime 'com.h2database:h2'
 }
 
