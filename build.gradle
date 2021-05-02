@@ -46,6 +46,15 @@ test {
     useJUnitPlatform()
 }
 
+sonarqube {
+    properties {
+        property 'sonar.projectKey', 'ealden_emersons-game-spring'
+        property 'sonar.projectName', 'emersons-game-spring'
+        property 'sonar.organization', 'ealden'
+        property 'sonar.host.url', 'https://sonarcloud.io'
+    }
+}
+
 task cucumber() {
     dependsOn assemble, compileTestJava
 
