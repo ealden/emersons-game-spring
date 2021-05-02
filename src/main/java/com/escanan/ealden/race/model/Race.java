@@ -77,8 +77,6 @@ public class Race {
         for (Racer racer : racers) {
             if (nextRank == racer.getRank()) {
                 currentRacer = racer;
-
-                break;
             }
         }
     }
