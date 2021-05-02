@@ -25,7 +25,7 @@ public class Race {
 
     @OneToMany(mappedBy = "race", cascade = ALL, fetch = EAGER)
     @OrderBy("id")
-    private List<Racer> racers = new ArrayList<>();
+    private final List<Racer> racers = new ArrayList<>();
 
     @ManyToOne
     private Racer currentRacer;

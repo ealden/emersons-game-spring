@@ -175,7 +175,7 @@ public class RacerSteps {
 
     @Then("Win: {yesno}")
     public void assertRollWithWinLogged(boolean win) {
-       assertThat(getLastRoll().isWin(), is(equalTo(win)));
+        assertThat(getLastRoll().isWin(), is(equalTo(win)));
     }
 
     @Then("I must see the message: {string}")
