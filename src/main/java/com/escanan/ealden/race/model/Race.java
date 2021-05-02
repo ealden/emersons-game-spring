@@ -39,10 +39,6 @@ public class Race {
 
     private int finishLine = DEFAULT_FINISH_LINE;
 
-    public Race() {
-
-    }
-
     public Race addRacer(Racer racer) {
         racers.add(racer);
 
