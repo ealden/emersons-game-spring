@@ -28,7 +28,7 @@ class RaceTest {
         Racer racer = new Racer();
         race.addRacer(racer);
 
-        assertThat(racer.getRace(), is(sameInstance(race)));
+        assertThat(racer.getRace(), sameInstance(race));
     }
 
     @Test
@@ -41,7 +41,7 @@ class RaceTest {
         Racer racer2 = new Racer();
         race.addRacer(racer2);
 
-        assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
+        assertThat(race.getCurrentRacer(), sameInstance(racer));
     }
 
     @Test
@@ -57,9 +57,9 @@ class RaceTest {
         Racer racer3 = new Racer();
         race.addRacer(racer3);
 
-        assertThat(racer.getRank(), is(1));
-        assertThat(racer2.getRank(), is(2));
-        assertThat(racer3.getRank(), is(3));
+        assertThat(racer.getRank(), equalTo(1));
+        assertThat(racer2.getRank(), equalTo(2));
+        assertThat(racer3.getRank(), equalTo(3));
     }
 
     @Test
@@ -86,7 +86,7 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getCurrentRacer(), is(sameInstance(racer2)));
+        assertThat(race.getCurrentRacer(), sameInstance(racer2));
     }
 
     @Test
@@ -106,7 +106,7 @@ class RaceTest {
         race.roll(1, NORMAL);
         race.roll(1, NORMAL);
 
-        assertThat(race.getCurrentRacer(), is(sameInstance(racer)));
+        assertThat(race.getCurrentRacer(), sameInstance(racer));
     }
 
     @Test
@@ -122,7 +122,7 @@ class RaceTest {
         Racer racer3 = new Racer();
         race.addRacer(racer3);
 
-        assertThat(race.isOver(), is(false));
+        assertThat(race.isOver(), equalTo(false));
     }
 
     @Test
@@ -139,7 +139,7 @@ class RaceTest {
         racer3.setPosition(race.getFinishLine());
         race.addRacer(racer3);
 
-        assertThat(race.isOver(), is(true));
+        assertThat(race.isOver(), equalTo(true));
     }
 
     @Test
@@ -150,7 +150,7 @@ class RaceTest {
         racer.setDamage(MAX_DAMAGE);
         race.addRacer(racer);
 
-        assertThat(race.isOver(), is(true));
+        assertThat(race.isOver(), equalTo(true));
     }
 
     @Test
@@ -169,7 +169,7 @@ class RaceTest {
         racer3.setDamage(MAX_DAMAGE);
         race.addRacer(racer3);
 
-        assertThat(race.isAllCrashed(), is(true));
+        assertThat(race.isAllCrashed(), equalTo(true));
     }
 
     @Test
@@ -188,14 +188,14 @@ class RaceTest {
         racer3.setDamage(NO_DAMAGE);
         race.addRacer(racer3);
 
-        assertThat(race.isAllCrashed(), is(false));
+        assertThat(race.isAllCrashed(), equalTo(false));
     }
 
     @Test
     void getLastRollMustReturnNullIfNoRollsYet() {
         Race race = new Race();
 
-        assertThat(race.getLastRoll(), is(nullValue()));
+        assertThat(race.getLastRoll(), nullValue());
     }
 
     @Test
@@ -205,15 +205,15 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getLastRoll(), is(not(nullValue())));
-        assertThat(race.getLastRoll().getRace(), is(sameInstance(race)));
+        assertThat(race.getLastRoll(), not(nullValue()));
+        assertThat(race.getLastRoll().getRace(), sameInstance(race));
     }
 
     @Test
     void getMessageWhenNoRacersJoined() {
         Race race = new Race();
 
-        assertThat(race.getMessage(), is(nullValue()));
+        assertThat(race.getMessage(), nullValue());
     }
 
     @Test
@@ -221,7 +221,7 @@ class RaceTest {
         Race race = new Race();
         race.addRacer(new Racer("Alice"));
 
-        assertThat(race.getMessage(), is(equalTo("Time to RACE!  Alice rolls first!")));
+        assertThat(race.getMessage(), equalTo("Time to RACE!  Alice rolls first!"));
     }
 
     @Test
@@ -242,7 +242,7 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("All racers CRASHED!!!  This race is over!")));
+        assertThat(race.getMessage(), equalTo("All racers CRASHED!!!  This race is over!"));
     }
 
     @Test
@@ -259,7 +259,7 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice wins the race!  Congratulations!!!")));
+        assertThat(race.getMessage(), equalTo("Alice wins the race!  Congratulations!!!"));
     }
 
     @Test
@@ -276,7 +276,7 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 1 and moved 0.  Alice CRASHED!!!  Bob rolls next!")));
+        assertThat(race.getMessage(), equalTo("Alice chose NORMAL speed, and rolled 1 and moved 0.  Alice CRASHED!!!  Bob rolls next!"));
     }
 
     @Test
@@ -293,7 +293,7 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 1 and moved 0.  Alice has 1 damage.  Bob rolls next!")));
+        assertThat(race.getMessage(), equalTo("Alice chose NORMAL speed, and rolled 1 and moved 0.  Alice has 1 damage.  Bob rolls next!"));
     }
 
     @Test
@@ -310,7 +310,7 @@ class RaceTest {
 
         race.roll(1, SUPER);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose SUPER speed, and rolled 1 and moved 0.  Alice now has 3 damage.  Bob rolls next!")));
+        assertThat(race.getMessage(), equalTo("Alice chose SUPER speed, and rolled 1 and moved 0.  Alice now has 3 damage.  Bob rolls next!"));
     }
 
     @Test
@@ -323,6 +323,6 @@ class RaceTest {
 
         race.roll(1, NORMAL);
 
-        assertThat(race.getMessage(), is(equalTo("Alice chose NORMAL speed, and rolled 1 and moved 1.  Bob rolls next!")));
+        assertThat(race.getMessage(), equalTo("Alice chose NORMAL speed, and rolled 1 and moved 1.  Bob rolls next!"));
     }
 }

@@ -23,22 +23,22 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.roll(1, NORMAL);
 
-        assertThat(racer.getPosition(), is(1));
-        assertThat(racer.getDamage(), is(0));
+        assertThat(racer.getPosition(), equalTo(1));
+        assertThat(racer.getDamage(), equalTo(0));
 
         racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(3, NORMAL);
 
-        assertThat(racer.getPosition(), is(1));
-        assertThat(racer.getDamage(), is(0));
+        assertThat(racer.getPosition(), equalTo(1));
+        assertThat(racer.getDamage(), equalTo(0));
 
         racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(5, NORMAL);
 
-        assertThat(racer.getPosition(), is(1));
-        assertThat(racer.getDamage(), is(0));
+        assertThat(racer.getPosition(), equalTo(1));
+        assertThat(racer.getDamage(), equalTo(0));
     }
 
     @Test
@@ -47,22 +47,22 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.roll(2, NORMAL);
 
-        assertThat(racer.getPosition(), is(2));
-        assertThat(racer.getDamage(), is(0));
+        assertThat(racer.getPosition(), equalTo(2));
+        assertThat(racer.getDamage(), equalTo(0));
 
         racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(4, NORMAL);
 
-        assertThat(racer.getPosition(), is(2));
-        assertThat(racer.getDamage(), is(0));
+        assertThat(racer.getPosition(), equalTo(2));
+        assertThat(racer.getDamage(), equalTo(0));
 
         racer = new Racer();
         racer.setRace(currentRace);
         racer.roll(6, NORMAL);
 
-        assertThat(racer.getPosition(), is(2));
-        assertThat(racer.getDamage(), is(0));
+        assertThat(racer.getPosition(), equalTo(2));
+        assertThat(racer.getDamage(), equalTo(0));
     }
 
     @Test
@@ -71,8 +71,8 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.roll(6, SUPER);
 
-        assertThat(racer.getPosition(), is(6));
-        assertThat(racer.getDamage(), is(2));
+        assertThat(racer.getPosition(), equalTo(6));
+        assertThat(racer.getDamage(), equalTo(2));
     }
 
     @Test
@@ -83,8 +83,8 @@ class RacerTest {
 
         racer.roll(6, SUPER);
 
-        assertThat(racer.getPosition(), is(5));
-        assertThat(racer.getDamage(), is(3));
+        assertThat(racer.getPosition(), equalTo(5));
+        assertThat(racer.getDamage(), equalTo(3));
     }
 
     @Test
@@ -95,7 +95,7 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.setPosition(position);
 
-        assertThat(racer.getPosition(), is(position));
+        assertThat(racer.getPosition(), equalTo(position));
     }
 
     @Test
@@ -106,7 +106,7 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.setPosition(position);
 
-        assertThat(racer.getPosition(), is(currentRace.getFinishLine()));
+        assertThat(racer.getPosition(), equalTo(currentRace.getFinishLine()));
     }
 
     @Test
@@ -114,7 +114,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setDamage(MAX_DAMAGE - 1);
 
-        assertThat(racer.isCrashed(), is(false));
+        assertThat(racer.isCrashed(), equalTo(false));
     }
 
     @Test
@@ -122,7 +122,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setDamage(MAX_DAMAGE);
 
-        assertThat(racer.isCrashed(), is(true));
+        assertThat(racer.isCrashed(), equalTo(true));
     }
 
     @Test
@@ -130,7 +130,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setDamage(MAX_DAMAGE + 1);
 
-        assertThat(racer.isCrashed(), is(true));
+        assertThat(racer.isCrashed(), equalTo(true));
     }
 
 
@@ -142,7 +142,7 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.setPosition(position);
 
-        assertThat(racer.isWinner(), is(true));
+        assertThat(racer.isWinner(), equalTo(true));
     }
 
     @Test
@@ -153,7 +153,7 @@ class RacerTest {
         racer.setRace(currentRace);
         racer.setPosition(position);
 
-        assertThat(racer.isWinner(), is(false));
+        assertThat(racer.isWinner(), equalTo(false));
     }
 
     @Test
@@ -163,24 +163,24 @@ class RacerTest {
         racer.setPosition(1);
         racer.setDamage(1);
 
-        assertThat(racer.getLastRoll(), is(nullValue()));
+        assertThat(racer.getLastRoll(), nullValue());
 
         racer.roll(2, NORMAL);
 
         Roll roll = racer.getLastRoll();
 
-        assertThat(roll, is(not(nullValue())));
-        assertThat(roll.getRacer(), is(sameInstance(racer)));
-        assertThat(roll.getRace(), is(sameInstance(currentRace)));
-        assertThat(roll.getPosition(), is(equalTo(1)));
-        assertThat(roll.getDamage(), is(equalTo(1)));
-        assertThat(roll.getSpeedType(), is(equalTo(NORMAL)));
-        assertThat(roll.getNumber(), is(equalTo(2)));
-        assertThat(roll.getMove(), is(equalTo(1)));
-        assertThat(roll.getNewPosition(), is(equalTo(2)));
-        assertThat(roll.getNewDamage(), is(equalTo(1)));
-        assertThat(roll.isCrashed(), is(false));
-        assertThat(roll.isWin(), is(false));
+        assertThat(roll, notNullValue());
+        assertThat(roll.getRacer(), sameInstance(racer));
+        assertThat(roll.getRace(), sameInstance(currentRace));
+        assertThat(roll.getPosition(), equalTo(1));
+        assertThat(roll.getDamage(), equalTo(1));
+        assertThat(roll.getSpeedType(), equalTo(NORMAL));
+        assertThat(roll.getNumber(), equalTo(2));
+        assertThat(roll.getMove(), equalTo(1));
+        assertThat(roll.getNewPosition(), equalTo(2));
+        assertThat(roll.getNewDamage(), equalTo(1));
+        assertThat(roll.isCrashed(), equalTo(false));
+        assertThat(roll.isWin(), equalTo(false));
     }
 
     @Test
@@ -190,16 +190,16 @@ class RacerTest {
         racer.setPosition(1);
         racer.setDamage(1);
 
-        assertThat(racer.getLastRoll(), is(nullValue()));
+        assertThat(racer.getLastRoll(), nullValue());
 
         racer.roll(2, SUPER);
 
         Roll roll = racer.getLastRoll();
 
-        assertThat(roll, is(not(nullValue())));
-        assertThat(roll.getSpeedType(), is(equalTo(SUPER)));
-        assertThat(roll.getNumber(), is(equalTo(2)));
-        assertThat(roll.getMove(), is(equalTo(1)));
+        assertThat(roll, notNullValue());
+        assertThat(roll.getSpeedType(), equalTo(SUPER));
+        assertThat(roll.getNumber(), equalTo(2));
+        assertThat(roll.getMove(), equalTo(1));
     }
 
     @Test
@@ -207,7 +207,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setRace(currentRace);
 
-        assertThat(racer.getLastRoll(), is(nullValue()));
+        assertThat(racer.getLastRoll(), nullValue());
 
         racer.setPosition(1);
         racer.setDamage(5);
@@ -216,8 +216,8 @@ class RacerTest {
 
         Roll roll = racer.getLastRoll();
 
-        assertThat(roll, is(not(nullValue())));
-        assertThat(roll.isCrashed(), is(true));
+        assertThat(roll, notNullValue());
+        assertThat(roll.isCrashed(), equalTo(true));
     }
 
     @Test
@@ -227,14 +227,14 @@ class RacerTest {
         racer.setPosition(9);
         racer.setDamage(0);
 
-        assertThat(racer.getLastRoll(), is(nullValue()));
+        assertThat(racer.getLastRoll(), nullValue());
 
         racer.roll(1, NORMAL);
 
         Roll roll = racer.getLastRoll();
 
-        assertThat(roll, is(not(nullValue())));
-        assertThat(roll.isWin(), is(true));
+        assertThat(roll, notNullValue());
+        assertThat(roll.isWin(), equalTo(true));
     }
 
     @Test
@@ -242,7 +242,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setDamage(1);
 
-        assertThat(racer.isDamaged(), is(true));
+        assertThat(racer.isDamaged(), equalTo(true));
     }
 
     @Test
@@ -250,7 +250,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setDamage(0);
 
-        assertThat(racer.isDamaged(), is(false));
+        assertThat(racer.isDamaged(), equalTo(false));
     }
 
     @Test
@@ -258,7 +258,7 @@ class RacerTest {
         Racer racer = new Racer();
         racer.setDamage(-1);
 
-        assertThat(racer.isDamaged(), is(false));
+        assertThat(racer.isDamaged(), equalTo(false));
     }
 
     @Test
@@ -271,8 +271,8 @@ class RacerTest {
         otherRacer.setId(1L);
         otherRacer.setName("Alice");
 
-        assertThat(racer, is(equalTo(otherRacer)));
-        assertThat(racer.hashCode(), is(equalTo(otherRacer.hashCode())));
+        assertThat(racer, equalTo(otherRacer));
+        assertThat(racer.hashCode(), equalTo(otherRacer.hashCode()));
     }
 
     @Test
@@ -285,8 +285,8 @@ class RacerTest {
         otherRacer.setId(2L);
         otherRacer.setName("Alice");
 
-        assertThat(racer, is(not(equalTo(otherRacer))));
-        assertThat(racer.hashCode(), is(not(equalTo(otherRacer.hashCode()))));
+        assertThat(racer, not(equalTo(otherRacer)));
+        assertThat(racer.hashCode(), not(equalTo(otherRacer.hashCode())));
     }
 
     @Test
@@ -299,7 +299,7 @@ class RacerTest {
         otherRacer.setId(1L);
         otherRacer.setName("Bob");
 
-        assertThat(racer, is(not(equalTo(otherRacer))));
-        assertThat(racer.hashCode(), is(not(equalTo(otherRacer.hashCode()))));
+        assertThat(racer, not(equalTo(otherRacer)));
+        assertThat(racer.hashCode(), not(equalTo(otherRacer.hashCode())));
     }
 }
