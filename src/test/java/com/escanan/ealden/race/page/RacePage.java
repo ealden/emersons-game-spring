@@ -2,6 +2,7 @@ package com.escanan.ealden.race.page;
 
 import com.escanan.ealden.race.model.Racer;
 import com.escanan.ealden.race.model.SpeedType;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,6 +42,8 @@ public class RacePage {
     }
 
     private WebDriver createDriver(boolean headless) {
+        WebDriverManager.chromedriver().setup();
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--silent");
 
