@@ -42,10 +42,6 @@ public class Race {
 
     }
 
-    public Race(List<Racer> racers) {
-        this.racers = racers;
-    }
-
     public Race addRacer(Racer racer) {
         racers.add(racer);
 
