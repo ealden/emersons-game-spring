@@ -41,13 +41,17 @@ dependencies {
 }
 
 java {
-  sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
 }
 
 test {
     finalizedBy jacocoTestReport
 
     useJUnitPlatform()
+}
+
+war {
+    archiveFileName = 'EmersonsGame.war'
 }
 
 jacocoTestReport {
@@ -68,7 +72,7 @@ sonarqube {
 }
 
 task run() {
-  dependsOn bootRun
+    dependsOn bootRun
 }
 
 task cucumber() {
