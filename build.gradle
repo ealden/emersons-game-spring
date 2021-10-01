@@ -67,6 +67,10 @@ sonarqube {
     }
 }
 
+task run() {
+  dependsOn bootRun
+}
+
 task cucumber() {
     dependsOn assemble, compileTestJava
 
