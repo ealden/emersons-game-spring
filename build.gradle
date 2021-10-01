@@ -50,10 +50,6 @@ test {
     useJUnitPlatform()
 }
 
-war {
-    archiveFileName = 'EmersonsGame.war'
-}
-
 jacocoTestReport {
     dependsOn test
 
