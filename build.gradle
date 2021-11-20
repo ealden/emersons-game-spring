@@ -82,7 +82,7 @@ task cucumber() {
         }
 
         javaexec {
-            main = 'io.cucumber.core.cli.Main'
+            mainClass = 'io.cucumber.core.cli.Main'
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--tags', 'not @wip', '--plugin', 'pretty', '--glue', 'com.escanan.ealden.race', feature]
         }
