@@ -18,7 +18,7 @@ import static java.util.logging.Level.OFF;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
-public class BasePage {
+public abstract class BasePage {
     private final WebDriver driver;
 
     private final By testProcessing = By.id("test-processing");
