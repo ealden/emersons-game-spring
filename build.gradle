@@ -72,7 +72,7 @@ task run() {
 }
 
 task cucumber() {
-    dependsOn assemble, compileTestJava
+    dependsOn build
 
     doLast {
         def feature = 'src/test/resources'
