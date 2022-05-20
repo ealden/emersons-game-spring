@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.time.Duration;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -88,7 +89,7 @@ public abstract class BasePage {
     }
 
     protected WebDriverWait doWait() {
-        return new WebDriverWait(driver, 20);
+        return new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     protected WebElement findElement(By by) {
