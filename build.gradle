@@ -77,7 +77,7 @@ task cucumberi(type: JavaExec) {
     def feature = 'src/test/resources'
 
     if (project.hasProperty('feature')) {
-      feature = project.getProperty('feature')
+        feature = project.getProperty('feature')
     }
 
     mainClass = 'io.cucumber.core.cli.Main'
