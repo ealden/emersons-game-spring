@@ -33,7 +33,6 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.cucumber:cucumber-java:7.+'
-    testImplementation 'io.cucumber:cucumber-junit:7.+'
     testImplementation 'io.cucumber:cucumber-spring:7.+'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.+'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.+'
