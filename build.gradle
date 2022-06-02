@@ -70,7 +70,7 @@ task run() {
     dependsOn bootRun
 }
 
-task cucumberi(type: JavaExec) {
+task cucumber(type: JavaExec) {
     dependsOn build
 
     def feature = 'src/test/resources'
