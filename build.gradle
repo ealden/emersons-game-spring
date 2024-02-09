@@ -66,11 +66,11 @@ sonarqube {
     }
 }
 
-task run() {
+tasks.register('run') {
     dependsOn bootRun
 }
 
-task cucumber(type: JavaExec) {
+tasks.register('cucumber', JavaExec) {
     dependsOn build
 
     def feature = 'src/test/resources'
