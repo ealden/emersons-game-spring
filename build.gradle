@@ -1,6 +1,6 @@
 plugins {
-    id 'org.springframework.boot' version '2.+'
-    id 'io.spring.dependency-management' version '1.0.+'
+    id 'org.springframework.boot' version '3.+'
+    id 'io.spring.dependency-management' version '1.+'
     id 'java'
     id 'war'
     id 'jacoco'
@@ -40,7 +40,7 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaLanguageVersion.of(17)
 }
 
 test {
