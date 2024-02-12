@@ -3,7 +3,6 @@ plugins {
     id 'io.spring.dependency-management' version '1.+'
     id 'java'
     id 'war'
-    id 'jacoco'
 }
 
 group = 'com.escanan.ealden.race'
@@ -43,17 +42,7 @@ java {
 }
 
 test {
-    finalizedBy jacocoTestReport
-
     useJUnitPlatform()
-}
-
-jacocoTestReport {
-    dependsOn test
-
-    reports {
-        xml.required = true
-    }
 }
 
 tasks.register('run') {
