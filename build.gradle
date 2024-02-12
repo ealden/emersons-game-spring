@@ -40,7 +40,7 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaLanguageVersion.of(17)
+    sourceCompatibility = JavaLanguageVersion.of(21)
 }
 
 test {
