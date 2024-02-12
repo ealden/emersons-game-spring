@@ -26,14 +26,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.cucumber:cucumber-java:7.+'
     testImplementation 'io.cucumber:cucumber-spring:7.+'
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.+'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.+'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.+'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     cucumberRuntime 'com.h2database:h2'
 }
 
