@@ -49,10 +49,6 @@ testing {
     }
 }
 
-tasks.register('run') {
-    dependsOn bootRun
-}
-
 tasks.register('cucumber', JavaExec) {
     dependsOn build
 
@@ -66,3 +62,8 @@ tasks.register('cucumber', JavaExec) {
     classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
     args = ['--tags', 'not @wip', '--plugin', 'pretty', '--glue', project.group, feature]
 }
+
+tasks.register('run') {
+    dependsOn bootRun
+}
+
